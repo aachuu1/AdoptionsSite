@@ -1,138 +1,392 @@
 <!DOCTYPE html>
 <html lang="ro">
  <head>
-  <img src="Resurse/Imagini/logo1.png" alt="Brânză" class="imagine-langa-text" width="800">
-   <title>Adoptie Animale</title>
+   <title>Adopție Animale</title>
    <meta charset="utf-8"> 
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="keywords" content="adoptie, cum adopt, animale spre adoptie, pisici, caini, animale, donatii, voluntariar, ingrijire animale, boli animale, ingrijire pisici, ingrijire caini, asociatii, control animale, alimentatie animale, ajutor animale, organizatie.">
-   <meta name="description" content="Pagina pentru adoptii animale!">
+   <meta name="keywords" content="adopție, cum adopt, animale spre adopție, pisici, câini, animale, donații, voluntariat, îngrijire animale, boli animale, îngrijire pisici, îngrijire câini, asociații, control animale, alimentație animale, ajutor animale, organizație.">
+   <meta name="description" content="Pagină pentru adopții animale!">
    <meta name="author" content="Stoichita Ioana-Anamaria"> 
    <link rel="icon" type="image/png" href="/Resurse/Imagini/Favicon/favicon-96x96.png" sizes="96x96" />
    <link rel="icon" type="image/svg+xml" href="/Resurse/Imagini/Favicon/favicon.svg" />
    <link rel="shortcut icon" href="/Resurse/Imagini/Favicon/favicon.ico" />
    <link rel="apple-touch-icon" sizes="180x180" href="/Resurse/Imagini/Favicon/apple-touch-icon.png" />
    <link rel="manifest" href="/Resurse/Imagini/Favicon/site.webmanifest" />
+   <meta name="msapplication-TileColor" content="#f3cbf0">
+   <style>
+    .img-mare{
+      width: 100%; 
+      height: auto; 
+    }
+    .img-mica{
+      width: 100%; 
+      height: auto; 
+      max-width: 200px; 
+    }
+  </style>
  </head>
- <body>
-   <header>
-       <h1 style="color: rgb(255, 0, 217);">Adoptie Animale!</h1>
+ <body style="background-color: #f3cbf0;">
+   <header id="acasa-sus">
+       <img src="Resurse/Imagini/logo.png" alt="Logo Adopție Animale" class="img-mare">
+       <h1 style="color: rgb(255, 0, 217);">Adopție Animale!</h1>
        <nav>
-        <li> <a href="#acasa">  Acasa</a></li>
-          <li> <a href="#adoptie-animale"> Adoptie Animale</a></li>
-          <ul>
-            <li><a href="#pisici">Pisici</a></li>
-            <li><a href="#catei">Catei</a></li>
-            <li><a href="#alteanimale">Alte Animale</a></li>
-          </ul>
-          <li> <a href="#donatii">Donatii</a></li>
-          <ul>
-            <li><a href="#cumdonez?">Cum donez?</a></li>
-          </ul> 
-          <li><a href="#voluntariat">Voluntariat</a></li>
-          <ul>
-            <li><a href="#cumdevin?">Cum devin voluntar?</a></li>
-            <li><a href="#ceface?">Ce face un voluntar?</a></li>
-          </ul>
-          <li><a href="#informatii">Informatii Utile</a></li>
-          <ul>
-            <li><a href="#alimentatie">O alimentatie sanatoasa!</a></li>
-            <li><a href="#factori">Factori de risc</a></li>
-            <li><a href="#boli">Boli care pot aparea deobicei</a></li>
-          </ul>
+         <ul>
+          <li><a href="#acasa">Acasă</a></li>
+          <li>
+            <a href="#adoptie-animale">Adopție Animale</a>
+            <ul>
+              <li><a href="#pisici">Pisici</a></li>
+              <li><a href="#caini">Căței</a></li>
+              <li><a href="#alteanimale">Alte Animale</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#donatii">Donații</a>
+            <ul>
+              <li><a href="#cumdonez">Cum donez?</a></li>
+            </ul>
+          </li> 
+          <li>
+            <a href="#voluntariat">Voluntariat</a>
+            <ul>
+              <li><a href="#cumdevin">Cum devin voluntar?</a></li>
+              <li><a href="#ceface">Ce face un voluntar?</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#informatii">Informații Utile</a>
+            <ul>
+              <li><a href="#pisiciinfo">Pisici</a></li>
+              <li><a href="#cainiinfo">Caini</a></li>
+              <li><a href="#faq">Întrebări frecvente</a></li>
+            </ul>
+          </li>
           <li><a href="#contact">Contact</a></li>
+        </ul>
        </nav>
    </header>
    <main>
+    <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
        <section id="acasa">
-           <h2 style="color: rgb(255, 0, 217);">Acasa</h2>
-           <h><q>Viaţa unui animal e împărţită între a iubi şi a-i învăţa pe oameni să se iubească.</q></h2>
-           <p><b>Adopta un animal astazi si salveaza o viata!</p></b></p>
-           <p> Asociatia noastra este destinata oamenilor care doresc sa salveze un suflet! </p>
-           <p style="color:red;"><b>Anunturi</b></p>
-            <p> Targul anual va avea loc pe data de <s>18</s> <ins>20</ins> Martie 2025, ora 9:00!</p>
+           <h2 style="color: rgb(255, 0, 217);">Acasă</h2>
+           <blockquote>
+             <p>Viața unui animal e împărțită între a iubi și a-i învăța pe oameni să se iubească.</p>
+           </blockquote>
+           <p><b>Adoptă un animal astăzi și salvează o viață!</b></p>
+           <p>Asociația noastră este destinată oamenilor care doresc să salveze un suflet!</p>
        </section>
+       <article>
+        <p style="color:red;"><b>Anunțuri</b></p>
+            <p>Târgul anual va avea loc pe data de <s>18</s> <ins>20</ins> Martie 2025, ora 9:00!</p>
+       </article>
+       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
        <section id="adoptie-animale">
-        <h3 style="color: rgb(255, 0, 217);">Alege animalul pe care doresti sa-l adopti!</h3>
-        <ul><section id="pisici">
+        <h2 style="color: rgb(255, 0, 217);">Alege animalul pe care dorești să-l adopți!</h2>
+        <section id="pisici">
           <h3>Pisici</h3>
-          <img src="Resurse/Imagini/pedrosipandi.jpg" alt="Brânză" class="imagine-langa-text" width="200">
+          <p>De ce să adopți o pisică? Pe lângă faptul că sunt iubitoare și afectuoase, pisicile sunt și foarte autonome. Ele pot fi extrem de afectuoase cu stăpânii lor, dar pot fi și mai retrase în anumite momente, ceea ce le face animale de companie ideale pentru persoanele care apreciază un echilibru între interacțiune și independență.</p>
+          <p>Îți lăsăm mai jos un videoclip care sperăm să te convingă să adopți un ghemotoc de blană!</p>
+          <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/XTkM7Xpfrn4" 
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+          </iframe>   
         </section>
         <section id="caini">
-          <h3>Catei</h3>
-          <img src="Resurse/Imagini/caine.jpg" alt="Brânză" class="imagine-langa-text" width="200">
+          <h3>Căței</h3>
+          <p>De ce să adopți un câine? Aceste animale extraordinare sunt cunoscute pentru inteligența lor, loialitatea nemărginită și capacitatea de a forma legături emoționale profunde cu stăpânii lor. Câinii pot fi dresați pentru o varietate de roluri: câini de pază, câini de salvare, câini de terapie, câini ghizi pentru persoanele cu deficiențe de vedere, sau simpli companioni care aduc bucurie și confort în viața de zi cu zi.</p>
+          <p>Îți lăsăm mai jos un videoclip care sperăm să te convingă să adopți un ghemotoc de blană!</p>
+          <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/FQodWuFmtaY" 
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+          </iframe> 
         </section>
         <section id="alteanimale">
           <h3>Alte animale</h3>
-          <img src="Resurse/Imagini/animale.jpg" alt="Brânză" class="imagine-langa-text" width="200">
+          <p>Încă nu te-ai hotărât ce animal ți se potrivește? Stai liniștit! Există nenumărate animale care pot fi adoptate. Beneficiile de a avea un animal de companie sunt numeroase și bine documentate. Studiile arată că interacțiunea cu animalele poate reduce nivelul de stres, scădea tensiunea arterială și combate sentimentele de singurătate și depresie. Pentru copii, creșterea alături de un animal dezvoltă responsabilitatea, empatia și abilitățile sociale.</p>
+          <p>Îți lăsăm mai jos un videoclip care sperăm să te convingă să adopți un animăluț</p>
+          <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/BfhARF55-sY" 
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+          </iframe> 
         </section>
-        </ul>
        </section>
+       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
        <section id="donatii">
-        <h3 style="color: rgb(255, 0, 217);">Doneaza acum orice suma doresti!</h3>
-        <p style="color: red;"><strong>Atentie!</strong> Donatorul trebuie sa aiba peste <em>18 ani!</em></p>
-        <section id="cumdonez?">
-          <ol>
-          <p><b>Cum donez</b></p>
-          <p> Pentru a dona tot ce trebuie sa faci este sa fii conectat pe contul personal sau sa iti crezi unul, apoi vei fii redirectionat catre o pagina unde iti poti alege suma dorita! </p>
-          <p>Totodata, poti dona si alimente/jucarii/produse de ingrijire! Tot ce trebuie sa faci este ne contactez pe mail cu cateva detalii despre produsele pe care vrei sa le donezi si localitatea din care faci parte. Dupa ce ai transmis mailul vei fi contact in termen de maxim o saptamana de catre staff-ul nostru!</p>
-          </ol>
-        </section>
-        <section id="voluntariat">
-          <h3 style="color: rgb(255, 0, 217);">Voluntariar</h3>
-          <p> Vrei sa dai o mana de ajutor la un unul din centrele noastre?</p>
-            <p>Alătură-te azi zecilor de voluntari care salvează și îngrijesc animale zilnic. Cine știe, poate vei oferi chiar tu o casă unui mic suflet!</p>
-            <ol>
-              <section id="cumdevin?">
-              <p><b>Cum devin voluntar?</b></p>
-              <p> Pentru a deveni voluntar trebuie mai intai sa-ti faci cont pe platforma noastra. Urmeaza ca mai apoi sa primesti un email cu mai multe detalii.</p>
-            </section>
-            <section id="ceface?">
-              <p><b>Ce face un voluntar?</b></p>
-              <p>Dupa ce parcurgi toate etapele inscrierii, esti good to go! Vei ajuta staff-ul si voluntarii centrelor la ingrijirea animalelor care intra in centru.</p></section>
-            </ol>
-        </section>
-        <section id="informatii">
-          <h3 style="color: rgb(255, 0, 217);">Informatii despre animale!</h3>
-          <dl>
-            <section id="alimentatie">
-            <p><b>O alimentatie sanatoasa!</b></p>
-            </section>
-            <p>Asigura-te ca micul tau animalut are o dieta echilibrata!</p>
-            <h4>Alimentatie pisici:</h4>
-            <ul>
-              <li>Carne de pui (fără oase)</li>
-              <img src="Resurse/Imagini/gaina.jpg" alt="Brânză" class="imagine-langa-text" width="200">
-              <p> Este o sursă excelentă de proteine pentru pisici.</p>
-              <li>Carne de vită</li>
-              <img src="Resurse/Imagini/vaca.jpg" alt="Brânză" class="imagine-langa-text" width="200">
-              <p> Este o sursă excelentă de proteine pentru pisici.</p>
-              <li>Pește </li>
-              <img src="Resurse/Imagini/peste.jpg" alt="Brânză" class="imagine-langa-text" width="200">
-              <p> Bogat în acizi grași Omega-3, care sunt buni pentru piele și blană.</p>
-              <li>Branza</li>
-              <img src="Resurse/Imagini/branza.jpg" alt="Brânză" class="imagine-langa-text" width="200">
-              <p> Oferă proteine și calciu, dar este important să o dai cu moderație.</p>
-            </ul>
-            <section id="factori">
-            <p><b>Factori de risc</b></p>
-          </section>
-          <section id="boli">
-            <p><b>Boli care pot aparea deobicei</b></p>
-          </section>
-          </dl>
-          </section>
-          <section id="contact">
-            <h3 style="color: rgb(255, 0, 217);">Contact</h3>
-            <p>Pentru informatii aditionale, gasiti mai jos diferite metode de a ne contacta:</p>
-            <a href="tel:+4785285251">Sună la +40 712 345 678</a>
-            <p></p><!-- am pus acest paragraf deoarece voiam sa vie spatiu intre numarul de telefon si mail :p -->
-            <a href="mailto:ioana-anamaria.stoichita@s.unibuc.ro" target="_blank">Trimite un email la ioana-anamaria.stoichita@s.unibuc.ro</a>
+        <h2 style="color: rgb(255, 0, 217);">Donează acum orice sumă dorești!</h2>
+        <p style="color: red;"><strong>Atenție!</strong> Donatorul trebuie să aibă peste <em>18 ani!</em></p>
+        <section id="cumdonez">
+          <h3>Cum donez?</h3>
+          <p>Pentru a dona tot ce trebuie să faci este să fii conectat pe contul personal sau să îți creezi unul, apoi vei fi redirecționat către o pagină unde îți poți alege suma dorită!</p>
+          <p>Totodată, poți dona și alimente/jucării/produse de îngrijire! Tot ce trebuie să faci este să ne contactezi pe mail cu câteva detalii despre produsele pe care vrei să le donezi și localitatea din care faci parte. După ce ai transmis mailul vei fi contactat în termen de maxim o săptămână de către staff-ul nostru!</p>
         </section>
        </section>
+       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
+       <section id="voluntariat">
+          <h2 style="color: rgb(255, 0, 217);">Voluntariat</h2>
+          <p>Vrei să dai o mână de ajutor la unul din centrele noastre?</p>
+          <p>Alătură-te azi zecilor de voluntari care salvează și îngrijesc animale zilnic. Cine știe, poate vei oferi chiar tu o casă unui mic suflet!</p>
+          <section id="cumdevin">
+            <h3>Cum devin voluntar?</h3>
+            <p>Pentru a deveni voluntar trebuie mai întâi să-ți faci cont pe platforma noastră. Urmează ca mai apoi să primești un email cu mai multe detalii.</p>
+          </section>
+          <section id="ceface">
+            <h3>Ce face un voluntar?</h3>
+            <p>După ce parcurgi toate etapele înscrierii, ești <i>good to go</i>! Vei ajuta staff-ul și voluntarii centrelor la îngrijirea animalelor care intră în centru.</p>
+          </section>
+        </section>
+        <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
+        <section id="informatii">
+          <h2 style="color: rgb(255, 0, 217);">Informații despre animale!</h2>
+          <p>Ți-am pregătit mai jos un <a href="Resurse/PDF/ghid.pdf" download><b>ghid!</b></a></p>
+          <details><summary>Pisici</summary><section id="pisiciinfo">
+            <h3>O alimentație sănătoasă!</h3>
+            <p>Asigură-te că micul tău animăluț are o dietă echilibrată!</p>
+            <h3>Alimentație pisici:</h3>
+            <ul>
+              <li>
+                Carne de pui (fără oase)
+                <figure>
+                  <img src="Resurse/Imagini/gaina.jpg" alt="Carne de pui" class="img-mica">
+                  <figcaption>Este o sursă excelentă de proteine pentru pisici.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Carne de vită
+                <figure>
+                  <img src="Resurse/Imagini/vaca.jpg" alt="Carne de vită" class="img-mica">
+                  <figcaption>Este o sursă excelentă de proteine pentru pisici.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Pește
+                <figure>
+                  <img src="Resurse/Imagini/peste.jpg" alt="Pește" class="img-mica">
+                  <figcaption>Bogat în acizi grași Omega-3, care sunt buni pentru piele și blană.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Brânză
+                <figure>
+                  <img src="Resurse/Imagini/branza.jpg" alt="Brânză" class="img-mica">
+                  <figcaption>Oferă proteine și calciu, dar este important să o dai cu moderație.</figcaption>
+                </figure>
+              </li>
+            </ul>
+            <p>Pentru mai multe informații legate de alimentația pisicilor vă rog să accesați acest <a href="https://agri.shop/alimentatia-pisicii-cat-trebuie-sa-manance-o-pisica-ce-alimente-sunt-permise-cum-servesti-hrana/" target="_blank"><b>link!</b></a></p>
+            <p>Totodată, poti calcula cata mancare trebuie sa-i dai pisicii tale, in functie de greutatea acesteia cu formula de mai jos!
+              <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <mrow>
+                  <mi>RER</mi>
+                  <mo>=</mo>
+                  <mn>70</mn>
+                  <mo>x</mo>
+                  <msup>
+                    <mrow>
+                      <mo>(
+                      </mo>
+                      <mtext>Greutate in kg.</mtext>
+                        <mo>)</mo>
+                    </mrow>
+                    <mn>0.75</mn>
+                  </msup>
+                </mrow>
+              </math>
+            </p>
+          </section>
+          <section>
+            <h3>Factori de risc</h3>
+            <p>Te-ai întrebat vreodată ce riscuri poate întâmpina animăluțul tău?</p>
+            <details>
+              <summary>Alimentația necorespunzătoare</summary>
+              <p>Hrana de slabă calitate sau lipsa unor nutrienți esențiali poate duce la probleme de sănătate.</p>
+            </details>
+            <details>
+              <summary>Sedentarismul și obezitatea</summary>
+              <p>Lipsa mișcării poate contribui la obezitate, diabet și afecțiuni articulare.</p>
+            </details>
+            <details>
+              <summary>Lipsa vaccinării și deparazitării </summary>
+              <p>Expunerea la boli infecțioase precum panleucopenia felină sau leucemia felină este mai mare la pisicile nevaccinate.</p>
+            </details>
+            <details>
+              <summary>Expunerea la toxine</summary>
+              <p>Plante toxice (ex. crinul), medicamente umane, produse de curățenie sau anumite alimente (ceapă, ciocolată) pot fi periculoase.</p>
+            </details>
+            <details>
+              <summary>Stresul și anxietatea </summary>
+              <p>Schimbările în mediu, zgomotele puternice sau lipsa interacțiunii pot cauza probleme comportamentale sau de sănătate.</p>
+            </details>
+            <p>Pe langa toti factorii enumerati mai sus, este important de retinut ca fiecare pisica poate fi predisputa la diferite probleme, deci este foarte important sa va duceti pisica la veterinare cat mai des posibil!</p>
+          </section>
+          <section>
+            <h3>Boli care pot apărea de obicei</h3>
+            <p>Va prezenta cateva boli comune care apar la pisici:</p>
+            <details>
+              <summary>Rinotraheita virală felină</summary>
+              <p>O boală respiratorie comună, care provoacă strănut, secreții nazale și oculare, febră și letargie.</p>
+            </details>
+            <details>
+              <summary><abbr title="Virusul imunodeficienței feline">FIV</abbr></summary>
+              <p>Slăbește sistemul imunitar, făcând pisica vulnerabilă la alte infecții.</p>
+            </details>
+            <details>
+              <summary>Giardia</summary>
+              <p>O infecție intestinală care provoacă diaree și slăbiciune</p>
+            </details>
+            <details>
+              <summary><abbr title="Boala tractului urinar inferior la pisici">FLUTD</abbr></summary>
+              <p>Include infecții urinare, pietre la rinichi și cistită idiopatică, provocând urinare dureroasă sau sânge în urină.
+              </p>
+            </details>
+            <details>
+              <summary>Limfomul </summary>
+              <p>Cel mai frecvent tip de cancer la pisici, poate afecta ganglionii limfatici, intestinele sau plămânii.</p>
+            </details>
+            <p>Pisicile tind sa-si pastreze aceeasi rutina, de aceea este foarte important ca atunci cand observati schimbari la pisica dumneavoastra sa o duceti cat mai rapid la un veterinar. Daca aceasta devine letargica, mieunatul acesteia este mai des decat deobicei sau chiar daca este mai anxioasa decat deobicei, sansele ca aceasta sa aiba o problema sunt foarte ridicate. Nu va diagnosticati pisica singuri! Nu administrati medicamente pisicilor fara un tratament de la veterinar!</p>
+          </section>
+          </details>
+          <details><summary>Caini</summary><section id="cainiinfo">
+            <h3>O alimentație sănătoasă!</h3>
+            <p>Asigură-te că micul tău animăluț are o dietă echilibrată!</p>
+            <h3>Alimentație caini:</h3>
+            <ul>
+              <li>
+                Carne de vita
+                <figure>
+                  <img src="Resurse/Imagini/vaca2.jpg" alt="Carne de pvita" class="img-mica">
+                  <figcaption>Mai bogata în grăsimi și fier, oferă energie.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Pește
+                <figure>
+                  <img src="Resurse/Imagini/peste2.jpg" alt="Peste" class="img-mica">
+                  <figcaption>Bogat în acizi grași omega-3, bun pentru piele, blană și articulații.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Morcovi 
+                <figure>
+                  <img src="Resurse/Imagini/cainecumorcov.jpg" alt="Morcov" class="img-mica">
+                  <figcaption>Buni pentru vedere și sănătatea dinților.</figcaption>
+                </figure>
+              </li>
+              <li>
+                Mere
+                <figure>
+                  <img src="Resurse/Imagini/cainecumar.jpg" alt="Mar" class="img-mica">
+                  <figcaption>Ajută la curățarea dinților și sunt o sursă bună de fibre.</figcaption>
+                </figure>
+              </li>
+            </ul>
+            <p>Pentru mai multe informații legate de alimentația cainilor vă rog să accesați acest <a href="https://agri.shop/alimentatia-cainelui-cum-il-hranesti-corect-in-functie-de-varsta-cat-de-des-tipuri-de-hrana-pentru-caini/" target="_blank"><b>link!</b></a></p>
+            <p>Totodată, poti calcula cata mancare trebuie sa-i dai cainelui tau, in functie de greutatea acestuia cu formula de mai jos!
+              <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <mrow>
+                  <mi>RER</mi>
+                  <mo>=</mo>
+                  <mn>70</mn>
+                  <mo>×</mo>
+                  <msup>
+                    <mrow>
+                      <mo>(</mo>
+                      <mtext>Greutatea în kg</mtext>
+                      <mo>)</mo>
+                    </mrow>
+                    <mn>0.75</mn>
+                  </msup>
+                </mrow>
+              </math>
+            </p>
+          </section>
+          <section>
+            <h3>Factori de risc</h3>
+            <p>Te-ai întrebat vreodată ce riscuri poate întâmpina animăluțul tău?</p>
+            <details>
+              <summary>Obezitatea </summary>
+              <p> Alimentația necorespunzătoare și lipsa exercițiului pot duce la boli cardiovasculare, diabet și probleme articulare.</p>
+            </details>
+            <details>
+              <summary>Expunerea la temperaturi extreme </summary>
+              <p>Căldura excesivă poate provoca insolație, iar frigul sever poate duce la hipotermie.</p>
+            </details>
+            <details>
+              <summary>Stresul și anxietatea </summary>
+              <p>Schimbările frecvente de mediu, lipsa stăpânului pentru perioade lungi sau zgomotele puternice (furtuni, artificii) pot cauza probleme de comportament.</p>
+            </details>
+            <details>
+              <summary>Expunerea la toxine</summary>
+              <p>Produse toxice precum ciocolata, ceapa, alcoolul, medicamentele umane sau substanțele chimice (antigel, pesticide) pot fi letale pentru câini.</p>
+            </details>
+            <details>
+              <summary>Pericole în casă </summary>
+              <p>Câinii pot înghiți obiecte mici, se pot răni la colțurile ascuțite sau pot intra în contact cu cabluri electrice.
+              </p>
+            </details>
+            <p>Pe langa toti factorii enumerati mai sus, este important de retinut ca fiecare pcaine poate fi predispus la diferite probleme, deci este foarte important sa va duceti cainele la veterinare cat mai des posibil!</p>
+          </section>
+          <section>
+            <h3>Boli care pot apărea de obicei</h3>
+            <p>Va prezenta cateva boli comune care apar la caini:</p>
+            <details>
+              <summary>Parvoviroza</summary>
+              <p> O boală virală extrem de contagioasă care afectează tractul gastrointestinal al câinelui, provocând diaree severă, vărsături și deshidratare.</p>
+            </details>
+            <details>
+              <summary><abbr title="Infecțiile urinare">UTI</abbr></summary>
+              <p>Acestea sunt comune și pot duce la simptome precum urinare frecventă sau dureroasă și sânge în urină.</p>
+            </details>
+            <details>
+              <summary>Gastrita </summary>
+              <p>Inflamația stomacului care provoacă vărsături, diaree și dureri abdominale.</p>
+            </details>
+            <details>
+              <summary>Dermatitele alergice </summary>
+              <p>Pot fi cauzate de alergii la anumite alimente, praf sau înțepături de purici și duc la mâncărimi și inflamații ale pielii.</p>
+            </details>
+            <details>
+              <summary>Insuficiența cardiacă </summary>
+              <p> Câinii mai vârstnici sau cei cu rase predispuse pot dezvolta probleme cu inima, care afectează circulația și pot duce la tuse, respirație rapidă și letargie.</p>
+            </details>
+            <p>Desi cainii nu tind sa aibe o rutina anume, la fel ca la pisici, orice schimbare brusca la cainele dumneavoastra ar trebui sa va ridice un semn de intrebare. Latratul excesiv, semne de letargie si anxietatea ridicata sunt factori pe care nu ii puteti ignora, iar o interventie veterinara este de cruciala.
+            Nu va diagnosticati cainele singuri! Nu administrati medicamente cainilor fara un tratament de la veterinar!
+            </p>
+          </section>
+          </details>
+          <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
+          <section id="faq">
+            <h3>Întrebări frecvente</h3>
+            <details>
+              <summary>Cât costă adopția unui animal?</summary>
+              <p>Adopția în sine este gratuită, dar există o taxă administrativă de 50 lei care acoperă vaccinurile de bază, microciparea și sterilizarea animalului.</p>
+            </details>
+            <details>
+              <summary>Ce documente sunt necesare pentru adopție?</summary>
+              <p>Pentru a adopta un animal, ai nevoie de o copie după buletin/carte de identitate și va trebui să completezi un formular de adopție. În unele cazuri, putem efectua o vizită la domiciliu pentru a ne asigura că animalul va avea condiții bune.</p>
+            </details>
+            <details>
+              <summary>Ce se întâmplă dacă nu mă pot adapta la animal?</summary>
+              <p>Înțelegem că pot apărea situații neprevăzute. Te rugăm să ne contactezi înainte de a lua orice decizie. Putem oferi sfaturi pentru acomodare sau, în cazuri extreme, putem accepta returnarea animalului.</p>
+            </details>
+          </section>
+        </section>
+        <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
+        <section id="contact">
+          <h2 style="color: rgb(255, 0, 217);">Contact</h2>
+          <p>Pentru informații adiționale, găsiți mai jos diferite metode de a ne contacta:</p>
+          <p>Sună la <a href="tel:+40712345678">+40 712 345 678</a></p>
+          <p>Trimite un email la <a href="mailto:ioana-anamaria.stoichita@s.unibuc.ro">ioana-anamaria.stoichita@s.unibuc.ro</a></p>
+          <p>Locația noastră: <a href="https://maps.app.goo.gl/nJAitLLCTLymaRB49" target="_blank">Strada Academiei 14</a></p>
+          <p>Contactează-ne pe <a href="https://web.whatsapp.com" target="_blank">Whatsapp</a></p>
+        </section>
    </main>
    <footer>
-       <p><small>Copyright &copy;2025 Stoichita Ioana-Anamaria</small></p>
+       <p><a href="#acasa-sus">Înapoi la începutul paginii</a></p>
+       <p><small>Copyright &copy; <time datetime="2025">2025</time> Stoichita Ioana-Anamaria</small></p>
+       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
    </footer>
  </body>
 </html>
