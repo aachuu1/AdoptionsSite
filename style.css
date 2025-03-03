@@ -267,7 +267,6 @@ background: var(--color-roz-deschis);
 width: 3px;
 }
 
-/* Stiluri pentru headings */
 h2 {
 color: var(--color-text-principal);
 border-bottom: 2px solid var(--color-roz-mediu);
@@ -338,7 +337,6 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 animation: moveGradient 3s ease infinite;
 }
 
-/* Stiluri pentru butoane */
 button {
 background: linear-gradient(-45deg, 
   var(--color-fundal), 
@@ -401,7 +399,7 @@ background: linear-gradient(90deg, var(--color-roz-mediu), var(--color-roz-desch
 opacity: 0.8;
 }
 
-/* Stiluri pentru linkuri */
+
 a {
 color: var(--color-text-principal);
 text-decoration: none;
@@ -420,7 +418,7 @@ color: var(--color-text-principal);
 border-bottom-color: var(--color-roz-deschis);
 }
 
-/* Stiluri pentru details și summary */
+
 details {
 margin: 15px 0;
 padding: 0;
@@ -485,7 +483,7 @@ padding: 18px;
 line-height: 1.6;
 }
 
-/* Stiluri pentru blockcitate */
+
 blockquote {
 font-style: italic;
 position: relative;
@@ -501,7 +499,7 @@ border: 1px solid rgba(209, 180, 200, 0.3);
 }
 
 blockquote::before {
-content: """;
+content: "";
 position: absolute;
 left: 15px;
 top: 15px;
@@ -511,7 +509,7 @@ color: var(--color-mov);
 opacity: 0.6;
 }
 
-/* Stiluri pentru iframe-uri (videoclipuri) */
+
 iframe {
 max-width: 100%;
 border-radius: 10px;
@@ -519,7 +517,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 margin: 15px 0;
 }
 
-/* Stiluri pentru figure și figcaption */
+
 figure {
 margin: 20px 0;
 background: linear-gradient(to bottom, 
@@ -543,3 +541,4 @@ background: linear-gradient(to right,
   var(--color-roz-deschis));
 border-radius: 0 0 8px 8px;
 }
+
