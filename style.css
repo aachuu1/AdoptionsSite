@@ -1,24 +1,20 @@
 :root {
-  /*marimi imagini*/
   --padding-large: 50px;
   --padding-medium: 30px;
   --padding-small: 15px; 
   --padding-text: 20px;
   
-  /*culori principale*/
   --color-fundal: #f1e1e1;    
   --color-roz-deschis: #f3d2da;
   --color-roz-mediu: #edc1c8;  
   --color-mov: #d1b4c8;      
   --color-mov-gri: #cbc4d6;    
-  
-  /*culori secundare(variatiuni din culorile principale)*/
+
   --color-text-principal: #000000;  
   --color-text-secundar: #84858c;   
   --color-background-secundar: #ffffff; 
 }
 
-/*gradientul pentru body*/
 @keyframes moveGradient {
 0% {
   background-position: 0% 50%;
@@ -30,7 +26,7 @@
   background-position: 0% 50%;
 }
 }
-/* style pentru body*/
+
 body {
 margin: 0;
 padding-left: var(--padding-large);
@@ -47,7 +43,6 @@ color: var(--color-text-principal);
 line-height: 1.6;
 }
 
-/*dimensiuni pentru imaginile mari*/
 .img-mare {
 width: 90%;
 height: auto;
@@ -56,17 +51,16 @@ min-width: 300px;
 margin: 0 auto;
 display: block;
 }
-/*dimensiuni pentru imaginile mici*/
+
 .img-mica {
 width: 100%;
 height: auto;
 max-width: 200px;
 min-width: 100px;
-border-radius: 8px;
+border-radius: 50%;
 border: 2px solid var(--color-mov);
 }
 
-/*style pentru iframe-uri*/
 iframe {
 width: 90%;
 height: 400px; 
@@ -79,7 +73,6 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 border: 2px solid var(--color-roz-mediu);
 }
 
-/*dimensiuni pentru iframe-uri, ecran mare*/
 @media (max-width: 1024px) {
 iframe {
   width: 100%;
@@ -87,7 +80,6 @@ iframe {
 }
 }
 
-/*dimensiuni pentru iframe-uri, ecran mediu*/
 @media (max-width: 768px) {
 iframe {
   width: 100%;
@@ -95,14 +87,12 @@ iframe {
 }
 }
 
-/*dimensiuni pentru iframe-uri, ecran mic*/
 @media (max-width: 480px) {
 iframe {
   height: 250px;
 }
 }
 
-/* Ajustări pentru dimensiuni de ecran diferite */
 @media (max-width: 1024px) {
 .img-mare {
   width: 95%;
@@ -135,7 +125,6 @@ iframe {
 }
 }
 
-/*style pentru header*/
 header {
 background: linear-gradient(-45deg, 
   var(--color-mov), 
@@ -149,7 +138,7 @@ border-radius: 16px 16px 16px 16px;
 box-shadow: 0 4px 12px rgba(209, 180, 200, 0.3);
 margin-bottom: 16px;
 }
-/*navigatie pentru paginile website-ului*/
+
 nav {
 background: linear-gradient(-45deg, 
   var(--color-roz-mediu), 
@@ -163,14 +152,14 @@ border-radius: 12px;
 margin-top: 16px;
 box-shadow: 0 2px 8px rgba(237, 193, 200, 0.3);
 }
-/*style pentru sectiuni*/
+
 nav ul {
 list-style-type: none;
 padding: 10px;
 margin: 2px;
 text-align: center;
 }
-/*style pentru subsectiuni*/
+
 nav ul li {
 display: inline-block;
 position: relative;
@@ -221,12 +210,10 @@ display: block;
 margin: 5px 0;
 }
 
-/* Main content - izolare vizuală */
 main {
 padding: 20px;
 }
 
-/* Section styling - izolare vizuală */
 section {
 background: linear-gradient(to bottom, 
   var(--color-background-secundar), 
@@ -251,7 +238,6 @@ background: linear-gradient(to bottom, var(--color-roz-mediu), var(--color-mov))
 opacity: 0.8;
 }
 
-/* Subsection styling pentru o ierarhie vizuală */
 section section {
 background: linear-gradient(to bottom, 
   rgba(241, 225, 225, 0.2), 
@@ -305,7 +291,6 @@ background-color: var(--color-roz-deschis);
 border-radius: 50%;
 }
 
-/* Container pentru cardurile de pisici */
 .pisici-container {
 display: grid;
 grid-template-columns: repeat(3, 2fr);
@@ -365,12 +350,11 @@ transform: translateY(-2px);
 animation: moveGradient 3s ease infinite;
 }
 
-/* Eliminăm pseudo-elementul after care nu va fi necesar cu gradientul animat */
+
 button::after {
 display: none;
 }
 
-/* Footer - izolare vizuală */
 footer {
 background: linear-gradient(-45deg, 
   var(--color-roz-deschis), 
@@ -399,7 +383,6 @@ background: linear-gradient(90deg, var(--color-roz-mediu), var(--color-roz-desch
 opacity: 0.8;
 }
 
-
 a {
 color: var(--color-text-principal);
 text-decoration: none;
@@ -417,7 +400,6 @@ a:hover {
 color: var(--color-text-principal);
 border-bottom-color: var(--color-roz-deschis);
 }
-
 
 details {
 margin: 15px 0;
@@ -509,14 +491,12 @@ color: var(--color-mov);
 opacity: 0.6;
 }
 
-
 iframe {
 max-width: 100%;
 border-radius: 10px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 margin: 15px 0;
 }
-
 
 figure {
 margin: 20px 0;
