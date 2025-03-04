@@ -308,7 +308,7 @@ border-radius: 50%;
 /* Container pentru cardurile de pisici */
 .pisici-container {
 display: grid;
-grid-template-columns: repeat(5, 4fr);
+grid-template-columns: repeat(3, 2fr);
 grid-gap: 20px;
 padding: 20px;
 }
@@ -486,7 +486,7 @@ line-height: 1.6;
 
 blockquote {
 font-style: italic;
-position: relative;
+position: center;
 padding: 24px 24px 24px 45px;
 margin: 25px 0;
 background: linear-gradient(135deg, 
