@@ -161,9 +161,9 @@ text-align: center;
 }
 
 nav ul li {
-display: inline-block;
-position: relative;
-margin-right: 90px;
+display: inline-flex;
+position: center;
+margin-right: 100px;
 text-align: center;
 }
 
@@ -452,7 +452,7 @@ transition: transform 0.3s ease;
 
 details[open] summary::after {
 content: "−";
-transform: rotate(0deg);
+transform: rotate(deg);
 }
 
 summary:hover {
@@ -491,11 +491,41 @@ color: var(--color-mov);
 opacity: 0.6;
 }
 
+.container-iframe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taburi-iframe {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
+  margin-bottom: 10px;
+}
+
+.taburi-iframe a {
+  text-decoration: none;
+  color: var(--color-text-principal);
+  font-weight: none;
+  padding: 8px 12px;
+  border: 1px solid var(--color-mov);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background-color: var(--color-roz-deschis);
+}
+
+.taburi-iframe a:hover {
+  background-color: var(--color-mov);
+  color: white;
+}
+
+
 iframe {
-max-width: 100%;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-margin: 15px 0;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
 }
 
 figure {
