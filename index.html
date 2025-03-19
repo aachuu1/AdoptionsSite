@@ -18,48 +18,65 @@
   </head>
   <body>
     <header id="acasa-sus">
-      <img src="Resurse/Imagini/logo.png" class="img-mare">
        <h1 style="color: rgb(0, 0, 0);">Centrul de Adopții - Pandi&Pedro</h1>
        <nav>
-         <ul>
-          <li><a href="#acasa">Acasă</a></li>
-          <ul>
-            <li><a href="#anunturi">Anunțuri</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#faq">Statistici</a></li>
-          </ul>
-          <li>
-            <a href="#adoptie-animale">Adopție Animale</a>
-            <ul>
-              <li><a href="#pisici">Pisici</a></li>
-              <li><a href="#caini">Căței</a></li>
-              <li><a href="#alteanimale">Alte Animale</a></li>
+        <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+        <label for="hamburger-toggle" class="hamburger" aria-label="Meniu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-list">
+          <li><a href="#acasa">Acasă<span class="slide-text">Acasă</span></a></li>
+          <li class="has-submenu">
+            <a href="#anunturi" class="menu-item">Anunțuri<span class="slide-text">Anunțuri</span></a>
+            <input type="checkbox" id="submenu-anunturi" class="submenu-toggle">
+            <label for="submenu-anunturi" class="submenu-label">+</label>
+            <ul class="submenu">
+              <li><a href="#faq">FAQ<span class="slide-text">FAQ</span></a></li>
+              <li><a href="#statistici">Statistici<span class="slide-text">Statistici</span></a></li>
             </ul>
           </li>
-          <li>
-            <a href="#donatii">Donații</a>
-            <ul>
-              <li><a href="#cumdonez">Cum donez?</a></li>
-            </ul>
-          </li> 
-          <li>
-            <a href="#voluntariat">Voluntariat</a>
-            <ul>
-              <li><a href="#cumdevin">Cum devin voluntar?</a></li>
-              <li><a href="#ceface">Ce face un voluntar?</a></li>
+          <li class="has-submenu">
+            <a href="#adoptie" class="menu-item">Adopție Animale<span class="slide-text">Adopție Animale</span></a>
+            <input type="checkbox" id="submenu-adoptie" class="submenu-toggle">
+            <label for="submenu-adoptie" class="submenu-label">+</label>
+            <ul class="submenu">
+              <li><a href="#pisici">Pisici<span class="slide-text">Pisici</span></a></li>
+              <li><a href="#caini">Căței<span class="slide-text">Căței</span></a></li>
+              <li><a href="#alteanimale">Alte Animale<span class="slide-text">Alte Animale</span></a></li>
             </ul>
           </li>
-          <li>
-            <a href="#informatii">Informații Utile</a>
-            <ul>
-              <li><a href="#pisiciinfo">Pisici</a></li>
-              <li><a href="#cainiinfo">Câini</a></li>
-              <li><a href="#faq">Întrebări frecvente</a></li>
+          <li class="has-submenu">
+            <a href="#donatii" class="menu-item">Donații<span class="slide-text">Donații</span></a>
+            <input type="checkbox" id="submenu-donatii" class="submenu-toggle">
+            <label for="submenu-donatii" class="submenu-label">+</label>
+            <ul class="submenu">
+              <li><a href="#cumdonez">Cum donez?<span class="slide-text">Cum donez?</span></a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="has-submenu">
+            <a href="#voluntariat" class="menu-item">Voluntariat<span class="slide-text">Voluntariat</span></a>
+            <input type="checkbox" id="submenu-voluntariat" class="submenu-toggle">
+            <label for="submenu-voluntariat" class="submenu-label">+</label>
+            <ul class="submenu">
+              <li><a href="#cumdevin">Cum devin voluntar?<span class="slide-text">Cum devin voluntar?</span></a></li>
+              <li><a href="#ceface">Ce face un voluntar?<span class="slide-text">Ce face un voluntar?</span></a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="#informatii" class="menu-item">Informații Utile<span class="slide-text">Informații Utile</span></a>
+            <input type="checkbox" id="submenu-informatii" class="submenu-toggle">
+            <label for="submenu-informatii" class="submenu-label">+</label>
+            <ul class="submenu">
+              <li><a href="#pisiciinfo">Pisici<span class="slide-text">Pisici</span></a></li>
+              <li><a href="#cainiinfo">Câini<span class="slide-text">Câini</span></a></li>
+              <li><a href="#intrebari">Întrebări frecvente<span class="slide-text">Întrebări frecvente</span></a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact<span class="slide-text">Contact</span></a></li>
         </ul>
-       </nav>
+      </nav>
    </header>
    <main>
     <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
