@@ -17,7 +17,7 @@
   </style>
   </head>
   <body>
-    <header id="acasa-sus">
+    <header id="acasa-sus" class="header">
        <h1 style="color: rgb(0, 0, 0);">Centrul de Adopții - Pandi&Pedro</h1>
        <nav>
         <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
@@ -71,7 +71,6 @@
             <ul class="submenu">
               <li><a href="#pisiciinfo">Pisici<span class="slide-text">Pisici</span></a></li>
               <li><a href="#cainiinfo">Câini<span class="slide-text">Câini</span></a></li>
-              <li><a href="#intrebari">Întrebări frecvente<span class="slide-text">Întrebări frecvente</span></a></li>
             </ul>
           </li>
           <li><a href="#contact">Contact<span class="slide-text">Contact</span></a></li>
@@ -79,7 +78,7 @@
       </nav>
    </header>
    <main>
-    <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
+    <div id="grid-pagina">
        <section id="acasa">
            <h2 style="color: rgb(0, 0, 0);">Acasă</h2>
            <blockquote>
@@ -91,18 +90,15 @@
            <p>Asociația noastră a fost fondată în 2021 de echipa de iubitori de animale. Am început inițial prin hrănirea animalelor de pe străzi, urmând ca mai apoi să începem un program de sterilizare cu ajutorul donațiilor primite de la prieteni. La un an distanță ne-am deschis și sediul actual, tot cu ajutorul donațiilor. Toată cauza noastră are la bază implicarea iubitorilor de animale care ne-au sprijinit pe tot parcursul călătoriei noastre și pe această cale le mulțumim!</p>
            <p></p>
            <p>Echipa noastră este formată momentan din 10 membri, 5 din foști voluntari care au dorit să lucreze în continuare cu noi.</p>
-       </section>
-       <section id="anunturi">
-       <article>
-        <h2><b>Anunțuri</b></h2>
+           <article id="anunturi">
+            <h2><b>Anunțuri</b></h2>
             <p>Târgul anual va avea loc pe data de <s>18</s> <ins>20</ins> Martie 2025, ora 9:00!</p>
-       </article>
-      </section>
-      <section>
-        <h2>Statistici</h2>
-        <p>În ultimii 3 ani am salvat peste 300 de animale, am sterilizat peste 1000 de animale, și am ajutat peste 200 de animale să-și găsească casa!</p>
-      </section>
-       <section id="faq">
+           </article>
+           <section id="statistici">
+            <h2>Statistici</h2>
+            <p>În ultimii 3 ani am salvat peste 300 de animale, am sterilizat peste 1000 de animale, și am ajutat peste 200 de animale să-și găsească casa!</p>
+           </section>
+           <section id="faq">
             <h2>FAQ</h2>
             <details>
               <summary>Cât costă adopția unui animal?</summary>
@@ -116,9 +112,9 @@
               <summary>Ce se întâmplă dacă nu mă pot adapta la animal?</summary>
               <p>Înțelegem că pot apărea situații neprevăzute. Te rugăm să ne contactezi înainte de a lua orice decizie. Putem oferi sfaturi pentru acomodare sau, în cazuri extreme, putem accepta returnarea animalului.</p>
             </details>
-          </section>
-       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
-       <section id="adoptie-animale">
+           </section>
+       </section>
+       <section id="adoptie-animale" >
         <h2 style="color: rgb(0, 0, 0);">Adopție Animale</h2>
         <div class="container-iframe">
           <div class="taburi-iframe">
@@ -244,7 +240,6 @@
           </div>
         </div>
        </section>
-       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
        <section id="donatii">
         <h2 style="color: rgb(0, 0, 0);">Donații</h2>
         <p style="color: red;"><strong>Atenție!</strong> Donatorul trebuie să aibă peste <em>18 ani!</em></p>
@@ -254,8 +249,7 @@
           <p>Totodată, poți dona și alimente/jucării/produse de îngrijire! Tot ce trebuie să faci este să ne contactezi pe mail cu câteva detalii despre produsele pe care vrei să le donezi și localitatea din care faci parte. După ce ai transmis mailul vei fi contactat în termen de maxim o săptămână de către staff-ul nostru!</p>
         </section>
        </section>
-       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
-       <section id="voluntariat">
+       <section id="voluntariat" >
           <h2 style="color: rgb(0, 0, 0);">Voluntariat</h2>
           <p>Vrei să dai o mână de ajutor la unul din centrele noastre?</p>
           <p>Alătură-te azi zecilor de voluntari care salvează și îngrijesc animale zilnic. Cine știe, poate vei oferi chiar tu o casă unui mic suflet!</p>
@@ -271,8 +265,7 @@
           <object data="Resurse/PDF/voluntariat.pdf" type="application/pdf" width="100%" height="600px">
           </object>
         </section>
-        <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
-        <section id="informatii">
+        <section id="informatii" >
           <h2 style="color: rgb(0, 0, 0);">Informații despre animale!</h2>
           <p>Ți-am pregătit mai jos un <a href="Resurse/PDF/ghid.pdf" download><b>ghid!</b></a></p>
           <details><summary>Pisici</summary><section id="pisiciinfo">
@@ -436,6 +429,7 @@
               </math>
             </p>
           </section>
+
           <section>
             <h3>Factori de risc</h3>
             <p>Te-ai întrebat vreodată ce riscuri poate întâmpina animăluțul tău?</p>
@@ -491,7 +485,6 @@
           </section>
         </details>
         </section>
-        <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
         <section id="contact">
           <h2 style="color: rgb(0, 0, 0);">Contact</h2>
           <p>Pentru informații adiționale, găsiți mai jos diferite metode de a ne contacta:</p>
@@ -502,10 +495,10 @@
           </p>
         </section>
    </main>
-   <footer>
+   <footer  class="footer">
        <p><a href="#acasa-sus">Înapoi la începutul paginii</a></p>
        <p><small>Copyright &copy; <time datetime="2025">2025</time> Stoichița Ioana-Anamaria</small></p>
-       <img src="Resurse/Imagini/separator.png" alt="separator" class="img-mare">
    </footer>
+  </div>
  </body>
 </html>
