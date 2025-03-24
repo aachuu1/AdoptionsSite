@@ -287,14 +287,23 @@ nav ul ul li {
 nav ul ul li a {
   padding: 8px 12px;
   color: var(--color-text-principal);
+  background-color: transparent;
+  border: none; 
+  transition: all 0.3s ease;
+}
+
+nav ul ul li a .slide-text {
+  display: none;
 }
 
 nav ul ul li a:hover {
-  background-color: rgba(237, 193, 200, 0.3);
+  background-color: transparent;
+  color: var(--color-text-principal);
+  text-decoration: underline; 
 }
 
 .hamburger-toggle {
-  display: none; 
+  display: none;
 }
 
 .hamburger {
@@ -308,6 +317,7 @@ nav ul ul li a:hover {
   cursor: pointer;
   padding: 0;
   z-index: 22;
+  position: relative;
 }
 
 .hamburger span {
@@ -315,6 +325,7 @@ nav ul ul li a:hover {
   height: 3px;
   background-color: var(--color-text-principal);
   transition: all 0.3s ease;
+  transform-origin: center;
 }
 
 .submenu-toggle {
@@ -324,16 +335,20 @@ nav ul ul li a:hover {
 .submenu-label {
   display: none;
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 36px;
-  height: 36px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
   text-align: center;
   font-size: 18px;
-  line-height: 36px;
+  color: transparent;
+  line-height: 24px;
   cursor: pointer;
   z-index: 2;
   border-radius: 50%;
+  background: none;
+  transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -353,23 +368,42 @@ nav ul ul li a:hover {
       var(--color-mov), 
       var(--color-roz-deschis), 
       var(--color-mov-gri));
+    background-size: 400% 400%;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 21;
     padding: 12px;
+    animation: gradientBG 15s ease infinite;
   }
   
   #hamburger-toggle:checked ~ .nav-list {
     display: flex;
+    animation: fadeIn 0.3s ease;
   }
   
   .nav-list li {
     width: 100%;
     text-align: left;
+    position: relative;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .nav-list li:last-child {
+    border-bottom: none;
   }
   
   .nav-list li a {
     padding: 12px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-list li a:hover {
+    color: var(--color-roz-deschis);
+    padding-left: 15px;
   }
   
   .has-submenu {
@@ -380,41 +414,70 @@ nav ul ul li a:hover {
     display: block;
   }
   
-  nav ul li:hover > ul {
-    display: none;
+  .submenu-label:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  nav ul ul {
+    background-color: rgba(183, 131, 189, 0.9) ;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  nav ul ul {
-    display: none;
-    position: static;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: none;
-    padding-left: 15px;
-    border-radius: 0;
-  }
-
   nav ul ul li a {
     padding-left: 20px;
+    font-size: 0.9em;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { 
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
 
-#hamburger-toggle:checked + .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-#hamburger-toggle:checked + .hamburger span:nth-child(2) {
-  opacity: 0;
-}
-
-#hamburger-toggle:checked + .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-@keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@media (min-width: 769px) {
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .has-submenu {
+    position: relative;
+  }
+  
+  .has-submenu:hover > ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-mov);
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .has-submenu > ul {
+    display: none;
+  }
 }
 
 main {
@@ -453,11 +516,6 @@ section section {
   margin-right: 10px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-section section::before {
-  background: var(--color-roz-deschis);
-  width: 3px;
 }
 
 h2 {
