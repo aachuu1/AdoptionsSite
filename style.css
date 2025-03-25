@@ -113,14 +113,12 @@ html {
   grid-area: footer;
 }
 
-/* Animation keyframes */
 @keyframes moveGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Base styles */
 body {
   margin: 0;
   padding: var(--padding-large);
@@ -135,7 +133,6 @@ body {
   color: var(--color-text-principal);
 }
 
-/* Disable animations on small screens */
 @media (max-width: 1023px) {
   body, header, nav, .pisica-item, button, footer {
     animation: none !important;
@@ -146,7 +143,6 @@ body {
   }
 }
 
-/* Enable animations on large screens */
 @media (min-width: 1024px) {
   body {
     animation: moveGradient 20s ease infinite;
@@ -535,20 +531,18 @@ nav ul ul li a:hover {
 }
 
 main {
-  padding: 20px;
+  padding: 0px;
 }
 
 section {
   background: linear-gradient(to bottom, 
     var(--color-background-secundar), 
     var(--color-fundal) 300%);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   padding: var(--padding-text);
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(209, 180, 200, 0.2);
 }
 
 section::before {
@@ -566,8 +560,8 @@ section section {
   background: linear-gradient(to bottom, 
     rgba(241, 225, 225, 0.2), 
     rgba(243, 210, 218, 0.2));
-  margin-left: 20px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
@@ -860,16 +854,16 @@ blockquote::before {
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-bottom: 40px; /* Spațiu suplimentar pentru taburi */
+  margin-bottom: 40px; 
 }
 
 .taburi-iframe {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 10px; /* Spațiu deasupra taburilor */
+  margin-top: 10px;
   position: absolute;
-  bottom: -30px; /* Mută taburile sub iframe */
+  bottom: -30px; 
   width: 100%;
 }
 
@@ -923,12 +917,13 @@ figcaption {
   background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(243,210,218,0.7));
   border-radius: 1rem;
   box-shadow: 0 0.5rem 2rem rgba(209,180,200,0.3);
-  padding: 1rem;
+  padding: 0;
+  
 }
 
 .styled-table {
   width: 100%;
-  min-width: 600px; 
+  min-width: 100%; 
   border-collapse: separate;
   border-spacing: 0;
   background: white;
@@ -1224,3 +1219,4 @@ figcaption {
     transform: rotate(90deg);
   }
 }
+
