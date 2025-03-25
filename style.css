@@ -178,7 +178,7 @@ iframe {
   display: block;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--color-roz-mediu);
+  border: 6px solid var(--color-roz-mediu);
   transition: all 0.3s ease;
 }
 
@@ -538,7 +538,7 @@ section {
   background: linear-gradient(to bottom, 
     var(--color-background-secundar), 
     var(--color-fundal) 300%);
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding: var(--padding-text);
   border-radius: 16px;
   position: relative;
@@ -873,7 +873,7 @@ blockquote::before {
   font-weight: none;
   padding: 8px 12px;
   border: 1px solid var(--color-mov);
-  border-radius: 5px;
+  border-radius: 10px;
   transition: all 0.3s ease;
   background-color: var(--color-roz-deschis);
   font-size: 0.9rem;
@@ -1048,6 +1048,7 @@ figcaption {
 
   #grid-pagina {
     display: block !important;
+    gap:0;
   }
 
   header, nav, section, footer, .pisica-item, details, summary, blockquote {
