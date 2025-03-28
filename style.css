@@ -15,6 +15,13 @@
   --color-background-secundar: #ffffff; 
 }
 
+.indie-flower-regular {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 html {
   font-size: 14px;
   transition: font-size 0.3s ease;
@@ -50,7 +57,7 @@ html {
     "voluntariat"
     "contact"
     "footer";
-  gap: 20px;
+  gap: 2+0px;
   padding: var(--padding-medium);
   transition: all 0.3s ease;
 }
@@ -539,22 +546,13 @@ section {
     var(--color-background-secundar), 
     var(--color-fundal) 300%);
   margin-bottom: 0px;
-  padding: var(--padding-text);
-  border-radius: 16px;
+  padding: 0 var(--padding-text);
+  border-radius: 0px;
   position: relative;
   overflow: hidden;
 }
 
-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--color-roz-mediu), var(--color-mov));
-  opacity: 0.8;
-}
+]
 
 section section {
   background: linear-gradient(to bottom, 
