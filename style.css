@@ -14,7 +14,6 @@
   --color-text-secundar: #666666;   
   --color-background-secundar: #ffffff; 
 }
-
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -242,52 +241,98 @@ nav {
   .hamburger {
     display: flex;
   }
-  
+
   .nav-list {
-    display: none;
+    display: block;
     flex-direction: column;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
     background: var(--color-mov);
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
     z-index: 21;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform-origin: center;
+    transform: scale(0.95);
+    transition:
+      transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1),
+      opacity 0.5s ease,
+      max-height 0.8s ease;
+    padding: 0;
+  }
+
+  #hamburger-toggle:checked ~ .nav-list {
+    transform: scale(1);
+    max-height: 1000px;
+    opacity: 1;
     padding: 12px;
   }
-  
-  #hamburger-toggle:checked ~ .nav-list {
-    display: flex;
+
+  .nav-list > li {
+    transform: translateY(10px);
+    opacity: 0;
+    transition:
+      transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.6s ease;
+    margin-bottom: 5px;
   }
-  
+
+  #hamburger-toggle:checked ~ .nav-list > li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
   .nav-list li {
     width: 100%;
     text-align: left;
     position: relative;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-list li:last-child {
     border-bottom: none;
   }
-  
+
   .nav-list li a {
     color: white;
     padding: 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     align-items: center;
+    overflow: hidden;
   }
-  
+
   .nav-list li a .slide-text {
     display: none !important;
   }
-  
+
   .nav-list li a:hover {
     background-color: transparent;
   }
-  
+
+  .nav-list li a .menu-text {
+    display: inline-block;
+    transform: scaleX(0);
+    transform-origin: center; 
+    letter-spacing: -3px;
+    opacity: 0;
+    transition:
+      transform 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+      letter-spacing 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.6s ease;
+  }
+
+  #hamburger-toggle:checked ~ .nav-list li a .menu-text {
+    transform: scaleX(1);
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
   .has-submenu ul {
     transform: scaleY(0);
     transform-origin: top;
@@ -299,30 +344,55 @@ nav {
     margin-top: 5px;
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.4s ease;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease,
+      max-height 0.6s ease;
   }
-  
+
   .has-submenu.active ul {
     transform: scaleY(1);
     opacity: 1;
     max-height: 500px;
   }
-  
+
   .has-submenu ul li {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    border-bottom: none;
+    padding: 8px 0;
   }
-  
+
   .has-submenu.active ul li {
     transform: translateY(0);
     opacity: 1;
   }
-  
-  .has-submenu.active ul li:nth-child(1) { transition-delay: 0.1s; }
-  .has-submenu.active ul li:nth-child(2) { transition-delay: 0.15s; }
-  .has-submenu.active ul li:nth-child(3) { transition-delay: 0.2s; }
-  
+  .has-submenu ul li a {
+    display:block;
+    justify-content: center;   
+    align-items: center;       
+    text-align: center;        
+    padding: 12px;
+  }
+  .has-submenu ul li a .menu-text {
+    display: inline-block;
+    transform: scaleX(0);
+    transform-origin: center;
+    letter-spacing: -3px;
+    opacity: 0;
+    transition:
+      transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      letter-spacing 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.6s ease;
+  }
+
+  .has-submenu.active ul li a .menu-text {
+    transform: scaleX(1);
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
   .submenu-label {
     display: block !important;
     position: absolute;
@@ -331,19 +401,20 @@ nav {
     transform: translateY(-50%);
     color: white;
     font-size: 18px;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
   }
-  
+
   .has-submenu.active .submenu-label {
     transform: translateY(-50%) rotate(180deg);
   }
-  
+
   .nav-list ul li a:hover {
     background-color: transparent;
     color: white;
     text-decoration: underline;
   }
 }
+
 
 .indie-flower-regular {
   font-family: "Indie Flower", cursive;
