@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta name="description"
+            content="Suntem o organizație care isi propune salvarea a cator mai multe animalute! Le multumim sustinatorilor nostri pentru tot ajutorul!">
+        <meta name="keywords"
+            content="despre, animale, adoptie">
+        <title>Despre Noi</title>
+        <%- include("../fragmente/head.ejs") %>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Comfortaa:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../Resurse/css/video.css">
+    </head>
+    <body>
+        <%- include("../fragmente/header.ejs") %>
+        <main>
+            <p>Cateva poze cu Pedro si Pandispan!</p>
+            <video controls preload="metadata" style="width:80%;height:auto" poster="../Resurse/Video/pedropandi.jpeg">
+                    <!--SOURCES-->
+                    <source src="../Resurse/Video/pandisipedro.mp4" type="video/mp4">
+                    <source src="../resurse/Video/pandisipedro.mp4" type="video/ogv">
+                    <!--TRACKS-->
+                    <track  default src="Resurse/tracks/captions_romana.vtt" kind="captions" srclang="ro" label="romană" />
+                    <track src="Resurse/tracks/captions_engleza.vtt" kind="captions" srclang="en" label="engleză" />
+            </video>
+        </main>
+        <%- include("../fragmente/footer.ejs") %>
+    </body>
+</html>
+
+
