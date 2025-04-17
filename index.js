@@ -66,24 +66,31 @@ function afisareEroare(res, identificator, titlu, text, imagine){
 
 }
 
+app.get("/Resurse/*", function(req, res, next) {
+    if (req.url.endsWith('/')) {
+        afisareEroare(res, 403);
+    } else {
+        next();
+    }
+});
 
 
 app.use("/Resurse", express.static(path.join(__dirname,"Resurse")))
 app.get("/favicon.ico", function(req, res){
-    res.sendFile(path.join(__dirname, "Resurse/Imagini/favicon/favicon.ico"))
+    res.sendFile(path.join(__dirname, "Resurse/Imagini/favicon/favicon.io"))
 })
 
 app.get(["/","/index","/home"], function(req, res){
     res.render("pagini/index",{ip:req.ip});
 })
 
-// app.get("/despre", function(req, res){
-//     res.render("pagini/despre");
-// })
+app.get("/despre", function(req, res){
+    res.render("pagini/despre");
+})
 
 app.get("/index/a", function(req, res){
     res.render("pagini/index");
-})
+})  
 
 
 app.get("/cerere", function(req, res){
@@ -119,7 +126,7 @@ app.get("/*ejs", function(req, res, next){
 
 app.get("/*", function(req, res, next){
     try{
-        res.render("pagini"+req.url,function (err, rezultatRandare){
+        res.render("pagini" + req.url,function (err, rezultatRandare){
             if (err){
                 if(err.message.startsWith("Failed to lookup view")){
                     afisareEroare(res,404);
@@ -143,6 +150,16 @@ app.get("/*", function(req, res, next){
         }
     }
 })
+
+
+const vect_foldere = ["temp"];
+for (let folder of vect_foldere) {
+    let folderPath = path.join(__dirname, folder);
+    if (!fs.existsSync(folderPath)) {
+        fs.mkdirSync(folderPath);
+        console.log(`Folder creat: ${folderPath}`);
+    }
+}
 
 
 app.listen(8080);
