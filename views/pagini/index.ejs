@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="adopție, cum adopt, animale spre adopție, pisici, câini, animale, donații, voluntariat, îngrijire animale, boli animale, îngrijire pisici, îngrijire câini, asociații, control animale, alimentație animale, ajutor animale, organizație.">
   <%- include("../fragmente/head.ejs") %>
+  <%- include("../fragmente/galerie.ejs", { imagini: imagini }) %>
 </head>
 <body>
   <a href="#top" class="scroll-to-top">&#8593;</a>
   <%- include("../fragmente/header.ejs") %>
   <main>
+    <h1>Bine ai venit, IP-ul tău este: <%= ip %></h1>
     <div id="grid-pagina">
       <section id="acasa">
         <h2 style="color: rgb(0, 0, 0);">Acasă</h2>

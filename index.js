@@ -6,6 +6,9 @@ const fs = require("fs");
 app= express();
 
 v=[10,27,23,44,15]
+app.set('view engine', 'ejs');
+app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
+app.set('views', path.join(__dirname, 'views'));
 
 nrImpar=v.find(function(elem){return elem % 100 == 1})
 console.log(nrImpar)
@@ -19,10 +22,16 @@ app.set("view engine", "ejs");
 obGlobal={
     obErori:null
 }
+app.get(["/","/index","/home"], function(req, res){
+    const imagini = [
+        { fisier: "pandi.jpg", fisier_mediu: "pandi_mediu.jpg", descriere: "Pandi", intervale_zile: [["luni", "miercuri"]] },
+    ];
 
+    res.render("pagini/index", { ip: req.ip, imagini: imagini });
+});
 
 function initErori(){
-    let continut = fs.readFileSync(path.join(__dirname,"Resurse/json/erori.json")).toString("utf-8");
+    let continut = fs.readFileSync(path.join(__dirname,"./json/erori.json")).toString("utf-8");
     console.log(continut)
     obGlobal.obErori=JSON.parse(continut)
     console.log(obGlobal.obErori)
@@ -65,6 +74,7 @@ function afisareEroare(res, identificator, titlu, text, imagine){
 })
 
 }
+app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
 
 app.get("/Resurse/*", function(req, res, next) {
     if (req.url.endsWith('/')) {
@@ -164,5 +174,3 @@ for (let folder of vect_foldere) {
 
 app.listen(8080);
 console.log("Serverul a pornit")
-
-
