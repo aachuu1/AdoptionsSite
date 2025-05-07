@@ -1,92 +1,110 @@
-<div id="grid-galerie">
-    <%
-    if (!Array.isArray(imagini) || imagini.length === 0) {
-    %>
-        <p>Nu există imagini disponibile.</p>
-    <%
-    } else {
+<%- include("../fragmente/head") %>
+
+<div class="container-galerie">
+    <h1>Galerie</h1>
+    
+    <div id="grid-galerie">
+        <% 
+        // Definirea zilelor săptămânii
         const d = new Date();
-        const ziua_curenta = d.getDay(); 
+        const ziua_curenta = d.getDay();
         const zile_sapt = ["duminica", "luni", "marti", "miercuri", "joi", "vineri", "sambata"];
         const zi_curenta = zile_sapt[ziua_curenta];
         
-        const imaginiFiltrate = imagini.filter(imag => {
-            if (!imag.intervale_zile || imag.intervale_zile.length === 0) return true;
-            
-            return imag.intervale_zile.some(interval => {
-                if (!Array.isArray(interval) || interval.length < 2) return true;
+        // Filtrarea imaginilor în funcție de ziua curentă
+        let imaginiFiltrate = [];
+        if (Array.isArray(locals.imagini)) {
+            imaginiFiltrate = locals.imagini.filter(imag => {
+                if (!imag.intervale_zile || imag.intervale_zile.length === 0) return true;
                 
-                const zi_start_index = zile_sapt.indexOf(interval[0]);
-                const zi_final_index = zile_sapt.indexOf(interval[1]);
-                
-                if (zi_start_index === -1 || zi_final_index === -1) return true;
-                
-                if (zi_start_index <= zi_final_index) {
-                    return ziua_curenta >= zi_start_index && ziua_curenta <= zi_final_index;
-                } else {
-                    return ziua_curenta >= zi_start_index || ziua_curenta <= zi_final_index;
-                }
-            });
-        });
-    
-        if (imaginiFiltrate.length === 0) {
-    %>
-        <p>Nu există imagini disponibile pentru ziua curentă.</p>
-    <%
-        } else {
-            const total_imagini = imaginiFiltrate.length;
-            const coloane = 3;
-            let imag_index = 0;
-            let index = 0;
-            const cifre_romane = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv"];
-            
-            while (imag_index < total_imagini) {
-                const pozitie_in_rand = index % coloane;
-                const rand = Math.floor(index / coloane);
-                let trebuie_div_gol = false;
-                
-                if (rand % 2 === 1) {
-                    if (pozitie_in_rand === Math.floor(coloane / 2)) {
-                        trebuie_div_gol = true;
-                    }
-                } else {
-                    if ((rand / 2) % 2 === 0) {
-                        if (pozitie_in_rand === coloane - 1) {
-                            trebuie_div_gol = true;
-                        }
+                return imag.intervale_zile.some(interval => {
+                    if (!Array.isArray(interval) || interval.length < 2) return true;
+                    
+                    const zi_start_index = zile_sapt.indexOf(interval[0]);
+                    const zi_final_index = zile_sapt.indexOf(interval[1]);
+                    
+                    if (zi_start_index === -1 || zi_final_index === -1) return true;
+                    
+                    if (zi_start_index <= zi_final_index) {
+                        return ziua_curenta >= zi_start_index && ziua_curenta <= zi_final_index;
                     } else {
-                        if (pozitie_in_rand === 0) {
-                            trebuie_div_gol = true;
-                        }
+                        return ziua_curenta >= zi_start_index || ziua_curenta <= zi_final_index;
                     }
-                }
-                
-                if (trebuie_div_gol) {
-    %>
-    <div class="gol"></div>
-    <%
-                } else {
-                    if (imag_index < total_imagini) {
-                        const imag = imaginiFiltrate[imag_index++];
-    %>
-    <figure>
-        <picture>
-            <% if (imag.fisier_mediu) { %>
-            <source srcset="<%= imag.fisier_mediu %>" media="(max-width: 1000px)">
-            <% } %>
-            <img src="<%= imag.fisier %>" 
-                 alt="<%= imag.continut_alternativ || imag.nume || 'Imagine' %>" 
-                 title="<%= imag.descriere || imag.nume || 'Imagine' %>">
-        </picture>
-        <figcaption><%= cifre_romane[imag_index-1] %>. <%= imag.descriere || imag.nume || 'Imagine' %></figcaption>
-    </figure>
-    <%
-                    }
-                }
-                index++;
-            }
+                });
+            });
+            
+            // Limităm la 10 imagini afișate
+            imaginiFiltrate = imaginiFiltrate.slice(0, 10);
         }
-    }
-    %>
+        
+        if (!imaginiFiltrate || imaginiFiltrate.length === 0) { 
+        %>
+            <p>Nu există imagini disponibile pentru ziua curentă.</p>
+        <% 
+        } else { 
+            // Creăm layout-ul grid
+            const cifre_romane = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+            
+            // Definim structura grid-ului
+            // Ecran mare: 4x3 grid
+            const layoutGrid = [
+                [1, 1, 1],  // Prima linie (toate negre)
+                [1, 0, 1],  // A doua linie (negru, alb, negru)
+                [1, 0, 1],  // A treia linie (negru, alb, negru)
+                [1, 1, 1]   // A patra linie (toate negre)
+            ];
+            
+            let indexImagine = 0;
+            
+            // Parcurgem grid-ul și afișăm imaginile
+            for (let i = 0; i < layoutGrid.length; i++) {
+                for (let j = 0; j < layoutGrid[i].length; j++) {
+                    if (layoutGrid[i][j] === 1 && indexImagine < imaginiFiltrate.length) {
+                        const imagine = imaginiFiltrate[indexImagine];
+                        %>
+                        <figure class="imagine-galerie">
+                            <picture>
+                                <% if (imagine.fisier_mediu) { %>
+                                <source srcset="/Resurse/Imagini/<%= imagine.fisier_mediu %>" media="(max-width: 1000px)">
+                                <% } %>
+                                <img src="/Resurse/Imagini/<%= imagine.fisier %>" 
+                                     alt="<%= imagine.descriere || 'Imagine' %>"
+                                     title="<%= imagine.titlu || 'Imagine' %>"
+                                     data-sfert="<%= imagine.sfert_ora || '0' %>">
+                            </picture>
+                            <figcaption>
+                                <%= cifre_romane[indexImagine] %>. <%= imagine.titlu || 'Imagine' %>
+                                <div class="descriere-imagine"><%= imagine.descriere || '' %></div>
+                                <div class="sfert-ora">Sfert de oră: <%= imagine.sfert_ora || 'N/A' %></div>
+                            </figcaption>
+                        </figure>
+                        <%
+                        indexImagine++;
+                    } else if (layoutGrid[i][j] === 0) { %>
+                        <div class="gol"></div>
+                    <% }
+                }
+            }
+            
+            // Afișăm restul imaginilor dacă mai sunt și nu depășim limita de 10
+            while (indexImagine < imaginiFiltrate.length && indexImagine < 10) {
+                const imagine = imaginiFiltrate[indexImagine];
+                %>
+                <figure class="imagine-galerie">
+                    <picture>
+                        <% if (imagine.fisier_mediu) { %>
+                        <source srcset="/Resurse/Imagini/<%= imagine.fisier_mediu %>" media="(max-width: 1000px)">
+                        <% } %>
+                        <img src="/Resurse/Imagini/<%= imagine.fisier %>" 
+                             alt="<%= imagine.descriere || 'Imagine' %>"
+                             title="<%= imagine.descriere || 'Imagine' %>">
+                    </picture>
+                    <figcaption><%= cifre_romane[indexImagine] %>. <%= imagine.descriere || 'Imagine' %></figcaption>
+                </figure>
+                <%
+                indexImagine++;
+            }
+        } 
+        %>
     </div>
-    
+</div>

@@ -1,0 +1,111 @@
+{
+	"cale_galerie": "../Resurse/Imagini",
+	"imagini": [
+	  {
+		"cale_imagine": "pandi.png",
+		"titlu": "Pandi",
+		"descriere": "Un panda drăgălaș",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "pedro.png",
+		"titlu": "Pedro",
+		"descriere": "Un animal simpatic",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "mitzunel.png",
+		"titlu": "Mitzunel",
+		"descriere": "O pisică jucăușă",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "hector.png",
+		"titlu": "Hector",
+		"descriere": "Un câine loial",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "lucky.png",
+		"titlu": "Lucky",
+		"descriere": "Un animal norocos",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "titu.png",
+		"titlu": "Titu",
+		"descriere": "Un animal pufos",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "mitzunel.png",
+		"titlu": "Mitzunel",
+		"descriere": "O pisică jucăușă",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "hector.png",
+		"titlu": "Hector",
+		"descriere": "Un câine loial",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "lucky.png",
+		"titlu": "Lucky",
+		"descriere": "Un animal norocos",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "titu.png",
+		"titlu": "Titu",
+		"descriere": "Un animal pufos",
+		"sfert_ora": "2"
+	  },{
+		"cale_imagine": "mitzunel.png",
+		"titlu": "Mitzunel",
+		"descriere": "O pisică jucăușă",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "hector.png",
+		"titlu": "Hector",
+		"descriere": "Un câine loial",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "lucky.png",
+		"titlu": "Lucky",
+		"descriere": "Un animal norocos",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "titu.png",
+		"titlu": "Titu",
+		"descriere": "Un animal pufos",
+		"sfert_ora": "2"
+	  },{
+		"cale_imagine": "mitzunel.png",
+		"titlu": "Mitzunel",
+		"descriere": "O pisică jucăușă",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "hector.png",
+		"titlu": "Hector",
+		"descriere": "Un câine loial",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "lucky.png",
+		"titlu": "Lucky",
+		"descriere": "Un animal norocos",
+		"sfert_ora": "2"
+	  },
+	  {
+		"cale_imagine": "titu.png",
+		"titlu": "Titu",
+		"descriere": "Un animal pufos",
+		"sfert_ora": "2"
+	  }
+	]
+  }

@@ -1571,3 +1571,94 @@ main #stilizare-linkuri-etapa4 a:hover {
 #text:hover~#text-reflectat {
   transform: rotateX(180deg) skew(-45deg) scaleY(0.9) translate(5px, -15px);
 }
+.container-galerie {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stiluri pentru grid-ul galeriei */
+#grid-galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 15px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+/* Stiluri pentru fiecare element imagine */
+.imagine-galerie {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1/1; /* Păstrează raportul 1:1 */
+  background-color: #f5f5f5;
+}
+
+/* Stiluri pentru imagine */
+.imagine-galerie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Efect hover */
+.imagine-galerie:hover img {
+  transform: scale(1.05);
+}
+
+/* Stiluri pentru caption */
+.imagine-galerie figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.imagine-galerie:hover figcaption {
+  transform: translateY(0);
+}
+
+/* Stiluri pentru spațiile goale */
+.gol {
+  background-color: transparent;
+}
+
+/* Stiluri pentru descriere */
+.descriere-imagine {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.sfert-ora {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  #grid-galerie {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #grid-galerie {
+      grid-template-columns: 1fr;
+  }
+  
+  .imagine-galerie {
+      aspect-ratio: 16/9; /* Schimbă raportul pe mobil */
+  }
+}
