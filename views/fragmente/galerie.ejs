@@ -5,13 +5,11 @@
     
     <div id="grid-galerie">
         <% 
-        // Definirea zilelor săptămânii
         const d = new Date();
         const ziua_curenta = d.getDay();
         const zile_sapt = ["duminica", "luni", "marti", "miercuri", "joi", "vineri", "sambata"];
         const zi_curenta = zile_sapt[ziua_curenta];
-        
-        // Filtrarea imaginilor în funcție de ziua curentă
+
         let imaginiFiltrate = [];
         if (Array.isArray(locals.imagini)) {
             imaginiFiltrate = locals.imagini.filter(imag => {
@@ -32,8 +30,7 @@
                     }
                 });
             });
-            
-            // Limităm la 10 imagini afișate
+
             imaginiFiltrate = imaginiFiltrate.slice(0, 10);
         }
         
@@ -42,21 +39,17 @@
             <p>Nu există imagini disponibile pentru ziua curentă.</p>
         <% 
         } else { 
-            // Creăm layout-ul grid
             const cifre_romane = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
-            
-            // Definim structura grid-ului
-            // Ecran mare: 4x3 grid
+
             const layoutGrid = [
-                [1, 1, 1],  // Prima linie (toate negre)
-                [1, 0, 1],  // A doua linie (negru, alb, negru)
-                [1, 0, 1],  // A treia linie (negru, alb, negru)
-                [1, 1, 1]   // A patra linie (toate negre)
+                [1, 1, 1],  
+                [1, 0, 1],  
+                [1, 0, 1],  
+                [1, 1, 1]   
             ];
             
             let indexImagine = 0;
-            
-            // Parcurgem grid-ul și afișăm imaginile
+
             for (let i = 0; i < layoutGrid.length; i++) {
                 for (let j = 0; j < layoutGrid[i].length; j++) {
                     if (layoutGrid[i][j] === 1 && indexImagine < imaginiFiltrate.length) {
@@ -86,7 +79,6 @@
                 }
             }
             
-            // Afișăm restul imaginilor dacă mai sunt și nu depășim limita de 10
             while (indexImagine < imaginiFiltrate.length && indexImagine < 10) {
                 const imagine = imaginiFiltrate[indexImagine];
                 %>

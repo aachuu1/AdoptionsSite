@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
+v=[10,27,23,44,15]
 
 app.set('view engine', 'ejs');
 app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
@@ -19,7 +20,6 @@ const obGlobal = {
     imagini: null
 };
 
-// Inițializare imagini
 function initImagini() {
     let continutFisier = fs.readFileSync(path.join(__dirname, "json/galerie.json")).toString("utf-8");
     let obImagini = JSON.parse(continutFisier);
@@ -31,8 +31,7 @@ function initImagini() {
             descriere: elem.descriere,
             titlu: elem.titlu,
             sfert_ora: elem.sfert_ora,
-            // Determinăm intervalele de zile în funcție de sfertul de oră
-            // Pentru demo, vom folosi un algoritm simplu bazat pe sfertul de oră
+
             intervale_zile: determinaraZileDupaSfert(elem.sfert_ora)
         };
     });
@@ -41,9 +40,8 @@ function initImagini() {
     console.log("Imagini inițializate:", obGlobal.imagini.length);
 }
 
-// Funcție pentru determinarea zilelor de afișare în funcție de sfertul de oră
 function determinaraZileDupaSfert(sfert) {
-    // Convertim la număr
+
     const sfertNr = parseInt(sfert);
     
     switch(sfertNr) {
@@ -56,7 +54,7 @@ function determinaraZileDupaSfert(sfert) {
         case 4:
             return [["duminica", "duminica"]];
         default:
-            return [["luni", "duminica"]]; // Implicit toate zilele
+            return [["luni", "duminica"]]; 
     }
 }
 
@@ -123,14 +121,15 @@ app.get("/despre", function(req, res) {
     res.render("pagini/despre");
 });
 
-app.get("/galerie", function(req, res) {
-    res.render("pagini/galerie", { imagini: obGlobal.imagini });
-});
-
 app.get("/index/a", function(req, res) {
     res.render("pagini/index");
 });
-
+app.get('/galerie-animata', (req, res) => {
+    res.render('pagini/galerie-animata', {
+        imagini: obGlobal.imagini,
+        cale_galerie: "../Resurse/Imagini"
+    });
+});
 app.get("/cerere", function(req, res) {
     res.send("<p style='color:blue'>Buna ziua</p>");
 });

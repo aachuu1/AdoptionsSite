@@ -1508,7 +1508,7 @@ main #stilizare-linkuri-etapa4 a:hover {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  transition: filter 0.6s ease;
+  transition: filter 1s ease;
 }
 
 .duotone-image::before {
@@ -1521,7 +1521,7 @@ main #stilizare-linkuri-etapa4 a:hover {
   background:  none;
   mix-blend-mode: multiply;
   z-index: 2;
-  transition: opacity 0.6s ease;
+  transition: opacity 1s ease;
 }
 
 .duotone-image::after {
@@ -1534,7 +1534,7 @@ main #stilizare-linkuri-etapa4 a:hover {
   background: none;
   mix-blend-mode: screen;
   z-index: 3;
-  transition: opacity 0.6s ease;
+  transition: opacity 1s ease;
 }
 
 .duotone-image:hover::before,
@@ -1571,13 +1571,13 @@ main #stilizare-linkuri-etapa4 a:hover {
 #text:hover~#text-reflectat {
   transform: rotateX(180deg) skew(-45deg) scaleY(0.9) translate(5px, -15px);
 }
+
 .container-galerie {
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Stiluri pentru grid-ul galeriei */
 #grid-galerie {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1587,17 +1587,15 @@ main #stilizare-linkuri-etapa4 a:hover {
   margin: 30px auto;
 }
 
-/* Stiluri pentru fiecare element imagine */
 .imagine-galerie {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  aspect-ratio: 1/1; /* Păstrează raportul 1:1 */
+  aspect-ratio: 1/1; 
   background-color: #f5f5f5;
 }
 
-/* Stiluri pentru imagine */
 .imagine-galerie img {
   width: 100%;
   height: 100%;
@@ -1605,12 +1603,10 @@ main #stilizare-linkuri-etapa4 a:hover {
   transition: transform 0.3s ease;
 }
 
-/* Efect hover */
 .imagine-galerie:hover img {
   transform: scale(1.05);
 }
 
-/* Stiluri pentru caption */
 .imagine-galerie figcaption {
   position: absolute;
   bottom: 0;
@@ -1628,12 +1624,10 @@ main #stilizare-linkuri-etapa4 a:hover {
   transform: translateY(0);
 }
 
-/* Stiluri pentru spațiile goale */
 .gol {
   background-color: transparent;
 }
 
-/* Stiluri pentru descriere */
 .descriere-imagine {
   font-size: 12px;
   margin-top: 5px;
@@ -1646,7 +1640,6 @@ main #stilizare-linkuri-etapa4 a:hover {
   margin-top: 3px;
 }
 
-/* Responsive design */
 @media (max-width: 900px) {
   #grid-galerie {
       grid-template-columns: repeat(2, 1fr);
@@ -1659,6 +1652,6 @@ main #stilizare-linkuri-etapa4 a:hover {
   }
   
   .imagine-galerie {
-      aspect-ratio: 16/9; /* Schimbă raportul pe mobil */
+      aspect-ratio: 16/9; 
   }
 }
