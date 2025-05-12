@@ -1,0 +1,54 @@
+.container-iframe {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 20px;
+  gap: 15px;
+  background-color: var(--color-primary);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px var(--color-shadow);
+  min-width: 50%;
+  position: relative;
+}
+.container-iframe iframe {
+  border: 5px solid var(--color-text);
+  box-shadow: 0 4px 8px var(--color-shadow);
+  margin: 0;
+  max-width: 90%;
+  outline: 5px solid var(--color-roz-deschis); 
+  outline-offset: 2px; 
+}
+
+#taburi-iframe {
+  display: flex;
+  justify-content: center;
+  gap: 123px;
+  width: 100%;
+  margin-top:-8px; 
+  margin-bottom: 30px;
+}
+
+#taburi-iframe > a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(to top, var(--color-mov), var(--color-roz-mediu));
+  color: var(--color-text-light);
+  font-family: Arial, sans-serif;
+  border: 2px solid var(--color-roz-deschis);
+  text-decoration: none;
+  border-radius: 0 0 25px 25px;
+  cursor: pointer;
+  text-align: center;
+  transition: box-shadow 2s ease-in-out;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  position: relative;
+  text-shadow: 1px 1px 4px var(--color-text);
+}
+
+#taburi-iframe > a:hover {
+  background: linear-gradient(to top, var(--color-roz-mediu), var(--color-roz-deschis));
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), inset 0px 0px 0px rgba(255, 255, 255, 0);
+  transition: box-shadow 2s ease;
+}

@@ -1,0 +1,101 @@
+#grid-pagina {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "acasa"
+    "donatii"
+    "adoptie-animale"
+    "informatii"
+    "voluntariat"
+    "contact"
+    "footer";
+  gap: 20px;  
+  padding: var(--padding-medium);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  #grid-pagina {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "header header"
+      "acasa acasa"
+      "donatii adoptie-animale"
+      "informatii voluntariat"
+      "contact contact"
+      "footer footer";
+  }
+}
+
+@media (min-width: 1024px) {
+  #grid-pagina {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-areas:
+      "header header header"
+      "acasa acasa acasa"
+      "calendar adoptie-animale anunturi"
+      "utilizatori-online adoptie-animale informatii"
+      "utilizatori-online voluntariat donatii"
+      "contact contact contact"
+      "footer footer footer";
+  }
+}
+
+.header {
+  grid-area: header;
+}
+
+#acasa {
+  grid-area: acasa;
+}
+
+#donatii {
+  grid-area: donatii;
+}
+
+#adoptie-animale {
+  grid-area: adoptie-animale;
+}
+
+#informatii {
+  grid-area: informatii;
+}
+
+#voluntariat {
+  grid-area: voluntariat;
+}
+
+#contact {
+  grid-area: contact;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+#calendar {
+  grid-area: calendar;
+}
+
+#anunturi {
+  grid-area: anunturi;
+}
+
+#utilizatori-online {
+  grid-area: utilizatori-online;
+}
+
+#date-utilizator {
+  grid-area: date-utilizator;
+}
+
+#date-site-server {
+  grid-area: donatii; 
+}
+
+#diverse {
+  grid-area: diverse;
+}

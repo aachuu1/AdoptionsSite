@@ -1,0 +1,76 @@
+
+  .scroll-to-top {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: var(--color-roz-deschis);
+    text-align: center;
+    border-radius: 50%;
+    font-size: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.3s, filter 0.3s;
+    filter: blur(1px);
+  }
+
+  .scroll-to-top::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+
+  .scroll-to-top .handle {
+    position: absolute;
+    top: 65%; 
+    left: 50%;
+    width: 4px;
+    height: 20px; 
+    background-color: black;
+    transform: translateX(-50%);
+  }
+
+  .scroll-to-top::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid white;
+    border-left-color: var(--color-roz-mediu);
+    border-right-color: var(--color-roz-mediu);
+    border-top-color: var(--color-roz-deschis);
+    border-bottom-color: var(--color-roz-deschis);
+    transition: all 0.3s ease;
+  }
+
+  .scroll-to-top:hover {
+    transform: translateY(-5px);
+    filter: blur(0);
+  }
+
+  .scroll-to-top:hover::before {
+    animation: rotateBorder 1s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes rotateBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }

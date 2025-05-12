@@ -1,0 +1,14 @@
+<div id="galerie-dinamica">
+    <% 
+    const numarImagini = Math.floor(Math.random() * 4) * 2 + 6; 
+    const imaginiSelectate = [...imagini]
+        .sort(() => 0.5 - Math.random())
+        .slice(0, numarImagini);
+
+    imaginiSelectate.forEach(imag => { 
+    %>
+        <figure>
+            <img src="<%= imag.fisier %>" alt="<%= imag.descriere || 'Imagine' %>" />
+        </figure>
+    <% }) %>
+</div>

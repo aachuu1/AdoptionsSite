@@ -46,15 +46,15 @@ function determinaraZileDupaSfert(sfert) {
     
     switch(sfertNr) {
         case 1:
-            return [["luni", "marti"]];
+            return [["vineri", "marti"]];
         case 2:
-            return [["miercuri", "joi"]];
+            return [["vineri", "joi"]];
         case 3:
             return [["vineri", "sambata"]];
         case 4:
-            return [["duminica", "duminica"]];
+            return [["vineri", "duminica"]];
         default:
-            return [["luni", "duminica"]]; 
+            return [["vineri", "duminica"]]; 
     }
 }
 
