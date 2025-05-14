@@ -711,27 +711,3 @@
   25% { transform: rotate(-15deg); }
   75% { transform: rotate(15deg); }
 }
-
-.formula .rer {
-  color: blue;
-  font-weight: bold;
-}
-
-.formula .egal,
-.formula .inmultire,
-.formula .paranteza {
-  color: black;
-}
-
-.formula .numar {
-  color: green;
-}
-
-.formula .greutate {
-  color: red;
-  font-style: italic;
-}
-
-.formula .exponent {
-  color: purple;
-}
