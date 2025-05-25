@@ -1,74 +1,90 @@
-  .table-container {
+/* containerul principal pentru tabel */
+.table-container {
     width: 100%;
     margin: 1.5rem 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto; /* permite scroll orizontal pe mobile */
+    -webkit-overflow-scrolling: touch; /* scroll mai smooth pe ios */
+    /* fundal gradient cu transparenta */
     background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(243,210,218,0.7));
-    border-radius: 1rem;
+    border-radius: 1rem; /* colturi rotunjite */
+    /* umbra subtire cu culoare roz */
     box-shadow: 0 0.5rem 2rem rgba(209,180,200,0.3);
     padding: 0;
     box-sizing: border-box;
-  }
-    .table-container table{
-    width: 100%;
-    border-collapse: collapse;
-  }
+}
 
-  .styled-table {
+/* stilurile de baza pentru tabel */
+.table-container table {
     width: 100%;
-    min-width: 100%; 
+    border-collapse: collapse; /* fara spatii intre celule */
+}
+
+/* tabelul cu aspect modern */
+.styled-table {
+    width: 100%;
+    min-width: 100%; /* asigura ca tabelul nu devine mai mic decat containerul */
     border-collapse: separate;
-    border-spacing: 0;
-    background: white;
+    border-spacing: 0; /* fara spatii intre celule */
+    background: white; /* fundal alb */
+    /* umbra mai evidenta */
     box-shadow: 0 0.25rem 1.5rem rgba(157,107,143,0.15);
-    margin: 0 auto;
-    table-layout: auto;
+    margin: 0 auto; /* centrat */
+    table-layout: auto; /* latime automata pentru celule */
     margin-left: auto !important;
     margin-right: auto !important;
-  }
+}
 
-  .styled-table thead {
+/* stiluri pentru antetul tabelului (thead) */
+.styled-table thead {
     top: 0;
-    z-index: 10;
-  }
+    z-index: 10; /* asigura ca antetul ramane deasupra la scroll */
+}
 
-  .styled-table thead tr {
+/* randul din antet */
+.styled-table thead tr {
+    /* gradient pentru antet */
     background: linear-gradient(135deg, var(--color-mov), var(--color-roz-mediu));
-    color: white;
-  }
+    color: white; /* text alb */
+}
 
-  .styled-table th {
+/* celulele din antet (th) */
+.styled-table th {
     padding: 1rem;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    border: none;
-  }
+    border: none; /* fara borduri */
+}
 
-  .styled-table td {
+/* celulele din corpul tabelului (td) */
+.styled-table td {
     padding: 1rem;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: middle; /* aliniere verticala pe mijloc */
+    /* borduri subtile roz */
     border-bottom: 1px solid var(--color-roz-deschis);
     border-right: 1px solid var(--color-roz-deschis);
     font-size: 0.9rem;
-  }
+}
 
+/* ultima celula din antet sau corp */
 .styled-table th:last-child, 
 .styled-table td:last-child {
     min-width: 0px !important; 
     width: auto !important; 
 }
 
-  .styled-table tbody tr:nth-of-type(even) {
+/* randuri alternate cu fundal roz deschis */
+.styled-table tbody tr:nth-of-type(even) {
     background-color: rgba(243,210,218,0.15);
-  }
+}
 
-  .table-img {
+/* imagine in tabel (de ex. avatar) */
+.table-img {
     width: 3rem;
     height: 3rem;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--color-mov);
-    transition: all 0.3s ease;
-  }
+    object-fit: cover; /* asigura ca imaginea acopera spatiul */
+    border-radius: 50%; /* rotunda */
+    border: 3px solid var(--color-mov); /* bordur mov */
+    transition: all 0.3s ease; /* animatie la hover */
+}

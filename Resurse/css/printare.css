@@ -1,0 +1,135 @@
+@media print {
+    /* reseteaza stilurile pentru body la printare */
+    body {
+      background: white !important; /* fundal alb pentru economie de cerneală */
+      color: black !important; /* text negru pentru lizibilitate maxima */
+      font-size: 12pt; /* marime standard pt documente printate */
+      padding: 0 !important; /* elimina spatierea interioara */
+      margin: 0 !important; /* elimina margini */
+      animation: none !important; /* dezactiveaza orice animatie */
+    }
+
+    /* adauga o linie separatora dupa header */
+    body > header:first-child::after {
+      content: ""; /* pseudoelement fara continut */
+      display: block; /* afiseaza ca bloc */
+      margin: 20px auto; /* centrat cu spatiu */
+      width: 70%; /* latime 70% din container */
+      border: 4px inset black; /* bordura ingrosata */
+      page-break-after: always; /* forteaza trecere la pagina urmatoare */
+    }
+
+    /* ascunde elemente media si decorative */
+    img, video, iframe, figure, figcaption, 
+    .container-iframe, .taburi-iframe {
+      display: none !important; /* ascunde pentru economie de cerneală */
+    }
+
+    /* simplifica layout-ul grid */
+    #grid-pagina {
+      display: block !important; /* converteste grid in layout liniar */
+      gap:0 !important; /* elimina spatiul dintre elemente */
+    }
+
+    /* reseteaza stilurile componentelor principale */
+    header, nav, section, footer, .pisica-item, 
+    details, summary, blockquote {
+      background: white !important; /* fundal alb */
+      color: black !important; /* text negru */
+      box-shadow: none !important; /* fara umbre */
+      border: none !important; /* fara borduri */
+      animation: none !important; /* fara animatii */
+      padding: 10px !important; /* spatiere uniforma */
+      margin: 10px 0 !important; /* margini verticale */
+    }
+
+    /* stiluri speciale pentru link-uri */
+    a {
+      color: black !important; /* culoare standard */
+      text-decoration: none !important; /* fara subliniere */
+      border: none !important; /* fara borduri */
+    }
+
+    /* meniu de navigare simplificat */
+    nav ul {
+      display: block !important; /* layout vertical */
+      text-align: center; /* centrare text */
+    }
+    nav ul li {
+      display: block !important; /* elemente pe linii separate */
+      margin: 5px 0; /* spatiere intre elemente */
+    }
+    nav ul ul {
+      display: none !important; /* ascunde submeniuri */
+    }
+
+    /* stiluri speciale titlu site */
+    h1.site-title {
+      text-align: center; /* centrare */
+      page-break-after: avoid; /* evita ruperea dupa titlu */
+    }
+
+    /* control paginare */
+    nav {
+      page-break-after: always; /* trece la pagina noua dupa meniu */
+    }
+    footer {
+      page-break-before: always; /* incepe pe pagina noua */
+    }
+
+    /* marca de apa (watermark) */
+    #watermark {
+      position: fixed; /* pozitionare fixa */
+      bottom: 1cm; /* distanta de jos */
+      right: 1cm; /* distanta de dreapta */
+      width: 4cm; /* latime */
+      height: 1cm; /* inaltime */
+      border: 3px solid black; /* bordura */
+      border-radius: 5px; /* colturi rotunjite */
+      opacity: 0.4; /* transparenta */
+      text-align: center; /* text centrat */
+      font-weight: bold; /* text ingrosat */
+      line-height: 1cm; /* inaltime linie */
+    }
+
+    /* setari paginare pentru imprimante */
+    @page :left {
+      margin-left: 3cm; /* margine mare stanga */
+      margin-right: 1cm; /* margine mica dreapta */
+    }
+    @page :right {
+      margin-right: 3cm; /* margine mare dreapta */
+      margin-left: 1cm; /* margine mica stanga */
+    }
+
+    /* ascunde elemente interactive */
+    .hamburger, .hamburger-toggle, 
+    .submenu-toggle, .submenu-label {
+      display: none !important; /* nu sunt necesare la printare */
+    }
+
+    /* resetare stiluri titluri */
+    h1, h2, h3 {
+      color: black !important; /* culoare standard */
+      border: none !important; /* fara borduri */
+    }
+    /* ascunde elemente decorative titluri */
+    h2::after, h3::before {
+      display: none !important;
+    }
+
+    /* butoane simplificate */
+    button {
+      background: white !important; /* fundal alb */
+      color: black !important; /* text negru */
+      border: 1px solid black !important; /* bordura simpla */
+    }
+
+    /* ascunde indicatori detalii/summary */
+    details[open] summary::after {
+      content: "" !important;
+    }
+    summary::after {
+      content: "" !important;
+    }
+}

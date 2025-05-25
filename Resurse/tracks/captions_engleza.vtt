@@ -1,20 +1,32 @@
-WEBVTT - english subtitle for freddy fazbear
+WEBVTT - Cat Adoption Center Video Subtitles
 
 STYLE
 ::cue {
-  color:  #222222;
-  background-color: #c7514d;
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
+  color: #FFFFFF;
+  background-color: #D1B4C8;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
   font-weight: 500;
-  font-style: normal;
+  text-shadow: 1px 1px 2px #333;
 }
 
-00:00.000 --> 00:02.600 line:90 position: 50% align: middle
-<c>Soon the bear is going to <u>dance</u>...are you ready?<\c>
+00:00.000 --> 00:02.600 line:90 position:50% align:middle
+Meet our shelter's star residents!
 
-00:05.000 --> 00:12.900 align:end size:25% position:98% line:0
-<c>This is Freddy Fazbear!</c>
+00:03.000 --> 00:05.500 line:90 position:50% align:middle
+These adorable cats need forever homes
 
-00:07.000 --> 00:12.900 line:90 position: 50% align: middle
-<c>Look how skillful he is! :3 </c>
+00:05.500 --> 00:08.000 line:90 position:50% align:middle
+This is Whiskers, our oldest resident
+
+00:08.100 --> 00:12.900 line:90 position:50% align:middle
+Look how playful she is! 😻
+
+00:13.000 --> 00:16.000 line:90 position:50% align:middle
+All cats are vaccinated and sterilized
+
+00:16.500 --> 00:19.000 line:90 position:50% align:middle
+Adoption hotline: 555-CATS
+
+00:20.000 --> 00:23.000 line:90 position:50% align:middle
+Visit our shelter today!

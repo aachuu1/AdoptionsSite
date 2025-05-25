@@ -1,471 +1,638 @@
+@import 'hamburger'
 
-  .menu-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #ff6600;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    z-index: 1000;
-  }
+/* buton fixat pentru toggle-ul meniului */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ff6600;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
 
-  .menu-toggle:hover {
-    transform: scale(1.1);
-  }
+/* efect de scalare la hover */
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
 
-  .menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 250px;
-    height: 100vh;
-    background: #333;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: right 0.5s ease-in-out;
-    z-index: 1000;
-  }
+/* containerul principal al meniului */
+.menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100vh;
+  background: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.5s ease-in-out;
+  z-index: 1000;
+}
 
-  .menu.active {
-    right: 0;
-  }
+/* clasa activa care aduce meniul in vedere */
+.menu.active {
+  right: 0;
+}
 
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
+/* lista neordonata din meniu */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
 
-  .menu.active ul {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* lista vizibila cand meniul e activ */
+.menu.active ul {
+  opacity: 1;
+  transform: translateX(0);
+}
 
+/* bara de navigatie principala */
+nav {
+  background: linear-gradient(-45deg, 
+      var(--color-roz-mediu), 
+      var(--color-mov), 
+      var(--color-roz-deschis), 
+      var(--color-mov-gri));
+  background-size: 300% 300%;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(237, 193, 200, 0.3);
+  position: relative;
+}
+
+/* animatie gradient doar pe desktop */
+@media (min-width: 1024px) {
   nav {
-    background: linear-gradient(-45deg, 
-        var(--color-roz-mediu), 
-        var(--color-mov), 
-        var(--color-roz-deschis), 
-        var(--color-mov-gri));
-    background-size: 300% 300%;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 16px;
-    box-shadow: 0 2px 8px rgba(237, 193, 200, 0.3);
-    position: relative;
+      animation: moveGradient 12s ease infinite;
   }
-
-  @media (min-width: 1024px) {
-    nav {
-        animation: moveGradient 12s ease infinite;
-    }
-    
-    @keyframes moveGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  
+  /* animatie pentru miscarea gradientului */
+  @keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-
-  .nav-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-
-  .nav-list li {
-    position: relative;
-  }
-
-  .nav-list li a {
-    color: var(--color-text-principal);
-    text-decoration: none;
-    font-weight: bolder;
-    padding: 10px 12px;
-    display: block;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  main #stilizare-linkuri-etapa4 a {
-    position: relative;
-    text-decoration: none;
-    background-image: radial-gradient(circle, var(--color-mov) 0%, var(--color-mov-gri) 40%, transparent 80%, transparent 100%);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 0% 0%;
-    transition: background-size 0.6s ease;
-    z-index: 0;
 }
 
+/* lista de navigare */
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* elemente din lista de navigare */
+.nav-list li {
+  position: relative;
+}
+
+/* linkuri din navigatie */
+.nav-list li a {
+  color: var(--color-text-principal);
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 10px 12px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* iconita pentru meniul acasa */
+.menu-item-acasa .menu-icon {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 8px;
+  object-fit: contain;
+}
+
+/* ascunde textul pe mobile */
+@media (max-width: 768px) {
+  .menu-item-acasa .menu-text {
+    display: none;
+  }
+  .menu-item-acasa .menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0;
+  }
+}
+
+/* efect hover pentru linkuri */
+main #stilizare-linkuri-etapa4 a {
+  position: relative;
+  text-decoration: none;
+  background-image: radial-gradient(circle, var(--color-mov) 0%, var(--color-mov-gri) 40%, transparent 80%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0% 0%;
+  transition: background-size 0.6s ease;
+  z-index: 0;
+}
+
+/* efect hover activ */
 main #stilizare-linkuri-etapa4 a:hover {
-    background-size: 100% 100%;
+  background-size: 100% 100%;
 }
 
-  @media (min-width: 769px) {
-    .nav-list li a .slide-text {
-      position: absolute;
-      top: -100%;
-      left: 12px;
-      width: calc(100% - 24px);
-      height: 100%;
-      display: flex;
-      align-items: center;
-      background-color: inherit;
-      transition: top 0.3s ease;
-      color: var(--color-text-principal);
-    }
-
-    .nav-list li a:hover .slide-text {
-      top: 0;
-    }
-  }
-
-  .nav-list li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .nav-list ul {
-    display: block;
+/* efect slide text pe desktop */
+@media (min-width: 769px) {
+  .nav-list li a .slide-text {
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 21;
-    width: 220px;
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: transform 1s ease, 
-                opacity 0.2s ease, 
-                max-height 0.4s ease;
-    padding: 0;
-    margin-top: 5px;
+    top: -100%;
+    left: 12px;
+    width: calc(100% - 24px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    transition: top 0.3s ease;
+    color: var(--color-text-principal);
   }
 
-  .nav-list li:hover > ul {
-    transform: scaleY(1);
+  /* textul care apare la hover */
+  .nav-list li a:hover .slide-text {
+    top: 0;
+  }
+}
+
+/* fundal la hover pe linkuri */
+.nav-list li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* submeniuri */
+.nav-list ul {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 21;
+  width: 220px;
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: transform 1s ease, 
+              opacity 0.2s ease, 
+              max-height 0.4s ease;
+  padding: 0;
+  margin-top: 5px;
+}
+
+/* submeniuri vizibile la hover */
+.nav-list li:hover > ul {
+  transform: scaleY(1);
+  opacity: 1;
+  max-height: 1000px;
+}
+
+/* elemente din submeniu */
+.nav-list ul li {
+  width: 100%;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* animatie elemente submeniu */
+.nav-list li:hover > ul li {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* delay-uri pentru animatii */
+.nav-list li:hover > ul li:nth-child(1) { transition-delay: 0.1s; }
+.nav-list li:hover > ul li:nth-child(2) { transition-delay: 0.15s; }
+.nav-list li:hover > ul li:nth-child(3) { transition-delay: 0.2s; }
+.nav-list li:hover > ul li:nth-child(4) { transition-delay: 0.25s; }
+.nav-list li:hover > ul li:nth-child(5) { transition-delay: 0.3s; }
+
+/* linkuri din submeniu */
+.nav-list ul li a {
+  padding: 10px 15px;
+  color: var(--color-text-principal);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+/* ascunde slide-text in submeniu */
+.nav-list ul li a .slide-text {
+  display: none;
+}
+
+/* hover pe linkuri submeniu */
+.nav-list ul li a:hover {
+  background-color: white;
+  color: var(--color-mov);
+  text-decoration: underline;
+}
+
+/* toggle pentru hamburger */
+.hamburger-toggle {
+  display: none;
+}
+
+/* buton hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 22;
+  position: relative;
+  animation: hamburger-appear 1s ease forwards;
+}
+
+/* linii hamburger */
+.hamburger span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-text-principal);
+  left: 0;
+  opacity: 0;
+  animation: line-appear 1s ease forwards;
+}
+
+/* animatie aparitie hamburger */
+@keyframes hamburger-appear {
+  0% {
+    transform: scale(0.5) rotate(-30deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
     opacity: 1;
-    max-height: 1000px;
   }
+}
 
-  .nav-list ul li {
-    width: 100%;
-    transform: translateY(-10px);
+/* animatie linii hamburger */
+@keyframes line-appear {
+  0% {
+    background-color: red;
+    transform: scaleX(0.5) rotate(0deg);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  .nav-list li:hover > ul li {
+  50% {
+    background-color: orange;
+    transform: scaleX(1.2) rotate(15deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    background-color: var(--color-text-principal);
+    transform: scaleX(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* pozitionare linii hamburger */
+.hamburger span:nth-child(1) {
+  top: 0;
+  animation-delay: 0.1s;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: 0.2s;
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+  animation-delay: 0.3s;
+}
+
+/* toggle pentru submeniu */
+.submenu-toggle {
+  display: none;
+}
+
+/* label pentru submeniu */
+.submenu-label {
+  display: none !important;
+}
+
+/* stiluri pentru mobile */
+@media (max-width: 768px) {
+  /* afiseaza buton hamburger */
+  .hamburger {
+    display: flex;
+    animation: hamburger-appear 1s ease forwards;
+  }
+
+  /* animatie linii hamburger */
+  .hamburger span {
+    animation: line-appear 1s ease forwards;
+  }
+  
+  /* lista de navigare pe mobile */
+  .nav-list {
+    display: block;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--color-mov);
+    border-radius: 0 0 8px 8px;
+    z-index: 21;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform-origin: center;
+    transform: scale(0.95);
+    transition:
+      transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1),
+      opacity 0.5s ease,
+      max-height 0.8s ease;
+    padding: 0;
+  }
+
+  /* lista vizibila cand toggle-ul e activ */
+  #hamburger-toggle:checked ~ .nav-list {
+    transform: scale(1);
+    max-height: 2000px;
+    opacity: 1;
+    padding: 12px;
+    overflow: visible;
+  }
+
+  /* animatie elemente lista */
+  .nav-list > li {
+    transform: translateY(10px);
+    opacity: 0;
+    transition:
+      transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.6s ease;
+    margin-bottom: 5px;
+  }
+
+  /* elemente vizibile cand meniul e deschis */
+  #hamburger-toggle:checked ~ .nav-list > li {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .nav-list li:hover > ul li:nth-child(1) { transition-delay: 0.1s; }
-  .nav-list li:hover > ul li:nth-child(2) { transition-delay: 0.15s; }
-  .nav-list li:hover > ul li:nth-child(3) { transition-delay: 0.2s; }
-  .nav-list li:hover > ul li:nth-child(4) { transition-delay: 0.25s; }
-  .nav-list li:hover > ul li:nth-child(5) { transition-delay: 0.3s; }
-
-  .nav-list ul li a {
-    padding: 10px 15px;
-    color: var(--color-text-principal);
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-  }
-
-  .nav-list ul li a .slide-text {
-    display: none;
-  }
-
-  .nav-list ul li a:hover {
-    background-color: white;
-    color: var(--color-mov);
-    text-decoration: underline;
-  }
-
-  .hamburger-toggle {
-    display: none;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 22;
-    position: relative;
-    animation: hamburger-appear 1s ease forwards;
-  }
-  
-  .hamburger span {
-    position: absolute;
+  /* stiluri elemente lista */
+  .nav-list li {
     width: 100%;
-    height: 3px;
-    background-color: var(--color-text-principal);
-    left: 0;
-    opacity: 0;
-    animation: line-appear 1s ease forwards;
-  }
-  @keyframes hamburger-appear {
-    0% {
-      transform: scale(0.5) rotate(-30deg);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.2) rotate(10deg);
-      opacity: 0.6;
-    }
-    100% {
-      transform: scale(1) rotate(0deg);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes line-appear {
-    0% {
-      background-color: red;
-      transform: scaleX(0.5);
-      opacity: 0;
-    }
-    50% {
-      background-color: orange;
-      transform: scaleX(1.2);
-      opacity: 0.6;
-    }
-    100% {
-      background-color: var(--color-text-principal);
-      transform: scaleX(1);
-      opacity: 1;
-    }
-  }
-  
-  .hamburger span:nth-child(1) {
-    top: 0;
-  }
-  
-  .hamburger span:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .hamburger span:nth-child(3) {
-    bottom: 0;
-  }
-  
-  .submenu-toggle {
-    display: none;
+    text-align: center;
+    position: relative;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .submenu-label {
+  /* ultimul element fara border */
+  .nav-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* linkuri din meniu mobile */
+  .nav-list li a {
+    color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 80%, transparent 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0% 0%;
+    transition: background-size 0.6s ease, color 0.6s ease;
+  }
+
+  /* ascunde slide-text pe mobile */
+  .nav-list li a .slide-text {
     display: none !important;
   }
 
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-      animation: hamburger-appear 1s ease forwards;
-    }
-  
-    .hamburger span {
-      animation: line-appear 1s ease forwards;
-    }
-    .nav-list {
-      display: block;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background: var(--color-mov);
-      border-radius: 0 0 8px 8px;
-      z-index: 21;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transform-origin: center;
-      transform: scale(0.95);
-      transition:
-        transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1),
-        opacity 0.5s ease,
-        max-height 0.8s ease;
-      padding: 0;
-    }
-
-    #hamburger-toggle:checked ~ .nav-list {
-      transform: scale(1);
-      max-height: 1000px;
-      opacity: 1;
-      padding: 12px;
-    }
-
-    .nav-list > li {
-      transform: translateY(10px);
-      opacity: 0;
-      transition:
-        transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
-        opacity 0.6s ease;
-      margin-bottom: 5px;
-    }
-
-    #hamburger-toggle:checked ~ .nav-list > li {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .nav-list li {
-      width: 100%;
-      text-align: left;
-      position: relative;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-list li:last-child {
-      border-bottom: none;
-    }
-
-    .nav-list li a {
-      color: white;
-      padding: 12px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .nav-list li a .slide-text {
-      display: none !important;
-    }
-
-    .nav-list li a:hover {
-      background-color: transparent;
-    }
-
-    .nav-list li a .menu-text {
-      display: inline-block;
-      transform: scaleX(0);
-      transform-origin: center; 
-      letter-spacing: -3px;
-      opacity: 0;
-      transition:
-        transform 1s cubic-bezier(0.34, 1.56, 0.64, 1),
-        letter-spacing 1s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 0.6s ease;
-    }
-
-    #hamburger-toggle:checked ~ .nav-list li a .menu-text {
-      transform: scaleX(1);
-      letter-spacing: normal;
-      opacity: 1;
-    }
-
-    .has-submenu ul {
-      transform: scaleY(0);
-      transform-origin: top;
-      max-height: 0;
-      opacity: 0;
-      display: block;
-      background: rgba(183, 131, 189, 0.8);
-      border-radius: 4px;
-      overflow: hidden;
-      width: 100%;
-      transition:
-        transform 0.5s ease,
-        opacity 0s ease,
-        max-height 0.6s ease;
-    }
-
-    .has-submenu.active ul {
-      transform: scaleY(1);
-      opacity: 0;
-      max-height: 500px;
-    }
-
-    .has-submenu ul li {
-      transform: translateY(-10px);
-      opacity: 100%;
-      transition: transform 0.4s ease, opacity 1s ease;
-      border-bottom: none;
-      padding: 0px 0px;
-      display: block;
-    }
-
-    .has-submenu.active ul li {
-      transform: translateY(0);
-      opacity: 100%;
-    }
-    .has-submenu ul li a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px;
-      width: 100%; 
-      text-align: center;
-      font-size: inherit;
-      opacity: 100%;
-    }
-    .has-submenu ul li a .menu-text {
-      display: inline-block;
-      transform: scaleX(0);
-      transform-origin: center;
-      letter-spacing: -3px;
-      opacity: 100%;
-      transition:
-        transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
-        letter-spacing 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 0.6s ease;
-    }
-
-    .has-submenu.active ul li a .menu-text {
-      transform: scaleX(1);
-      letter-spacing: normal;
-      opacity: 100;
-    }
-
-    .submenu-label {
-      display: block !important;
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 18px;
-      transition: transform 0.4s ease;
-    }
-
-    .has-submenu.active .submenu-label {
-      transform: translateY(-50%) rotate(180deg);
-    }
-
-    .nav-list ul li a:hover {
-      background-color: transparent;
-      color: white;
-      text-decoration: underline;
-    }
+  /* hover pe linkuri mobile */
+  .nav-list li a:hover {
+    background-size: 100% 100%;
+    color: rgba(255, 255, 255, 0.9);
   }
+
+  /* animatie text meniu */
+  .nav-list li a .menu-text {
+    display: inline-block;
+    transform: scaleX(0);
+    transform-origin: center; 
+    letter-spacing: -3px;
+    opacity: 0;
+    transition:
+      transform 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+      letter-spacing 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.6s ease;
+  }
+
+  /* text vizibil cand meniul e deschis */
+  #hamburger-toggle:checked ~ .nav-list li a .menu-text {
+    transform: scaleX(1);
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
+  /* elemente cu submeniu */
+  .has-submenu {
+    position: relative;
+  }
+
+  /* submeniu pe mobile */
+  .has-submenu ul {
+    position: static !important;
+    transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    opacity: 0;
+    display: block;
+    background: rgba(139, 79, 139, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 8px;
+    transition:
+      transform 0.5s ease,
+      opacity 0.3s ease 0.1s,
+      max-height 0.6s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* submeniu vizibil cand toggle-ul e activ */
+  .submenu-toggle:checked + .submenu-label + ul {
+    transform: scaleY(1);
+    opacity: 1;
+    max-height: 300px;
+  }
+
+  /* elemente submeniu */
+  .has-submenu ul li {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 0;
+    display: block;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  /* ultimul element submeniu */
+  .has-submenu ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* elemente submeniu vizibile */
+  .submenu-toggle:checked + .submenu-label + ul li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* linkuri submeniu */
+  .has-submenu ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    width: 100%; 
+    text-align: center;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: normal;
+    position: relative;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 40%, transparent 80%, transparent 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0% 0%;
+    transition: background-size 0.6s ease, color 0.6s ease;
+  }
+  
+  /* text in submeniu */
+  .has-submenu ul li a .menu-text {
+    display: inline-block;
+    transform: scaleX(0);
+    transform-origin: center;
+    letter-spacing: -3px;
+    opacity: 0;
+    transition:
+      transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      letter-spacing 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.6s ease;
+  }
+
+  /* text vizibil in submeniu */
+  .submenu-toggle:checked + .submenu-label + ul li a .menu-text {
+    transform: scaleX(1);
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
+  /* label pentru submeniu pe mobile */
+  .submenu-label {
+    display: block !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 50;
+  }
+
+  /* hover pe linkuri submeniu */
+  .nav-list ul li a:hover {
+    background-size: 100% 100%;
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: underline;
+  }
+
+  /* delay-uri pentru animatii */
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(6) {
+    transition-delay: 0.6s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(7) {
+    transition-delay: 0.7s;
+  }
+  #hamburger-toggle:checked ~ .nav-list > li:nth-child(8) {
+    transition-delay: 0.8s;
+  }
+
+  /* delay-uri pentru animatii text */
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(1) a .menu-text {
+    transition-delay: 0.2s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(2) a .menu-text {
+    transition-delay: 0.3s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(3) a .menu-text {
+    transition-delay: 0.4s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(4) a .menu-text {
+    transition-delay: 0.5s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(5) a .menu-text {
+    transition-delay: 0.6s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(6) a .menu-text {
+    transition-delay: 0.7s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(7) a .menu-text {
+    transition-delay: 0.8s;
+  }
+  #hamburger-toggle:checked ~ .nav-list li:nth-child(8) a .menu-text {
+    transition-delay: 0.9s;
+  }
+}

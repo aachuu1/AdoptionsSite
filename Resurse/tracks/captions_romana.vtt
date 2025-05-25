@@ -1,19 +1,32 @@
-WEBVTT - english subtitle for freddy fazbear
+WEBVTT - Subtitrări în română pentru pisicile sefei
 
 STYLE
 ::cue {
-  background-color:rgb(0, 0, 0);
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
+  color: #FFFFFF;
+  background-color: #D1B4C8;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
   font-weight: 500;
-  font-style: normal;
+  text-shadow: 1px 1px 2px #333;
 }
 
-00:00.000 --> 00:02.600 line:90 position: 20% align: middle
-<c>Acestea sunt pisicile sefei!<\c>
+00:00.000 --> 00:02.600 line:90 position:50% align:middle
+<c>Acestea sunt pisicile sefei noastre! 😻</c>
 
-00:05.000 --> 00:12.900 align:end size:25% position:middle 
-<c>Pedro si Pandi sunt doi pisici foarte jucausi!</c>
+00:03.000 --> 00:05.500 line:90 position:50% align:middle
+<c>Sunt cele mai iubitoare animale din adăpost</c>
 
-00:07.000 --> 00:12.900 line:90 position: 50% align: middle
-<c>Look how skillful he is! :3 </c>
+00:05.000 --> 00:08.000 line:90 position:50% align:middle
+<c>Pedro și Pandi - cei mai jucăuși pisici!</c>
+
+00:07.000 --> 00:10.000 line:90 position:50% align:middle
+<c>Priviți cât de talentați sunt! 🎾</c>
+
+00:10.500 --> 00:13.000 line:90 position:50% align:middle
+<c>Amândoi așteaptă o familie iubitoare</c>
+
+00:14.000 --> 00:16.500 line:90 position:50% align:middle
+<c>Toate vaccinurile la zi ✓</c>
+
+00:17.000 --> 00:20.000 line:90 position:50% align:middle
+<c>Contact: adoptii@pisicisefe.ro</c>

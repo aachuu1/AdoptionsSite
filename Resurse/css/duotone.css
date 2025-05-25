@@ -1,52 +1,58 @@
+/* container pentru imaginea duotone */
 .duotone-image {
-  position: relative;
-  width: 100%;
-  height: 250px; 
-  overflow: hidden;
+  position: relative; /* pozitionare relativa pentru elementele absolute din interior */
+  width: 100%;       /* latime completa a containerului parinte */
+  height: 250px;     /* inaltime fixa */
+  overflow: hidden;  /* ascunde orice continut care iese din container */
 }
 
+/* imaginea de baza */
 .duotone-image img {
-  position: absolute;
+  position: absolute; /* pozitionare absoluta fata de container */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  transition: filter 1s ease;
+  width: 100%;       /* ocupa toata latimea containerului */
+  height: 100%;      /* ocupa toata inaltimea containerului */
+  object-fit: cover; /* asigura ca imaginea acopera spatiul fara a se deforma */
+  z-index: 1;        /* stratul de baza */
+  transition: filter 1s ease; /* animatie pentru efectul de filtre */
 }
 
+/* primul strat de suprapunere (culoare intunecata) */
 .duotone-image::before {
-  content: '';
+  content: '';       /* necesar pentru pseudo-elemente */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background:  none;
-  mix-blend-mode: multiply;
-  z-index: 2;
-  transition: opacity 1s ease;
+  background: none;  /* initial fara culoare de fundal */
+  mix-blend-mode: multiply; /* mod de amestec pentru intunecare */
+  z-index: 2;        /* strat intermediar */
+  transition: opacity 1s ease; /* animatie pentru opacitate */
 }
 
+/* al doilea strat de suprapunere (culoare deschisa) */
 .duotone-image::after {
-  content: '';
+  content: '';       /* necesar pentru pseudo-elemente */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: none;
-  mix-blend-mode: screen;
-  z-index: 3;
-  transition: opacity 1s ease;
+  background: none;  /* initial fara culoare de fundal */
+  mix-blend-mode: screen; /* mod de amestec pentru luminozitate */
+  z-index: 3;        /* strat superior */
+  transition: opacity 1s ease; /* animatie pentru opacitate */
 }
 
+/* efect la hover - ascunde straturile de culoare */
 .duotone-image:hover::before,
 .duotone-image:hover::after {
-  opacity: 0;
+  opacity: 0;        /* face straturile invizibile */
 }
 
+/* efect la hover - aplica grayscale pe imagine */
 .duotone-image:hover img {
-  filter: grayscale(100%);
+  filter: grayscale(100%); /* converteste imaginea in alb-negru */
 }

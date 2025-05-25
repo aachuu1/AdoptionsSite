@@ -1,5 +1,5 @@
-
-  .scroll-to-top {
+/* buton fixat pentru scroll la inceput */
+.scroll-to-top {
     position: fixed !important;
     bottom: 20px;
     right: 20px;
@@ -18,9 +18,10 @@
     position: relative;
     transition: transform 0.3s, filter 0.3s;
     filter: blur(1px);
-  }
+}
 
-  .scroll-to-top::after {
+/* pseudo-element pentru sageata */
+.scroll-to-top::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -29,9 +30,10 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-  }
+}
 
-  .scroll-to-top .handle {
+/* linia din mijlocul sagetii */
+.scroll-to-top .handle {
     position: absolute;
     top: 65%; 
     left: 50%;
@@ -39,9 +41,10 @@
     height: 20px; 
     background-color: black;
     transform: translateX(-50%);
-  }
+}
 
-  .scroll-to-top::before {
+/* bordură rotativă */
+.scroll-to-top::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -53,24 +56,27 @@
     border-top-color: var(--color-roz-deschis);
     border-bottom-color: var(--color-roz-deschis);
     transition: all 0.3s ease;
-  }
+}
 
-  .scroll-to-top:hover {
+/* efecte la hover */
+.scroll-to-top:hover {
     transform: translateY(-5px);
     filter: blur(0);
-  }
+}
 
-  .scroll-to-top:hover::before {
+/* animatie rotatie la hover */
+.scroll-to-top:hover::before {
     animation: rotateBorder 1s linear;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-  }
+}
 
-  @keyframes rotateBorder {
+/* keyframes pentru rotatie */
+@keyframes rotateBorder {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(90deg);
+        transform: rotate(90deg);
     }
-  }
+}

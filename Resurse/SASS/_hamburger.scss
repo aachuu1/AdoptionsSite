@@ -1,0 +1,25 @@
+$line-count: 3;
+$delay-step: 300ms;
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: transparent;
+    opacity: 0;
+    transform: scaleX(0.5);
+    animation: line-appear 0.9s ease-out forwards;
+  }
+
+  @for $i from 1 through $line-count {
+    span:nth-child(#{$i}) {
+      animation-delay: ($i - 1) * $delay-step;
+    }
+  }
+}

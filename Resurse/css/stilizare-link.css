@@ -1,0 +1,21 @@
+/* Stiluri generale pentru toate link-urile (<a>) */
+a {
+    color: var(--color-text-principal);       /* culoare text gri închis */
+    text-decoration: none;                    /* elimină sublinierea implicită */
+    font-weight: 500;                         /* text semi-îngroșat */
+    position: relative;                       /* necesar pentru efecte suplimentare */
+    transition: all 0.2s ease;                /* animație la hover */
+    border-bottom: 1px dotted var(--color-mov); /* bordură punctată mov la partea de jos */
+    font-size: 1rem;                          /* dimensiune font standard */
+}
+
+/* Excepție pentru link-urile din meniul de navigare - fără padding suplimentar */
+a:not(nav a) {
+    padding-bottom: 2px;                      /* spațiu suplimentar sub text */
+}
+
+/* Stiluri la hover (când cursorul este pe link) */
+a:hover {
+    color: var(--color-text-principal);       /* păstrează aceeași culoare */
+    border-bottom-color: var(--color-roz-deschis); /* schimbă culoarea bordurii în roz */
+}

@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 50px;
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+}
+
+.descriere-video {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 20px 0;
+    font-family: "Comfortaa", sans-serif;
+}
+
+video {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

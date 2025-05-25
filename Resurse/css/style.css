@@ -358,25 +358,6 @@
     opacity: 0.8;
   }
 
-  a {
-    color: var(--color-text-principal);
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: all 0.2s ease;
-    border-bottom: 1px dotted var(--color-mov);
-    font-size: 1rem;
-  }
-
-  a:not(nav a) {
-    padding-bottom: 2px;
-  }
-
-  a:hover {
-    color: var(--color-text-principal);
-    border-bottom-color: var(--color-roz-deschis);
-  }
-
   details {
     margin: 15px 0;
     padding: 0;

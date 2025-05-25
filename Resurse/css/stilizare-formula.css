@@ -1,23 +1,34 @@
+/* elemente de tip "rer"*/
 .formula .rer {
-  color: blue;
-  font-weight: bold;
+  color: blue;        
+  font-weight: bold;  
 }
 
-.formula .egal,
-.formula .inmultire,
+/* simboluri matematice de baza */
+.formula .egal {
+  color: black;       /* semnul egal (=) in negru */
+}
+.formula .inmultire {
+  color: black;       /* semnul inmultirii (×) in negru */
+}
 .formula .paranteza {
-  color: black;
+  color: black;       /* parantezele in negru */
 }
 
+/* numere sau constante */
 .formula .numar {
-  color: green;
+  color: green;       /* culoare verde pentru numere */
 }
 
+/* notiuni de greutate sau masa */
 .formula .greutate {
-  color: red;
-  font-style: italic;
+  color: red;         /* culoare rosie pentru atentionare */
+  font-style: italic; 
 }
 
+/* exponenti sau puteri */
 .formula .exponent {
-  color: purple;
+  color: purple;      /* culoare mov pentru diferentiere */
+  font-size: 0.8em;   
+  vertical-align: super; /* pozitionare ca exponent */
 }

@@ -1,25 +1,35 @@
-#text{	
-  position: relative;
-  font-size: 30px;
-  line-height: 30px;
-  font-weight: bold;
-  margin-bottom: 40px; 
+/* stilul pentru textul principal */
+#text {	
+  position: relative; /* pozitionare relativa pentru a permite pozitionarea absoluta a reflectiei */
+  font-size: 30px; /* dimensiune mare a fontului */
+  line-height: 30px; /* inaltimea liniei egala cu dimensiunea fontului */
+  font-weight: bold; /* text ingrosat */
+  margin-bottom: 40px; /* spatiu mai mare dedesubt */
 }
 
-#text-reflectat{
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform-origin: 0 0;
-  transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(6px,-5px); 
-  opacity: 0.55;
-  font-size:30px;
+/* stilul pentru textul reflectat (efect de oglinda) */
+#text-reflectat {
+  position: absolute; /* pozitionare absoluta fata de #text */
+  left: 0; /* aliniat la stanga */
+  top: 50%; /* pozitionat la jumatatea inaltimii textului principal */
+  transform-origin: 0 0; /* punctul de origine pentru transformari */
+  /* combinatie de transformari pentru efectul de reflectie: */
+  transform: rotateX(180deg) /* rotire pe axa X (ca o oglinda) */
+             skew(-45deg) /* inclinare pentru efect de perspectiva */
+             scaleY(0.5) /* comprimare pe verticala */
+             translate(6px,-5px); /* mica ajustare de pozitie */
+  opacity: 0.55; /* semi-transparent pentru a arata ca o reflectie */
+  font-size:30px; /* aceeasi dimensiune ca textul principal */
   line-height: 30px;
   font-weight: bold;
-  z-index: 1; 
-  transition: transform 1s ease;
+  z-index: 1; /* strat peste textul principal (daca e cazul) */
+  transition: transform 1s ease; /* animatie la hover */
 }
 
+/* efect la hover: reflectia se modifica */
 #text:hover~#text-reflectat {
-  transform: rotateX(180deg) skew(-45deg) scaleY(0.9) translate(5px, -15px);
+  transform: rotateX(180deg) /* mentine rotirea */
+             skew(-45deg) /* mentine inclinarea */
+             scaleY(0.9) /* reflectie mai inalta */
+             translate(5px, -15px); /* ajustare pozitie pentru efect de apropiere */
 }
