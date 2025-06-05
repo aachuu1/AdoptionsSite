@@ -47,7 +47,8 @@
   "homepage": "https://github.com/aachuu1/AdoptionsSite#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.1.0",
+    "express": "^4.16.0",
+    "pg": "^8.16.0",
     "sass": "^1.87.0"
   }
 }

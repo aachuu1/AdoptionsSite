@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
+        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        <link rel="stylesheet" href="/resurse/css/animale.css" type="text/css" />
+        <link rel="stylesheet" href="/resurse/css/animal.css" type="text/css" />
+        <title>Animale date spre adoptie</title>
+        <%- include("../fragmente/head") %>     
+        <script type="text/javascript" src=/Resurse/js/animale.js></script>
+
+    </head>
+    <body>
+
+
+    <%- include("../fragmente/header") %>
+
+    <main>
+        <label> Nume: <input type="text" id="inp-nume"></label>
+        <div> Varsta:
+            <p><label>Pui (varsta &lt; 1)
+                <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
+            </label></p>
+            <p><label>Adult (1 &le; varsta &lt; 7)
+                <input id="i_rad2"  name="gr_rad" value="350:700" type="radio"/>
+            </label>
+            <p><label>Batram (8 &le; varsta)
+                <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
+            </label>
+            <p><label>Toate
+                <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
+            </label>
+        </div>
+
+
+        <label> Varsta minima: <input type="range" id="inp-pret" value="0" min="0"  max="70"> <span id="infoRange">(0)</span></label>
+        <label>Select simplu:
+            <select id="inp-categorie">
+                <option id="sel-toate" selected value="toate">toate</option>
+                <% for (let opt of locals.optiuni) { %>
+                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
+                <% } %>
+            </select>
+        </label>
+
+        <p>
+        <button class="c1 c2 c3" id="filtrare">Filtreaza</button> 
+
+        <button id="resetare">Reseteaza</button><br/>
+        <button id="sortCrescNume">Sorteaza crescator dupa varsta si nume</button>
+        <button id="sortDescrescNume">Sorteaza descrescator dupa varsta si nume</button>
+        
+        </p>
+      
+        <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
+  
+        <section id="animale">
+
+            <h2>Animale</h2>
+            <div class="grid-animal">
+                <% for( let ani of locals.animale) { %>
+                    <article class="animal" >
+                        <h3 class="nume">Nume: <a href="/animal/<%-ani.id %>" ><span class="val-nume"><%- ani.nume%></span></a></h3>
+                        <div class="info-ani">
+                            <p class="descriere">Descriere: <span class="val-desc"><%- ani.descriere%></span></p>
+                            <p class="varsta">Varsta: <span class="val-varsta"><%- ani.varsta%></span></p>
+                        </div>
+                        <p class="categorie">Categorie:<span class="val-categorie"><%- ani.categorie%></span></p>
+                        <figure>
+                            <a href="/animal/<%-ani.id %>" ><img src="/resurse/imagini/<%- ani.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- ani.nume %>]" /></a>
+                        </figure>
+                        <label class="selecteaza-cos">
+                            Selectează:<br/>
+                            <input type="checkbox" class="select-cos" value="<%-ani.id %>" autocomplete="off">
+                        </label>
+                    </article>
+                <% }%>
+            </div>
+        </section>
+        <button id="btn-calculeaza">Calculeaza numarul de animale selectate</button>
+    </main>
+    
+    <%- include("../fragmente/footer") %>
+    </body>
+</html>

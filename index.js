@@ -1,8 +1,34 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-
 const app = express();
+
+
+
+const sass = require("sass");
+const pg = require("pg");
+
+
+const Client=pg.Client;
+
+client=new Client({
+    database:"proiect",
+    user:"ana_stoichita",
+    password:"sefumeu09",
+    host:"localhost",
+    port:5432
+})
+
+client.connect()
+client.query("select * from animale", function(err, rezultat ){
+    console.log(err)    
+    console.log("Rezultat query:", rezultat)
+})
+client.query("select * from unnest(enum_range(null::categ_animale))", function(err, rezultat ){
+    console.log(err)    
+    console.log(rezultat)
+})
+
 v=[10,27,23,44,15]
 
 app.set('view engine', 'ejs');
@@ -103,6 +129,55 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 
 app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
 
+
+app.get("/animale", function(req, res){
+    console.log(req.query);
+
+    var conditieQuery = "";
+    if (req.query.categ) { 
+        conditieQuery = ` where categorie = '${req.query.categ}'`; 
+    }
+
+    queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
+    client.query(queryOptiuni, function(err, rezOptiuni){
+        if (err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        queryAnimale = "select * from animale" + conditieQuery;
+        client.query(queryAnimale, function(err, rez){
+            if (err){
+                console.log(err);
+                afisareEroare(res, 2);
+            }
+            else{
+                res.render("pagini/animale", {animale: rez.rows, optiuni: rezOptiuni.rows});
+            }
+        })
+    });
+})
+
+app.get("/animal/:id", function(req, res) {
+    console.log("Cerere animalul cu id:", req.params.id);
+
+    let idAnimal = req.params.id;
+
+    queryAnimal = `SELECT * FROM animale WHERE id = $1`;
+    client.query(queryAnimal, [idAnimal], function(err, rezultat) {
+        if (err) {
+            console.log(err);
+            afisareEroare(res, 2);
+        } else {
+            if (rezultat.rows.length > 0) {
+                res.render("pagini/animal", { ani: rezultat.rows[0] });
+            } else {
+                afisareEroare(res, 404, "Nu am găsit animalul!");
+            }
+        }
+    });
+});
 app.get("/Resurse/*", function(req, res, next) {
     if (req.url.endsWith('/')) {
         afisareEroare(res, 403);
@@ -182,6 +257,21 @@ app.get("/*", function(req, res, next) {
             afisareEroare(res);
         }
     }
+});
+app.get(["/","/index","/home"], function(req, res){
+    var queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
+    client.query(queryOptiuni, function(err, rezOptiuni){
+        if (err) {
+            console.log(err);
+            afisareEroare(res, 2);
+        } else {
+            res.render("pagini/index", {
+                ip: req.ip,
+                imagini: obGlobal.obImagini.imagini,
+                optiuni: rezOptiuni.rows   
+            });
+        }
+    });
 });
 
 const vect_foldere = ["temp", "json"];

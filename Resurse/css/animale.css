@@ -1,0 +1,86 @@
+
+main{
+    --padd-main:2rem;
+    padding-left:var(--padd-main);
+    padding-right:var(--padd-main);
+}
+
+.grid-animal{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap:1rem;
+}
+.grid-animale .animal{
+    border-radius: 2rem;
+    box-shadow: 0px 0px 0.8rem 0.3rem grey;
+    overflow: hidden;
+}
+
+.grid-animale .animal h3{
+    background-color: var(--culoare-roz-inchis);
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.grid-animale .animal h3 a{
+    color:black;
+}
+.grid-animale .animal h3 a:hover{
+    color:white;
+}
+.grid-animale .animal figure{
+    text-align: center;
+}
+.grid-animale .animal figure img{
+    border:1px solid grey
+}
+.grid-animale .animal .info-ani{
+    display:flex;
+    background-color: var(--cl-marcare);
+}
+.grid-animale .animal .info-ani p{
+    width:30%;
+    text-align:center;
+    font-weight:bold;
+}
+
+.grid-animale .animal p.categorie{
+
+    text-align:center;
+    font-weight:bold;
+}
+
+.info-animale{
+    background-color: var(--cl-marcare);
+    padding:0.2rem;
+    box-shadow: 0px 0px 0.5rem 0.15rem grey;
+}
+
+.animal{
+    position: relative;
+}
+.selecteaza-cos{
+    display: inline-block;
+    background-color: var(--culoare-mov);
+    position:absolute;
+    bottom:0.5rem;
+    right:0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding:0.3rem;
+    border:1px solid transparent;
+}
+
+.selecteaza-cos:hover{
+    background-color: var(--cl-marcare);
+    
+    border:1px solid  var(--culoare-mov);
+}
+
+.selectat{
+    color:green;
+    background-color: yellow;
+    font-weight: bold;
+}

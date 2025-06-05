@@ -1,0 +1,41 @@
+h2{
+    padding:0.4rem;
+}
+#art-animal{
+    margin:0 auto;
+    width:70%;
+    max-width:700px;
+    background-color: var(--cl-light-t);
+    box-shadow: 0px 0px 10px 5px grey;
+    padding:0.4rem;
+}
+
+#art-animal p{
+    margin:0;
+    padding:0.4rem;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+#art-animal p span{
+    font-weight: normal;
+}
+#art-animal p:nth-of-type(even){
+    background-color: var(--culoare-roz-inchis);
+}
+#art-animal p:nth-of-type(odd){
+    background-color: var(--cl-marcare);
+}
+.imag-animal{
+    text-align: center;
+}
+.imag-animal img{
+    width:50%;
+    height:auto;
+}
+@media screen and (max-width: 700px){
+    #art-animal{
+        margin:0 auto;
+        width:95%;
+    }
+}

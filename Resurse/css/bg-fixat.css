@@ -1,0 +1,26 @@
+.background-page {
+  min-height: 200vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../Imagini/pedro.png'); /* imagine initiala */
+  animation: backgroundChange 15s steps(4) infinite;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background-image: url('../Imagini/pedro.png');
+  }
+  25% {
+    background-image: url('../Imagini/pandi.png');
+  }
+  50% {
+    background-image: url('../Imagini/titu.png');
+  }
+  75% {
+    background-image: url('../Imagini/pisu.png');
+  }
+  100% {
+    background-image: url('../Imagini/pedro.png');
+  }
+}

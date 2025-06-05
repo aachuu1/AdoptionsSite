@@ -9,7 +9,7 @@
 </head>
 <body>
   <a href="#top" class="scroll-to-top">&#8593;</a>
-  <%- include("../fragmente/header.ejs") %>
+<%- include("../fragmente/header", {optiuni: locals.optiuni || []}) %>
   <main>
     <h1>Bine ai venit, IP-ul tău este: <%= ip %></h1>
     <%- include("../fragmente/galerie.ejs", { imagini: imagini }) %>
@@ -17,7 +17,9 @@
       <section id="acasa">
         <h2 style="color: rgb(0, 0, 0);">Acasă</h2>
         <blockquote>
-          <p>Viața unui animal e împărțită între a iubi și a-i învăța pe oameni să se iubească.</p>
+        <div class="text-plimbator-container">
+          <p class="plimbator-text">Viața unui animal e împărțită între a iubi și a-i învăța pe oameni să se iubească.</p>
+        </div>
         </blockquote>
         <p><b>Adoptă un animal astăzi și salvează o viață!</b></p>
         <p>Asociația noastră este destinată oamenilor care doresc să salveze un suflet!</p>
@@ -40,7 +42,7 @@
           <h2>FAQ</h2>
           <details>
             <summary>Cât costă adopția unui animal?</summary>
-            <p>Adopția în sine este gratuită, dar există o taxă administrativă de 50 lei care acoperă vaccinurile de bază, microciparea și sterilizarea animalului.</p>
+            <p class="highlight-text">Adopția în sine este gratuită, dar există o taxă administrativă de 50 lei care acoperă vaccinurile de bază, microciparea și sterilizarea animalului.</p>
           </details>
           <details>
             <summary>Ce documente sunt necesare pentru adopție?</summary>
@@ -253,7 +255,7 @@
         </section>
       </section>
       
-      <section id="voluntariat">
+      <section id="voluntariat" class="text-coloane">
         <h2 style="color: rgb(0, 0, 0);">Voluntariat</h2>
         <p>Vrei să dai o mână de ajutor la unul din centrele noastre?</p>
         <p>Alătură-te aici zecilor de voluntari care salvează și îngrijesc animale zilnic. Cine știe, poate vei oferi chiar tu o casă unui mic suflet!</p>
@@ -504,7 +506,6 @@
           </section>
         </details>
       </section>
-      <%- include("../fragmente/galerie-dinamica.ejs", { imagini: imagini }) %>
       <section id="contact">
         <h2 style="color: rgb(0, 0, 0);">Contact</h2>
         <p>Pentru informații adiționale, găsiți mai jos diferite metode de a ne contacta:</p>
