@@ -81,14 +81,16 @@
           <span class="menu-text">Galerie Statica</span>
         </a>       
       </li> 
-                  <li><a href="#animale">Animale</a>
-                <ul class="submenu">
-                    <li><a href="/animale">Toate</a></li>
-                    <% for (let optiune of optiuni) { %>
-                        <li><a href="/animale?categ=<%= optiune.unnest %>"><%= optiune.unnest %></a></li>
-                    <% } %>
-                </ul>
-            </li>    
+      <li><a href="#animale">Animale</a>
+        <ul class="submenu">
+          <li><a href="/animale">Toate</a></li>
+          <% if (typeof optiuni !== 'undefined' && optiuni && optiuni.length > 0) { %>
+            <% for (let optiune of optiuni) { %>
+              <li><a href="/#animal?categ=<%= optiune.unnest %>"><%= optiune.unnest %></a></li>
+            <% } %>
+          <% } %>
+        </ul>
+      </li>    
     </ul>   
   </nav> 
 </header>

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="ro">
-<head>
-  <title>Adopție Animale</title>
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="adopție, cum adopt, animale spre adopție, pisici, câini, animale, donații, voluntariat, îngrijire animale, boli animale, îngrijire pisici, îngrijire câini, asociații, control animale, alimentație animale, ajutor animale, organizație.">
-  <%- include("../fragmente/head.ejs") %>
-</head>
-<body>
+<html lang="ro" data-theme="light">
+<head>   
+  <title>Adopție Animale</title>   
+  <meta charset="utf-8">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+  <meta name="keywords" content="adopție, cum adopt, animale spre adopție, pisici, câini, animale, donații, voluntariat, îngrijire animale, boli animale, îngrijire pisici, îngrijire câini, asociații, control animale, alimentație animale, ajutor animale, organizație.">    
+  <%- include("../fragmente/head.ejs") %> 
+</head> 
+<body>   
+  <button id="theme-toggle">     
+    <img id="theme-icon" src="Resurse/Imagini/night-mode.png" />   
+  </button>
+ 
   <a href="#top" class="scroll-to-top">&#8593;</a>
 <%- include("../fragmente/header", {optiuni: locals.optiuni || []}) %>
   <main>
@@ -518,6 +522,6 @@
   </main>
   
   <%- include("../fragmente/footer.ejs") %>
-  
+  <script type="text/javascript" src="Resurse/js/light-dark.js"></script>
 </body>
 </html> 

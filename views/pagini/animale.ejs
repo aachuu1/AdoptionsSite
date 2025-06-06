@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html  lang="ro">
+<html  lang="ro" data-theme="light">
     <head>
-        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        <meta name="description" content="Toate animalele afisate sunt puse spre adoptie!">
+        <meta name="keywords" content="animale, adoptie, voluntariat, disponibilitate">
         <link rel="stylesheet" href="/resurse/css/animale.css" type="text/css" />
-        <link rel="stylesheet" href="/resurse/css/animal.css" type="text/css" />
         <title>Animale date spre adoptie</title>
         <%- include("../fragmente/head") %>     
-        <script type="text/javascript" src=/Resurse/js/animale.js></script>
+        <script type="text/javascript" src=Resurse/js/animale.js></script>
 
     </head>
     <body>
@@ -24,7 +23,7 @@
             <p><label>Adult (1 &le; varsta &lt; 7)
                 <input id="i_rad2"  name="gr_rad" value="350:700" type="radio"/>
             </label>
-            <p><label>Batram (8 &le; varsta)
+            <p><label>Batran (8 &le; varsta)
                 <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
             </label>
             <p><label>Toate
@@ -77,7 +76,7 @@
                 <% }%>
             </div>
         </section>
-        <button id="btn-calculeaza">Calculeaza numarul de animale selectate</button>
+        <button id="btn-calculeaza">Calculeaza suma preturilor selectate</button>
     </main>
     
     <%- include("../fragmente/footer") %>

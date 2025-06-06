@@ -3,33 +3,30 @@ const path = require("path");
 const fs = require("fs");
 const app = express();
 
-
-
 const sass = require("sass");
 const pg = require("pg");
 
+const Client = pg.Client;
 
-const Client=pg.Client;
-
-client=new Client({
-    database:"proiect",
-    user:"ana_stoichita",
-    password:"sefumeu09",
-    host:"localhost",
-    port:5432
+client = new Client({
+    database: "proiect",
+    user: "ana_stoichita",
+    password: "sefumeu09",
+    host: "localhost",
+    port: 5432
 })
 
 client.connect()
-client.query("select * from animale", function(err, rezultat ){
-    console.log(err)    
+client.query("select * from animale", function(err, rezultat) {
+    console.log(err)
     console.log("Rezultat query:", rezultat)
 })
-client.query("select * from unnest(enum_range(null::categ_animale))", function(err, rezultat ){
-    console.log(err)    
+client.query("select * from unnest(enum_range(null::categ_animale))", function(err, rezultat) {
+    console.log(err)
     console.log(rezultat)
 })
 
-v=[10,27,23,44,15]
+v = [10, 27, 23, 44, 15]
 
 app.set('view engine', 'ejs');
 app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
@@ -49,7 +46,7 @@ const obGlobal = {
 function initImagini() {
     let continutFisier = fs.readFileSync(path.join(__dirname, "json/galerie.json")).toString("utf-8");
     let obImagini = JSON.parse(continutFisier);
-    
+
     let vectorImagini = obImagini.imagini.map(function(elem) {
         return {
             fisier: elem.cale_imagine,
@@ -57,20 +54,18 @@ function initImagini() {
             descriere: elem.descriere,
             titlu: elem.titlu,
             sfert_ora: elem.sfert_ora,
-
             intervale_zile: determinaraZileDupaSfert(elem.sfert_ora)
         };
     });
-    
+
     obGlobal.imagini = vectorImagini;
     console.log("Imagini inițializate:", obGlobal.imagini.length);
 }
 
 function determinaraZileDupaSfert(sfert) {
-
     const sfertNr = parseInt(sfert);
-    
-    switch(sfertNr) {
+
+    switch (sfertNr) {
         case 1:
             return [["vineri", "marti"]];
         case 2:
@@ -80,18 +75,14 @@ function determinaraZileDupaSfert(sfert) {
         case 4:
             return [["vineri", "duminica"]];
         default:
-            return [["vineri", "duminica"]]; 
+            return [["vineri", "duminica"]];
     }
 }
-
-app.get(["/", "/index", "/home"], function(req, res) {
-    res.render("pagini/index", { ip: req.ip, imagini: obGlobal.imagini });
-});
 
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname, "./json/erori.json")).toString("utf-8");
     obGlobal.obErori = JSON.parse(continut);
-    
+
     obGlobal.obErori.eroare_default.imagine = path.join(obGlobal.obErori.cale_baza, obGlobal.obErori.eroare_default.imagine);
     for (let eroare of obGlobal.obErori.info_erori) {
         eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
@@ -102,10 +93,10 @@ initErori();
 initImagini();
 
 function afisareEroare(res, identificator, titlu, text, imagine) {
-    let eroare = obGlobal.obErori.info_erori.find(function(elem) { 
+    let eroare = obGlobal.obErori.info_erori.find(function(elem) {
         return elem.identificator == identificator;
     });
-    
+
     if (eroare) {
         if (eroare.status)
             res.status(identificator);
@@ -119,7 +110,7 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
         var textCustom = text || err.text;
         var imagineCustom = imagine || err.imagine;
     }
-    
+
     res.render("pagini/eroare", {
         titlu: titluCustom,
         text: textCustom,
@@ -129,17 +120,33 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 
 app.use('/Resurse/Imagini', express.static(path.join(__dirname, 'Resurse/Imagini')));
 
+// Fixed home route - single definition with optiuni
+app.get(["/", "/index", "/home"], function(req, res) {
+    let queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
+    client.query(queryOptiuni, function(err, rezOptiuni) {
+        if (err) {
+            console.log(err);
+            afisareEroare(res, 2);
+        } else {
+            res.render("pagini/index", {
+                ip: req.ip,
+                imagini: obGlobal.imagini,
+                optiuni: rezOptiuni.rows
+            });
+        }
+    });
+});
 
-app.get("/animale", function(req, res){
+app.get("/animale", function(req, res) {
     console.log(req.query);
 
     var conditieQuery = "";
-    if (req.query.categ) { 
-        conditieQuery = ` where categorie = '${req.query.categ}'`; 
+    if (req.query.categ) {
+        conditieQuery = ` where categorie = '${req.query.categ}'`;
     }
 
     queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
-    client.query(queryOptiuni, function(err, rezOptiuni){
+    client.query(queryOptiuni, function(err, rezOptiuni) {
         if (err) {
             console.log(err);
             afisareEroare(res, 2);
@@ -147,37 +154,53 @@ app.get("/animale", function(req, res){
         }
 
         queryAnimale = "select * from animale" + conditieQuery;
-        client.query(queryAnimale, function(err, rez){
-            if (err){
+        client.query(queryAnimale, function(err, rez) {
+            if (err) {
                 console.log(err);
                 afisareEroare(res, 2);
             }
-            else{
-                res.render("pagini/animale", {animale: rez.rows, optiuni: rezOptiuni.rows});
+            else {
+                res.render("pagini/animale", { animale: rez.rows, optiuni: rezOptiuni.rows });
             }
         })
     });
 })
 
+// Fixed animal route
 app.get("/animal/:id", function(req, res) {
     console.log("Cerere animalul cu id:", req.params.id);
 
     let idAnimal = req.params.id;
 
-    queryAnimal = `SELECT * FROM animale WHERE id = $1`;
-    client.query(queryAnimal, [idAnimal], function(err, rezultat) {
+    // First get the options for the header
+    let queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
+    client.query(queryOptiuni, function(err, rezOptiuni) {
         if (err) {
             console.log(err);
             afisareEroare(res, 2);
-        } else {
-            if (rezultat.rows.length > 0) {
-                res.render("pagini/animal", { ani: rezultat.rows[0] });
-            } else {
-                afisareEroare(res, 404, "Nu am găsit animalul!");
-            }
+            return;
         }
+
+        // Then get the specific animal
+        let queryAnimal = `SELECT * FROM animale WHERE id = $1`;
+        client.query(queryAnimal, [idAnimal], function(err, rezultat) {
+            if (err) {
+                console.log(err);
+                afisareEroare(res, 2);
+            } else {
+                if (rezultat.rows.length > 0) {
+                    res.render("pagini/animal", {
+                        ani: rezultat.rows[0],
+                        optiuni: rezOptiuni.rows
+                    });
+                } else {
+                    afisareEroare(res, 404, "Nu am găsit animalul!");
+                }
+            }
+        });
     });
 });
+
 app.get("/Resurse/*", function(req, res, next) {
     if (req.url.endsWith('/')) {
         afisareEroare(res, 403);
@@ -199,12 +222,14 @@ app.get("/despre", function(req, res) {
 app.get("/index/a", function(req, res) {
     res.render("pagini/index");
 });
+
 app.get('/galerie-animata', (req, res) => {
     res.render('pagini/galerie-animata', {
         imagini: obGlobal.imagini,
         cale_galerie: "../Resurse/Imagini"
     });
 });
+
 app.get("/cerere", function(req, res) {
     res.send("<p style='color:blue'>Buna ziua</p>");
 });
@@ -219,7 +244,7 @@ app.get("/abc", function(req, res, next) {
 });
 
 app.get("/abc", function(req, res, next) {
-    res.write((new Date())+"");
+    res.write((new Date()) + "");
     res.end();
     next();
 });
@@ -257,21 +282,6 @@ app.get("/*", function(req, res, next) {
             afisareEroare(res);
         }
     }
-});
-app.get(["/","/index","/home"], function(req, res){
-    var queryOptiuni = "select * from unnest(enum_range(null::categ_animale))";
-    client.query(queryOptiuni, function(err, rezOptiuni){
-        if (err) {
-            console.log(err);
-            afisareEroare(res, 2);
-        } else {
-            res.render("pagini/index", {
-                ip: req.ip,
-                imagini: obGlobal.obImagini.imagini,
-                optiuni: rezOptiuni.rows   
-            });
-        }
-    });
 });
 
 const vect_foldere = ["temp", "json"];
