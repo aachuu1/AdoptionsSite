@@ -132,6 +132,28 @@
     color: #fff;
 }
 
+.buton-actiuni {
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.buton-actiuni button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn-pastreaza.selectat {
+    color: green;
+    font-weight: bold;
+}
+
+.animal.pastreaza {
+    border: 2px solid green;
+}
+
   @keyframes moveGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }

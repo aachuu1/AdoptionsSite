@@ -2,6 +2,17 @@ window.onload = function () {
     const K = 5; 
     let currentPage = 1;
 
+    // Inițializare Sets pentru produse păstrate și ascunse
+    let produsePastrate = new Set();
+    let produseAscunseTemporar = new Set();
+    let produseAscunseSession = new Set();
+
+    // Load produse ascunse permanent din sessionStorage
+    let salvate = sessionStorage.getItem("produseAscunseSession");
+    if (salvate) {
+        produseAscunseSession = new Set(JSON.parse(salvate));
+    }
+
     let rangeInput = document.getElementById("inp-pret");
     let infoRange = document.getElementById("infoRange");
 
@@ -43,8 +54,25 @@ window.onload = function () {
 
         let vreoAfisare = false;
         let animaleFiltrate = [];
-
+        
         for (let animal of animale) {
+            let idProdus = animal.getAttribute("data-id");
+            
+            // Verifică dacă produsul este păstrat - dacă da, îl afișează mereu
+            if (produsePastrate.has(idProdus)) {
+                animal.style.display = "block";
+                animaleFiltrate.push(animal);
+                vreoAfisare = true;
+                continue;
+            }
+
+            // Verifică dacă produsul este ascuns temporar sau pe sesiune
+            if (produseAscunseTemporar.has(idProdus) || produseAscunseSession.has(idProdus)) {
+                animal.style.display = "none";
+                continue;
+            }
+
+            // Aplică filtrele normale
             animal.style.display = "none";
 
             let nume = animal.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
@@ -104,7 +132,9 @@ window.onload = function () {
 
             let cond11 = true;
             if (chkIeftin) {
-                cond11 = (pret < minVarsta);
+                // Corectare: folosește valoarea calculată pentru ieftin
+                let pragIeftin = parseInt(document.querySelector('input[name="gr_rad"][value*=":"]').value.split(':')[1]);
+                cond11 = (pret < pragIeftin);
             }
 
             let cond12 = true;
@@ -126,6 +156,7 @@ window.onload = function () {
             }
 
             if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7 && cond8 && cond9 && cond10 && cond11 && cond12 && cond13 && cond14) {
+                animal.style.display = "block";
                 animaleFiltrate.push(animal);
                 vreoAfisare = true;
             }
@@ -177,6 +208,65 @@ window.onload = function () {
         }
     }
 
+    function sorteazaAnimale(sens) {
+        let animale = Array.from(document.getElementsByClassName("animal"));
+        let container = animale[0]?.parentElement;
+
+        animale.sort(function (a, b) {
+            let pretA = parseFloat(a.getElementsByClassName("val-pret")[0].innerHTML.trim());
+            let pretB = parseFloat(b.getElementsByClassName("val-pret")[0].innerHTML.trim());
+
+            if (pretA != pretB) {
+                return sens * (pretA - pretB);
+            } else {
+                let numeA = a.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
+                let numeB = b.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
+                return sens * numeA.localeCompare(numeB);
+            }
+        });
+
+        for (let animal of animale) {
+            container.appendChild(animal);
+        }
+
+        filtreaza();
+    }
+
+    function calculeazaSuma() {
+        let checkboxes = document.getElementsByClassName("select-cos");
+        let animale = document.getElementsByClassName("animal");
+
+        let numarSelectate = 0;
+        let sumaPreturi = 0;
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked && animale[i].style.display !== "none") {
+                numarSelectate++;
+                let pretElement = animale[i].getElementsByClassName("val-pret")[0];
+                let pret = parseFloat(pretElement.innerHTML.trim());
+                sumaPreturi += pret;
+            }
+        }
+
+        let divRezultat = document.createElement("div");
+        divRezultat.style.position = "fixed";
+        divRezultat.style.bottom = "10px";
+        divRezultat.style.right = "10px";
+        divRezultat.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        divRezultat.style.color = "white";
+        divRezultat.style.padding = "10px";
+        divRezultat.style.borderRadius = "8px";
+        divRezultat.style.zIndex = "1000";
+        divRezultat.innerHTML = "Numărul de animale selectate pentru adopție: " + numarSelectate + "<br/>Suma totală: " + sumaPreturi.toFixed(2) + " lei";
+
+        document.body.appendChild(divRezultat);
+
+        setTimeout(function () {
+            divRezultat.remove();
+        }, 4000);
+    }
+
+    // Event listeners pentru toate controalele de filtrare
     document.getElementById("inp-nume").oninput = filtreaza;
     document.getElementById("inp-pret").oninput = filtreaza;
     document.getElementById("inp-categorie").onchange = filtreaza;
@@ -207,68 +297,10 @@ window.onload = function () {
         sorteazaAnimale(-1);
     }
 
-    function sorteazaAnimale(sens) {
-        let animale = Array.from(document.getElementsByClassName("animal"));
-        let container = animale[0]?.parentElement;
-
-        animale.sort(function (a, b) {
-            let pretA = parseFloat(a.getElementsByClassName("val-pret")[0].innerHTML.trim());
-            let pretB = parseFloat(b.getElementsByClassName("val-pret")[0].innerHTML.trim());
-
-            if (pretA != pretB) {
-                return sens * (pretA - pretB);
-            } else {
-                let numeA = a.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
-                let numeB = b.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
-                return sens * numeA.localeCompare(numeB);
-            }
-        });
-
-        for (let animal of animale) {
-            container.appendChild(animal);
-        }
-
-        filtreaza();
-    }
-
     let btnCalculeaza = document.getElementById("btn-calculeaza");
-
-    function calculeazaSuma() {
-        let checkboxes = document.getElementsByClassName("select-cos");
-        let animale = document.getElementsByClassName("animal");
-
-        let numarSelectate = 0;
-        let sumaPreturi = 0;
-
-        for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                numarSelectate++;
-                let pretElement = animale[i].getElementsByClassName("val-pret")[0];
-                let pret = parseFloat(pretElement.innerHTML.trim());
-                sumaPreturi += pret;
-            }
-        }
-
-        let divRezultat = document.createElement("div");
-        divRezultat.style.position = "fixed";
-        divRezultat.style.bottom = "10px";
-        divRezultat.style.right = "10px";
-        divRezultat.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-        divRezultat.style.color = "white";
-        divRezultat.style.padding = "10px";
-        divRezultat.style.borderRadius = "8px";
-        divRezultat.style.zIndex = "1000";
-        divRezultat.innerHTML = "Numărul de animale selectate pentru adopție: " + numarSelectate + "<br/>Suma totală: " + sumaPreturi.toFixed(2) + " lei";
-
-        document.body.appendChild(divRezultat);
-
-        setTimeout(function () {
-            divRezultat.remove();
-        }, 4000);
-    }
-
     btnCalculeaza.onclick = calculeazaSuma;
 
+    // Keyboard shortcut pentru calculare sumă
     document.addEventListener("keydown", function (event) {
         if (event.altKey && event.code === "KeyC") {
             event.preventDefault();
@@ -276,6 +308,7 @@ window.onload = function () {
         }
     });
 
+    // Buton resetare
     let btnResetare = document.getElementById("resetare");
     btnResetare.onclick = function () {
         if (confirm("Sigur vrei să resetezi filtrele?")) {
@@ -311,5 +344,66 @@ window.onload = function () {
         }
     };
 
+    // Inițializare butoane pentru păstrare/ascundere produse
+    document.querySelectorAll(".animal").forEach(animal => {
+        let idProdus = animal.getAttribute("data-id");
+
+        // Check if this product should be hidden from session storage
+        if (produseAscunseSession.has(idProdus)) {
+            animal.style.display = "none";
+            return;
+        }
+
+        let btnPastreaza = animal.querySelector(".btn-pastreaza");
+        let btnAscTemporar = animal.querySelector(".btn-ascunde-temporar");
+        let btnAscSession = animal.querySelector(".btn-ascunde-session");
+
+        // Check if this product is marked as kept
+        if (produsePastrate.has(idProdus)) {
+            btnPastreaza.classList.add("selectat");
+            animal.classList.add("pastreaza");
+        }
+
+        btnPastreaza.onclick = () => {
+            if (produsePastrate.has(idProdus)) {
+                produsePastrate.delete(idProdus);
+                btnPastreaza.classList.remove("selectat");
+                animal.classList.remove("pastreaza");
+            } else {
+                produsePastrate.add(idProdus);
+                btnPastreaza.classList.add("selectat");
+                animal.classList.add("pastreaza");
+            }
+            filtreaza();
+        };
+
+        btnAscTemporar.onclick = () => {
+            if (produseAscunseTemporar.has(idProdus)) {
+                produseAscunseTemporar.delete(idProdus);
+                btnAscTemporar.classList.remove("selectat");
+                animal.style.display = "block";
+            } else {
+                produseAscunseTemporar.add(idProdus);
+                btnAscTemporar.classList.add("selectat");
+                animal.style.display = "none";
+            }
+        };
+
+        btnAscSession.onclick = () => {
+            if (produseAscunseSession.has(idProdus)) {
+                produseAscunseSession.delete(idProdus);
+                sessionStorage.setItem("produseAscunseSession", JSON.stringify(Array.from(produseAscunseSession)));
+                btnAscSession.classList.remove("selectat");
+                animal.style.display = "block";
+            } else {
+                produseAscunseSession.add(idProdus);
+                sessionStorage.setItem("produseAscunseSession", JSON.stringify(Array.from(produseAscunseSession)));
+                btnAscSession.classList.add("selectat");
+                animal.style.display = "none";
+            }
+        };
+    });
+
+    // Rulează filtrul inițial
     filtreaza();
 };

@@ -12,36 +12,26 @@
     <body>
 
     <%
-        // Calculam valorile minime si maxime pentru pret
         let pretMinim = Math.min(...locals.animale.map(a => parseFloat(a.pret) || 0));
         let pretMaxim = Math.max(...locals.animale.map(a => parseFloat(a.pret) || 0));
         
-        // Calculam valorile minime si maxime pentru greutate
         let greutateMinima = Math.min(...locals.animale.map(a => parseInt(a.greutate) || 0));
         let greutateMaxima = Math.max(...locals.animale.map(a => parseInt(a.greutate) || 0));
         
-        // Calculam lungimea maxima pentru numele animalelor (pentru atributul maxlength)
         let lungimeMaximaNume = Math.max(...locals.animale.map(a => a.nume.length));
-        
-        // Calculam lungimea minima pentru numele animalelor (pentru atributul minlength)
+ 
         let lungimeMinimaNume = Math.min(...locals.animale.map(a => a.nume.length));
         
-        // Calculam categoriile unice pentru a genera optiunile select-ului
         let categoriiUnice = [...new Set(locals.animale.map(a => a.categorie))];
         
-        // Calculam tipurile de animale unice
         let tipuriUnice = [...new Set(locals.animale.map(a => a.tip_animal))];
         
-        // Calculam modurile de prezentare unice
         let moduriPrezentare = [...new Set(locals.animale.map(a => a.mod_prezentare))];
         
-        // Calculam culorile unice
         let culoriUnice = [...new Set(locals.animale.map(a => a.culoare).filter(c => c && c.trim()))];
-        
-        // Calculam numarul total de animale (pentru atribute step, max la input-uri numerice)
+
         let numarTotalAnimale = locals.animale.length;
-        
-        // Calculam data minima si maxima pentru data_adaugare
+
         let dateAdaugare = locals.animale.map(a => new Date(a.data_adaugare)).filter(d => !isNaN(d));
         let dataMinima = dateAdaugare.length > 0 ? new Date(Math.min(...dateAdaugare)).toISOString().split('T')[0] : '2020-01-01';
         let dataMaxima = dateAdaugare.length > 0 ? new Date(Math.max(...dateAdaugare)).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
@@ -209,36 +199,51 @@
         <p id="mesaj-filtrare" style="display: none; color: red; font-weight: bold; text-align: center; margin: 1em 0;"></p>
 
             <h2>Animale</h2>
-            <div class="grid-animal">
-                <% for( let ani of locals.animale) { %>
-                    <article class="animal" >
-                        <h3 class="nume">Nume: <a href="/animal/<%-ani.id %>" ><span class="val-nume"><%- ani.nume%></span></a></h3>
-                        <div class="info-ani">
-                            <p class="descriere">Descriere: <span class="val-desc"><%- ani.descriere%></span></p>
-                            <p class="pret">Pret: <span class="val-pret"><%- ani.pret%></span> lei</p>
-                            <p class="greutate">Greutate: <span class="val-greutate"><%- ani.greutate%></span> kg</p>
-                        </div>
-                        <div class="info-ani-2">
-                            <p class="tip-animal">Tip: <span class="val-tip"><%- ani.tip_animal%></span></p>
-                            <p class="culoare">Culoare: <span class="val-culoare"><%- ani.culoare%></span></p>
-                            <p class="mod-prezentare">Prezentare: <span class="val-mod"><%- ani.mod_prezentare%></span></p>
-                        </div>
-                        <p class="categorie">Categorie: <span class="val-categorie"><%- ani.categorie%></span></p>
-                        <% if (ani.boli && ani.boli.trim()) { %>
-                            <p class="boli">Boli: <span class="val-boli"><%- ani.boli%></span></p>
-                        <% } %>
-                        <p class="sterilizat">Sterilizat: <span class="val-sterilizat"><%- ani.sterilizat ? 'Da' : 'Nu' %></span></p>
-                        <p class="data-adaugare">Adăugat: <span class="val-data"><%- new Date(ani.data_adaugare).toLocaleDateString('ro-RO') %></span></p>
-                        <figure>
-                            <a href="/animal/<%-ani.id %>" ><img src="/resurse/imagini/<%- ani.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- ani.nume %>]" /></a>
-                        </figure>
-                        <label class="selecteaza-cos">
-                            Selectează:<br/>
-                            <input type="checkbox" class="select-cos" value="<%-ani.id %>" autocomplete="off">
-                        </label>
-                    </article>
-                <% }%>
+
+<div class="grid-animal">
+    <% for( let ani of locals.animale) { %>
+        <article class="animal" data-id="<%= ani.id %>">
+            <h3 class="nume">Nume: <a href="/animal/<%-ani.id %>" ><span class="val-nume"><%- ani.nume%></span></a></h3>
+            
+
+            <div class="buttons-container">
+                <button class="btn-pastreaza" 
+                        title="Păstrează acest animal (nu va fi ascuns la filtrare)"
+                        type="button">⭐</button>
+                <button class="btn-ascunde-temporar" 
+                        title="Ascunde temporar acest animal (va reapărea la filtrare/resetare)"
+                        type="button">👁️</button>
+                <button class="btn-ascunde-session" 
+                        title="Ascunde pe durata sesiunii (va reapărea doar în alt tab/fereastră nouă)"
+                        type="button">🗑️</button>
             </div>
+            
+            <div class="info-ani">
+                <p class="descriere">Descriere: <span class="val-desc"><%- ani.descriere%></span></p>
+                <p class="pret">Pret: <span class="val-pret"><%- ani.pret%></span> lei</p>
+                <p class="greutate">Greutate: <span class="val-greutate"><%- ani.greutate%></span> kg</p>
+            </div>
+            <div class="info-ani-2">
+                <p class="tip-animal">Tip: <span class="val-tip"><%- ani.tip_animal%></span></p>
+                <p class="culoare">Culoare: <span class="val-culoare"><%- ani.culoare%></span></p>
+                <p class="mod-prezentare">Prezentare: <span class="val-mod"><%- ani.mod_prezentare%></span></p>
+            </div>
+            <p class="categorie">Categorie: <span class="val-categorie"><%- ani.categorie%></span></p>
+            <% if (ani.boli && ani.boli.trim()) { %>
+                <p class="boli">Boli: <span class="val-boli"><%- ani.boli%></span></p>
+            <% } %>
+            <p class="sterilizat">Sterilizat: <span class="val-sterilizat"><%- ani.sterilizat ? 'Da' : 'Nu' %></span></p>
+            <p class="data-adaugare">Adăugat: <span class="val-data"><%- new Date(ani.data_adaugare).toLocaleDateString('ro-RO') %></span></p>
+            <figure>
+                <a href="/animal/<%-ani.id %>" ><img src="/resurse/imagini/<%- ani.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- ani.nume %>]" /></a>
+            </figure>
+            <label class="selecteaza-cos">
+                Selectează:<br/>
+                <input type="checkbox" class="select-cos" value="<%-ani.id %>" autocomplete="off">
+            </label>
+        </article>
+    <% }%>
+</div>
         </section>
         <div id="pagination" class="pagination"></div>
         <button id="btn-calculeaza">Calculeaza suma preturilor selectate</button>
