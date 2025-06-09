@@ -1,30 +1,38 @@
-const themeToggleBtn = document.getElementById('theme-toggle');
+const themeSelect = document.getElementById('theme-select');
 const root = document.documentElement;
+const icon = document.getElementById('theme-icon');
 
-let currentTheme = 'light';
+let currentTheme = localStorage.getItem('theme') || 'light';
+applyTheme(currentTheme);
 
-
-root.setAttribute('data-theme', currentTheme);
-updateIcon(currentTheme);
-
-themeToggleBtn.addEventListener('click', () => {
-
-  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
-  root.setAttribute('data-theme', currentTheme);
-  updateIcon(currentTheme);
+themeSelect.addEventListener('change', () => {
+  currentTheme = themeSelect.value;
+  applyTheme(currentTheme);
+  localStorage.setItem('theme', currentTheme);
 });
 
-function updateIcon(theme) {
-  const icon = document.getElementById('theme-icon');
-  
-  if (theme === 'light') {
-      
-    icon.src = 'Resurse/Imagini/night-mode.png';
-    icon.alt = 'Schimbă la modul întunecat';
-  } else {
+function applyTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  themeSelect.value = theme;
+  updateIcon(theme);
+}
 
-    icon.src = 'Resurse/Imagini/day-mode.png';
-    icon.alt = 'Schimbă la modul luminos';
+function updateIcon(theme) {
+  switch (theme) {
+    case 'light':
+      icon.src = 'Resurse/Imagini/day-mode.png';
+      icon.alt = 'Schimbă la modul întunecat';
+      break;
+    case 'dark':
+      icon.src = 'Resurse/Imagini/night-mode.png';
+      icon.alt = 'Schimbă la modul luminos';
+      break;
+    case 'blue':
+      icon.src = 'Resurse/Imagini/blue-mode.png';
+      icon.alt = 'Schimbă la modul albastru';
+      break;
+    default:
+      icon.src = 'Resurse/Imagini/day-mode.png';
+      icon.alt = 'Schimbă tema';
   }
 }

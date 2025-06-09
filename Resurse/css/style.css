@@ -15,30 +15,57 @@
     --color-background-secundar: #ffffff; 
   }
   
+:root {
+  --padding-large: 50px;
+  --padding-medium: 20px;
+  --padding-small: 15px; 
+  --padding-text: 20px;
+
+  /* Default: tema light */
+  --color-fundal: #f1e1e1;    
+  --color-roz-deschis: #f3d2da;
+  --color-roz-mediu: #edc1c8;  
+  --color-mov: #d1b4c8;      
+  --color-mov-gri: #cbc4d6;    
+  --color-text-principal: #333333;  
+  --color-text-secundar: #666666;   
+  --color-background-secundar: #ffffff; 
+}
+
+/* Tema light */
 [data-theme="light"] {
   --color-fundal: #f1e1e1;    
   --color-roz-deschis: #f3d2da;
   --color-roz-mediu: #edc1c8;  
   --color-mov: #d1b4c8;      
   --color-mov-gri: #cbc4d6;    
-
   --color-text-principal: #333333;  
   --color-text-secundar: #666666;   
   --color-background-secundar: #ffffff; 
 }
 
+/* Tema dark */
 [data-theme="dark"] {
   --color-fundal: #1a1a1a;    
   --color-roz-deschis: #3a2f35;
   --color-roz-mediu: #4b3a41;
   --color-mov: #524056;
   --color-mov-gri: #5c5468;
-
   --color-text-principal: #eeeeee;
   --color-text-secundar: #bbbbbb;
   --color-background-secundar: #2a2a2a;
 }
 
+[data-theme="blue"] {
+  --color-fundal: #001f3f;
+  --color-roz-deschis: #0074D9;
+  --color-roz-mediu: #3399FF;
+  --color-mov: #66B2FF;
+  --color-mov-gri: #99CCFF;
+  --color-text-principal: #ffffff;
+  --color-text-secundar: #dbe9ff;
+  --color-background-secundar: #003366;
+}
 
 #theme-toggle {
   position: fixed;
@@ -67,34 +94,43 @@
 #theme-icon:hover {
   transform: scale(1.1);
 }
-  .indie-flower-regular {
-    font-family: "Indie Flower", cursive;
-    font-weight: 400;
-    font-style: normal;
-  }
 
-  html {
-    font-size: 14px;
-    transition: font-size 0.3s ease;
-  }
+#theme-select {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--color-background-secundar);
+  color: var(--color-text-principal);
+  border: 1px solid var(--color-mov-gri);
+}
 
-  @media (min-width: 768px) {
-    html {
-      font-size: 15px;
-    }
-  }
+.mesaj-filtrare {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-  @media (min-width: 1024px) {
-    html {
-      font-size: 16px;
-    }
-  }
+.pagination-btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
 
-  @media (min-width: 1200px) {
-    html {
-      font-size: 17px;
-    }
-  }
+.pagination-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
 
   @keyframes moveGradient {
     0% { background-position: 0% 50%; }

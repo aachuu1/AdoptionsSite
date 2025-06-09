@@ -6,54 +6,207 @@
         <link rel="stylesheet" href="/resurse/css/animale.css" type="text/css" />
         <title>Animale date spre adoptie</title>
         <%- include("../fragmente/head") %>     
-        <script type="text/javascript" src=Resurse/js/animale.js></script>
+        <script type="text/javascript" src="Resurse/js/animale.js"></script>
 
     </head>
     <body>
 
+    <%
+        // Calculam valorile minime si maxime pentru pret
+        let pretMinim = Math.min(...locals.animale.map(a => parseFloat(a.pret) || 0));
+        let pretMaxim = Math.max(...locals.animale.map(a => parseFloat(a.pret) || 0));
+        
+        // Calculam valorile minime si maxime pentru greutate
+        let greutateMinima = Math.min(...locals.animale.map(a => parseInt(a.greutate) || 0));
+        let greutateMaxima = Math.max(...locals.animale.map(a => parseInt(a.greutate) || 0));
+        
+        // Calculam lungimea maxima pentru numele animalelor (pentru atributul maxlength)
+        let lungimeMaximaNume = Math.max(...locals.animale.map(a => a.nume.length));
+        
+        // Calculam lungimea minima pentru numele animalelor (pentru atributul minlength)
+        let lungimeMinimaNume = Math.min(...locals.animale.map(a => a.nume.length));
+        
+        // Calculam categoriile unice pentru a genera optiunile select-ului
+        let categoriiUnice = [...new Set(locals.animale.map(a => a.categorie))];
+        
+        // Calculam tipurile de animale unice
+        let tipuriUnice = [...new Set(locals.animale.map(a => a.tip_animal))];
+        
+        // Calculam modurile de prezentare unice
+        let moduriPrezentare = [...new Set(locals.animale.map(a => a.mod_prezentare))];
+        
+        // Calculam culorile unice
+        let culoriUnice = [...new Set(locals.animale.map(a => a.culoare).filter(c => c && c.trim()))];
+        
+        // Calculam numarul total de animale (pentru atribute step, max la input-uri numerice)
+        let numarTotalAnimale = locals.animale.length;
+        
+        // Calculam data minima si maxima pentru data_adaugare
+        let dateAdaugare = locals.animale.map(a => new Date(a.data_adaugare)).filter(d => !isNaN(d));
+        let dataMinima = dateAdaugare.length > 0 ? new Date(Math.min(...dateAdaugare)).toISOString().split('T')[0] : '2020-01-01';
+        let dataMaxima = dateAdaugare.length > 0 ? new Date(Math.max(...dateAdaugare)).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+    %>
 
     <%- include("../fragmente/header") %>
 
     <main>
-        <label> Nume: <input type="text" id="inp-nume"></label>
-        <div> Varsta:
-            <p><label>Pui (varsta &lt; 1)
-                <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
+        <label> Nume: 
+            <input type="text" 
+                   id="inp-nume" 
+                   placeholder="Caută după nume..." 
+                   minlength="<%= lungimeMinimaNume %>" 
+                   maxlength="<%= lungimeMaximaNume %>"
+                   title="Lungimea numelui trebuie să fie între <%= lungimeMinimaNume %> și <%= lungimeMaximaNume %> caractere">
+        </label>
+        
+        <div> Pret:
+            <p><label>Ieftin (pret &lt; <%= Math.round((pretMinim + pretMaxim) / 3) %>)
+                <input id="i_rad1"  name="gr_rad" value="0:<%= Math.round((pretMinim + pretMaxim) / 3) %>" type="radio"/>
             </label></p>
-            <p><label>Adult (1 &le; varsta &lt; 7)
-                <input id="i_rad2"  name="gr_rad" value="350:700" type="radio"/>
+            <p><label>Mediu (<%= Math.round((pretMinim + pretMaxim) / 3) %> &le; pret &lt; <%= Math.round(2 * (pretMinim + pretMaxim) / 3) %>)
+                <input id="i_rad2"  name="gr_rad" value="<%= Math.round((pretMinim + pretMaxim) / 3) %>:<%= Math.round(2 * (pretMinim + pretMaxim) / 3) %>" type="radio"/>
             </label>
-            <p><label>Batran (8 &le; varsta)
-                <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
+            <p><label>Scump (<%= Math.round(2 * (pretMinim + pretMaxim) / 3) %> &le; pret)
+                <input id="i_rad3" name="gr_rad" value="<%= Math.round(2 * (pretMinim + pretMaxim) / 3) %>:<%= pretMaxim + 1 %>" type="radio"/>
             </label>
             <p><label>Toate
                 <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
             </label>
         </div>
 
+        <label> Pret minim: 
+            <input type="range" 
+                   id="inp-pret" 
+                   value="<%= pretMinim %>" 
+                   min="<%= pretMinim %>"  
+                   max="<%= pretMaxim %>"
+                   step="1"
+                   title="Selectează prețul minim între <%= pretMinim %> și <%= pretMaxim %> lei"> 
+            <span id="infoRange">(<%= pretMinim %>)</span>
+        </label>
+        
+        <label> Pret exact (input numar): 
+            <input type="number" 
+                   id="inp-pret-exact" 
+                   min="<%= pretMinim %>" 
+                   max="<%= pretMaxim %>"
+                   step="0.01"
+                   placeholder="Ex: <%= Math.floor((pretMinim + pretMaxim) / 2) %>"
+                   title="Introdu un preț între <%= pretMinim %> și <%= pretMaxim %> lei">
+        </label>
+        
+        <label> Greutate minima (kg): 
+            <input type="number" 
+                   id="inp-greutate" 
+                   min="<%= greutateMinima %>" 
+                   max="<%= greutateMaxima %>"
+                   step="1"
+                   placeholder="Ex: <%= Math.floor((greutateMinima + greutateMaxima) / 2) %>"
+                   title="Introdu o greutate între <%= greutateMinima %> și <%= greutateMaxima %> kg">
+        </label>
 
-        <label> Varsta minima: <input type="range" id="inp-pret" value="0" min="0"  max="70"> <span id="infoRange">(0)</span></label>
         <label>Select simplu:
-            <select id="inp-categorie">
-                <option id="sel-toate" selected value="toate">toate</option>
-                <% for (let opt of locals.optiuni) { %>
-                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
+            <select id="inp-categorie" title="Selectează o categorie de animale">
+                <option id="sel-toate" selected value="toate">Toate categoriile</option>
+                <% categoriiUnice.forEach(function(categorie) { %>
+                    <option value="<%= categorie %>"><%= categorie %></option>
+                <% }); %>
+                <% if (locals.optiuni) { %>
+                    <% locals.optiuni.forEach(function(opt) { %>
+                        <option value="<%= opt.unnest %>"><%= opt.unnest %></option>
+                    <% }); %>
                 <% } %>
             </select>
+        </label>
+
+        <label>Tip animal:
+            <select id="inp-tip-animal" title="Selectează tipul de animal">
+                <option selected value="toate">Toate tipurile</option>
+                <% tipuriUnice.forEach(function(tip) { %>
+                    <option value="<%= tip %>"><%= tip %></option>
+                <% }); %>
+            </select>
+        </label>
+
+        <label>Mod prezentare:
+            <select id="inp-mod-prezentare" 
+                    multiple 
+                    size="<%= Math.min(moduriPrezentare.length + 1, 5) %>"
+                    title="Ține apăsat Ctrl pentru selecție multiplă">
+                <option value="toate">Toate modurile</option>
+                <% moduriPrezentare.forEach(function(mod) { %>
+                    <option value="<%= mod %>"><%= mod %></option>
+                <% }); %>
+            </select>
+        </label>
+        
+        <label>Culoare:
+            <select id="inp-culoare" title="Selectează culoarea animalului">
+                <option selected value="toate">Toate culorile</option>
+                <% culoriUnice.forEach(function(culoare) { %>
+                    <option value="<%= culoare %>"><%= culoare %></option>
+                <% }); %>
+            </select>
+        </label>
+
+        <fieldset>
+            <legend>Criterii de căutare (checkbox-uri)</legend>
+            <label>
+                <input type="checkbox" id="chk-ieftin" value="ieftin">
+                Doar animale ieftine (sub <%= Math.round((pretMinim + pretMaxim) / 3) %> lei)
+            </label>
+            <label>
+                <input type="checkbox" id="chk-sterilizat" value="sterilizat">
+                Doar animale sterilizate
+            </label>
+            <label>
+                <input type="checkbox" id="chk-fara-boli" value="fara-boli">
+                Doar animale fără boli
+            </label>
+        </fieldset>
+
+        <label> Căutare în descriere/boli: 
+            <input type="search" 
+                   id="inp-descriere" 
+                   placeholder="Caută în descrieri sau boli..."
+                   title="Caută cuvinte cheie în descrierile sau bolile animalelor">
+        </label>
+
+        <label> Data adăugării (pentru filtrare): 
+            <input type="date" 
+                   id="inp-data" 
+                   min="<%= dataMinima %>" 
+                   max="<%= dataMaxima %>"
+                   title="Selectează o dată pentru filtrare între <%= dataMinima %> și <%= dataMaxima %>">
         </label>
 
         <p>
         <button class="c1 c2 c3" id="filtrare">Filtreaza</button> 
 
         <button id="resetare">Reseteaza</button><br/>
-        <button id="sortCrescNume">Sorteaza crescator dupa varsta si nume</button>
-        <button id="sortDescrescNume">Sorteaza descrescator dupa varsta si nume</button>
+        <button id="sortCrescNume">Sorteaza crescator dupa pret si nume</button>
+        <button id="sortDescrescNume">Sorteaza descrescator dupa pret si nume</button>
         
         </p>
       
         <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
+        
+        <div class="info-statistici">
+            <p><strong>Statistici:</strong></p>
+            <ul>
+                <li>Numărul total de animale: <%= numarTotalAnimale %></li>
+                <li>Preț minim: <%= pretMinim %> lei</li>
+                <li>Preț maxim: <%= pretMaxim %> lei</li>
+                <li>Greutate minimă: <%= greutateMinima %> kg</li>
+                <li>Greutate maximă: <%= greutateMaxima %> kg</li>
+                <li>Categorii disponibile: <%= categoriiUnice.length %></li>
+                <li>Tipuri de animale: <%= tipuriUnice.length %></li>
+                <li>Culori disponibile: <%= culoriUnice.length %></li>
+            </ul>
+        </div>
   
         <section id="animale">
+        <p id="mesaj-filtrare" style="display: none; color: red; font-weight: bold; text-align: center; margin: 1em 0;"></p>
 
             <h2>Animale</h2>
             <div class="grid-animal">
@@ -62,9 +215,20 @@
                         <h3 class="nume">Nume: <a href="/animal/<%-ani.id %>" ><span class="val-nume"><%- ani.nume%></span></a></h3>
                         <div class="info-ani">
                             <p class="descriere">Descriere: <span class="val-desc"><%- ani.descriere%></span></p>
-                            <p class="varsta">Varsta: <span class="val-varsta"><%- ani.varsta%></span></p>
+                            <p class="pret">Pret: <span class="val-pret"><%- ani.pret%></span> lei</p>
+                            <p class="greutate">Greutate: <span class="val-greutate"><%- ani.greutate%></span> kg</p>
                         </div>
-                        <p class="categorie">Categorie:<span class="val-categorie"><%- ani.categorie%></span></p>
+                        <div class="info-ani-2">
+                            <p class="tip-animal">Tip: <span class="val-tip"><%- ani.tip_animal%></span></p>
+                            <p class="culoare">Culoare: <span class="val-culoare"><%- ani.culoare%></span></p>
+                            <p class="mod-prezentare">Prezentare: <span class="val-mod"><%- ani.mod_prezentare%></span></p>
+                        </div>
+                        <p class="categorie">Categorie: <span class="val-categorie"><%- ani.categorie%></span></p>
+                        <% if (ani.boli && ani.boli.trim()) { %>
+                            <p class="boli">Boli: <span class="val-boli"><%- ani.boli%></span></p>
+                        <% } %>
+                        <p class="sterilizat">Sterilizat: <span class="val-sterilizat"><%- ani.sterilizat ? 'Da' : 'Nu' %></span></p>
+                        <p class="data-adaugare">Adăugat: <span class="val-data"><%- new Date(ani.data_adaugare).toLocaleDateString('ro-RO') %></span></p>
                         <figure>
                             <a href="/animal/<%-ani.id %>" ><img src="/resurse/imagini/<%- ani.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- ani.nume %>]" /></a>
                         </figure>
@@ -76,6 +240,7 @@
                 <% }%>
             </div>
         </section>
+        <div id="pagination" class="pagination"></div>
         <button id="btn-calculeaza">Calculeaza suma preturilor selectate</button>
     </main>
     

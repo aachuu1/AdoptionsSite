@@ -1,41 +1,506 @@
-h2{
-    padding:0.4rem;
-}
-#art-animal{
-    margin:0 auto;
-    width:70%;
-    max-width:700px;
-    background-color: var(--cl-light-t);
-    box-shadow: 0px 0px 10px 5px grey;
-    padding:0.4rem;
+/* Îmbunătățiri generale */
+main {
+    --padd-main: 2rem;
+    padding-left: var(--padd-main);
+    padding-right: var(--padd-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
 }
 
-#art-animal p{
-    margin:0;
-    padding:0.4rem;
-    font-weight:bold;
-    font-size:1.1rem;
+/* Grid pentru animale cu îmbunătățiri */
+.grid-animal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 1.5rem;
+    margin: 2rem 0;
 }
 
-#art-animal p span{
-    font-weight: normal;
+.grid-animale .animal {
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
-#art-animal p:nth-of-type(even){
-    background-color: var(--culoare-roz-inchis);
+
+.grid-animale .animal:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
-#art-animal p:nth-of-type(odd){
-    background-color: var(--cl-marcare);
-}
-.imag-animal{
+
+/* Header pentru carduri */
+.grid-animale .animal h3 {
+    background: linear-gradient(135deg, var(--culoare-roz-inchis), var(--culoare-mov, #8e44ad));
     text-align: center;
+    margin: 0;
+    padding: 1rem 0.5rem;
+    position: relative;
+    overflow: hidden;
 }
-.imag-animal img{
-    width:50%;
-    height:auto;
+
+.grid-animale .animal h3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
-@media screen and (max-width: 700px){
-    #art-animal{
-        margin:0 auto;
-        width:95%;
+
+.grid-animale .animal:hover h3::before {
+    left: 100%;
+}
+
+.grid-animale .animal h3 a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.grid-animale .animal h3 a:hover {
+    color: #f8f9fa;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagini îmbunătățite */
+.grid-animale .animal figure {
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+    background: linear-gradient(to bottom, #fafafa, #f5f5f5);
+}
+
+.grid-animale .animal figure img {
+    border: 3px solid #e9ecef;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.grid-animale .animal:hover figure img {
+    border-color: var(--culoare-mov, #8e44ad);
+    transform: scale(1.02);
+}
+
+/* Info sections cu design îmbunătățit */
+.grid-animale .animal .info-ani,
+.grid-animale .animal .info-ani-2 {
+    display: flex;
+    background: linear-gradient(135deg, var(--cl-marcare), rgba(142, 68, 173, 0.05));
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0;
+}
+
+.grid-animale .animal .info-ani p,
+.grid-animale .animal .info-ani-2 p {
+    text-align: center;
+    font-weight: 600;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.grid-animale .animal .info-ani p {
+    width: 30%;
+}
+
+.grid-animale .animal .info-ani-2 p {
+    width: 33%;
+}
+
+.grid-animale .animal .info-ani p:hover,
+.grid-animale .animal .info-ani-2 p:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Stiluri pentru diferite tipuri de informații */
+.grid-animale .animal p.categorie {
+    text-align: center;
+    font-weight: 700;
+    padding: 0.75rem;
+    margin: 0.5rem;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 12px;
+    border-left: 4px solid var(--culoare-mov, #8e44ad);
+}
+
+.grid-animale .animal p.boli {
+    text-align: center;
+    font-weight: 700;
+    color: #d9534f;
+    padding: 0.75rem;
+    margin: 0.5rem;
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    border-radius: 12px;
+    border-left: 4px solid #d9534f;
+}
+
+.grid-animale .animal p.sterilizat {
+    text-align: center;
+    font-weight: 700;
+    padding: 0.75rem;
+    margin: 0.5rem;
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border-radius: 12px;
+    border-left: 4px solid #4caf50;
+}
+
+.grid-animale .animal p.data-adaugare {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* Info generale */
+.info-animale {
+    background: linear-gradient(135deg, var(--cl-marcare), rgba(142, 68, 173, 0.1));
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(142, 68, 173, 0.2);
+}
+
+/* Container pentru animal cu îmbunătățiri */
+.animal {
+    position: relative;
+}
+
+/* Buton de selecție îmbunătățit */
+.selecteaza-cos {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--culoare-mov), #9b59b6);
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+}
+
+.selecteaza-cos:hover {
+    background: var(--cl-marcare);
+    border: 2px solid var(--culoare-mov);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
+}
+
+.selectat {
+    color: #2e7d32;
+    background: linear-gradient(135deg, #fff59d, #ffeb3b);
+    font-weight: bold;
+    border: 2px solid #4caf50;
+}
+
+/* Îmbunătățiri pentru input-uri */
+main label {
+    display: block;
+    margin: 1.5rem 0 0.5rem 0;
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+main input[type="text"],
+main input[type="number"],
+main input[type="search"],
+main input[type="date"],
+main select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 320px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to bottom, #ffffff, #fafbfc);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+main input[type="text"]:focus,
+main input[type="number"]:focus,
+main input[type="search"]:focus,
+main input[type="date"]:focus,
+main select:focus {
+    outline: none;
+    border-color: var(--culoare-mov, #8e44ad);
+    box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Range slider îmbunătățit */
+main input[type="range"] {
+    width: 100%;
+    max-width: 320px;
+    margin: 1rem 0;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #e1e5e9, var(--culoare-mov, #8e44ad));
+    outline: none;
+    -webkit-appearance: none;
+}
+
+main input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+    transition: all 0.3s ease;
+}
+
+main input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
+}
+
+main input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Fieldset îmbunătățit */
+main fieldset {
+    border: 2px solid rgba(142, 68, 173, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: linear-gradient(135deg, rgba(142, 68, 173, 0.03), rgba(142, 68, 173, 0.08));
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.1);
+}
+
+main fieldset legend {
+    color: var(--culoare-mov, #8e44ad);
+    font-weight: 700;
+    padding: 0 1rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(142, 68, 173, 0.2);
+}
+
+main fieldset label {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+main fieldset label:hover {
+    background: rgba(142, 68, 173, 0.05);
+}
+
+main fieldset input[type="checkbox"] {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Info statistici îmbunătățit */
+.info-statistici {
+    background: linear-gradient(135deg, var(--cl-marcare, #f0f0f0), rgba(142, 68, 173, 0.05));
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+    border-left: 6px solid var(--culoare-mov, #8e44ad);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-statistici::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(142, 68, 173, 0.1), transparent);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+}
+
+.info-statistici p {
+    margin: 0 0 1rem 0;
+    color: var(--culoare-mov, #8e44ad);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.info-statistici ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.info-statistici li {
+    margin: 0.5rem 0;
+    color: #444;
+    font-weight: 500;
+}
+
+/* Butoane îmbunătățite */
+main button {
+    background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+main button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+main button:hover {
+    background: linear-gradient(135deg, var(--culoare-roz-inchis, #d64570), #e91e63);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
+}
+
+main button:hover::before {
+    left: 100%;
+}
+
+main button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+}
+
+/* Radio buttons container îmbunătățit */
+main div[name="pret-radio"] {
+    border: 2px solid rgba(142, 68, 173, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(142, 68, 173, 0.02));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+main div[name="pret-radio"] p {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+main div[name="pret-radio"] label {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+main div[name="pret-radio"] label:hover {
+    background: rgba(142, 68, 173, 0.05);
+}
+
+main div[name="pret-radio"] input[type="radio"] {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Media queries îmbunătățite */
+@media (max-width: 768px) {
+    main {
+        --padd-main: 1.5rem;
+    }
+    
+    main input[type="text"],
+    main input[type="number"],
+    main input[type="search"],
+    main input[type="date"],
+    main select {
+        max-width: 100%;
+    }
+    
+    .grid-animal {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 1rem;
+    }
+    
+    .grid-animale .animal .info-ani,
+    .grid-animale .animal .info-ani-2 {
+        flex-direction: column;
+    }
+    
+    .grid-animale .animal .info-ani p,
+    .grid-animale .animal .info-ani-2 p {
+        width: 100%;
+        margin: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        --padd-main: 1rem;
+    }
+    
+    .grid-animal {
+        grid-template-columns: 1fr;
+    }
+    
+    .selecteaza-cos {
+        width: 45px;
+        height: 45px;
+        bottom: 0.75rem;
+        right: 0.75rem;
+    }
+    
+    main button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
     }
 }

@@ -8,9 +8,14 @@
   <%- include("../fragmente/head.ejs") %> 
 </head> 
 <body>   
-  <button id="theme-toggle">     
-    <img id="theme-icon" src="Resurse/Imagini/night-mode.png" />   
-  </button>
+  <label for="theme-select">Alege tema:</label>
+<select id="theme-select">
+  <option value="light">Luminos</option>
+  <option value="dark">Întunecat</option>
+  <option value="blue">Albastru</option>
+</select>
+<img id="theme-icon" src="Resurse/Imagini/day-mode.png" alt="Icon temă">
+
  
   <a href="#top" class="scroll-to-top">&#8593;</a>
 <%- include("../fragmente/header", {optiuni: locals.optiuni || []}) %>
