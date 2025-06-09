@@ -1,0 +1,132 @@
+.mini-carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #fafafa, #f5f5f5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mini-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+}
+
+.mini-carousel-img {
+    max-width: 100%;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mini-carousel:hover .mini-carousel-img {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mini-prev, .mini-next {
+    position: absolute;
+    top: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+    opacity: 0.8;
+    backdrop-filter: blur(5px);
+}
+
+.mini-prev {
+    left: 10px;
+}
+
+.mini-next {
+    right: 10px;
+}
+
+.mini-prev::before, .mini-next::before {
+    content: '◀'; 
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100%;
+    line-height: 1;
+}
+
+
+.mini-prev:hover, .mini-next:hover {
+    background: rgba(142, 68, 173, 0.9);
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.4);
+}
+
+.mini-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    opacity: 0.9;
+}
+
+.mini-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+.mini-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+}
+
+.mini-indicator.active {
+    background: rgba(142, 68, 173, 0.9);
+    box-shadow: 0 2px 6px rgba(142, 68, 173, 0.4);
+}
+
+.mini-indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.mini-carousel-container:empty::after {
+    content: "Imaginea nu poate fi încărcată";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+}

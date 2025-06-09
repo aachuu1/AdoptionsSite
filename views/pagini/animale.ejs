@@ -64,16 +64,28 @@
             </label>
         </div>
 
-        <label> Pret minim: 
+        <label> Greutate minima (kg): 
             <input type="range" 
-                   id="inp-pret" 
-                   value="<%= pretMinim %>" 
-                   min="<%= pretMinim %>"  
-                   max="<%= pretMaxim %>"
+                   id="inp-greutate-range" 
+                   value="<%= greutateMinima %>" 
+                   min="<%= greutateMinima %>"  
+                   max="<%= greutateMaxima %>"
                    step="1"
-                   title="Selectează prețul minim între <%= pretMinim %> și <%= pretMaxim %> lei"> 
-            <span id="infoRange">(<%= pretMinim %>)</span>
+                   title="Selectează greutatea minimă între <%= greutateMinima %> și <%= greutateMaxima %> kg"> 
+            <span id="infoGreutateRange">(<%= greutateMinima %> kg)</span>
         </label>
+
+        <div> Sterilizat:
+            <p><label>Da
+                <input id="i_rad_sterilizat_da" name="gr_rad_sterilizat" value="da" type="radio"/>
+            </label></p>
+            <p><label>Nu
+                <input id="i_rad_sterilizat_nu" name="gr_rad_sterilizat" value="nu" type="radio"/>
+            </label></p>
+            <p><label>Toate
+                <input id="i_rad_sterilizat_toate" checked name="gr_rad_sterilizat" value="toate" type="radio"/>
+            </label></p>
+        </div>
         
         <label> Pret exact (input numar): 
             <input type="number" 
@@ -83,16 +95,6 @@
                    step="0.01"
                    placeholder="Ex: <%= Math.floor((pretMinim + pretMaxim) / 2) %>"
                    title="Introdu un preț între <%= pretMinim %> și <%= pretMaxim %> lei">
-        </label>
-        
-        <label> Greutate minima (kg): 
-            <input type="number" 
-                   id="inp-greutate" 
-                   min="<%= greutateMinima %>" 
-                   max="<%= greutateMaxima %>"
-                   step="1"
-                   placeholder="Ex: <%= Math.floor((greutateMinima + greutateMaxima) / 2) %>"
-                   title="Introdu o greutate între <%= greutateMinima %> și <%= greutateMaxima %> kg">
         </label>
 
         <label>Select simplu:
@@ -144,10 +146,6 @@
             <label>
                 <input type="checkbox" id="chk-ieftin" value="ieftin">
                 Doar animale ieftine (sub <%= Math.round((pretMinim + pretMaxim) / 3) %> lei)
-            </label>
-            <label>
-                <input type="checkbox" id="chk-sterilizat" value="sterilizat">
-                Doar animale sterilizate
             </label>
             <label>
                 <input type="checkbox" id="chk-fara-boli" value="fara-boli">
@@ -207,15 +205,9 @@
             
 
             <div class="buttons-container">
-                <button class="btn-pastreaza" 
-                        title="Păstrează acest animal (nu va fi ascuns la filtrare)"
-                        type="button">⭐</button>
-                <button class="btn-ascunde-temporar" 
-                        title="Ascunde temporar acest animal (va reapărea la filtrare/resetare)"
-                        type="button">👁️</button>
-                <button class="btn-ascunde-session" 
-                        title="Ascunde pe durata sesiunii (va reapărea doar în alt tab/fereastră nouă)"
-                        type="button">🗑️</button>
+                <button class="btn-pastreaza" title="Păstrează..." type="button"></button>
+                <button class="btn-ascunde-temporar" title="Ascunde temporar..." type="button"></button>
+                <button class="btn-ascunde-session" title="Ascunde sesiune..." type="button"></button>
             </div>
             
             <div class="info-ani">
@@ -234,9 +226,27 @@
             <% } %>
             <p class="sterilizat">Sterilizat: <span class="val-sterilizat"><%- ani.sterilizat ? 'Da' : 'Nu' %></span></p>
             <p class="data-adaugare">Adăugat: <span class="val-data"><%- new Date(ani.data_adaugare).toLocaleDateString('ro-RO') %></span></p>
-            <figure>
-                <a href="/animal/<%-ani.id %>" ><img src="/resurse/imagini/<%- ani.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- ani.nume %>]" /></a>
+            
+
+            <figure class="mini-galerie">
+                <div class="mini-carousel" data-folder="<%- ani.folder_imagini || ani.nume.toLowerCase() %>">
+                    <div class="mini-carousel-container">
+                        <img class="mini-carousel-img" src="/resurse/imagini/<%- ani.folder_imagini || ani.nume.toLowerCase() %>/1.jpg" 
+                             style="width:100%;height:auto;" alt="[imagine <%- ani.nume %>]" 
+                             onerror="this.onerror=null; this.src='/resurse/imagini/<%- ani.folder_imagini || ani.nume.toLowerCase() %>/1.png';" />
+                    </div>
+                    <div class="mini-carousel-controls">
+                        <button class="mini-prev" type="button"></button>
+                        <span class="mini-counter">1</span>
+                        <button class="mini-next" type="button"></button>
+                    </div>
+                    <div class="mini-indicators">
+
+                    </div>
+                </div>
+                <p><a href="/animal/<%-ani.id %>">Vezi toate imaginile →</a></p>
             </figure>
+            
             <label class="selecteaza-cos">
                 Selectează:<br/>
                 <input type="checkbox" class="select-cos" value="<%-ani.id %>" autocomplete="off">

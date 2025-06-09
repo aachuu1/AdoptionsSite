@@ -1,4 +1,3 @@
-/* Îmbunătățiri generale */
 main {
     --padd-main: 2rem;
     padding-left: var(--padd-main);
@@ -7,30 +6,30 @@ main {
     line-height: 1.6;
 }
 
-/* Grid pentru animale cu îmbunătățiri */
+
 .grid-animal {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 1.5rem;
     margin: 2rem 0;
 }
 
-.grid-animale .animal {
+.grid-animal .animal {
     border-radius: 1.5rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
 }
 
-.grid-animale .animal:hover {
+.grid-animal .animal:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Header pentru carduri */
-.grid-animale .animal h3 {
+.grid-animal .animal h3 {
     background: linear-gradient(135deg, var(--culoare-roz-inchis), var(--culoare-mov, #8e44ad));
     text-align: center;
     margin: 0;
@@ -39,7 +38,7 @@ main {
     overflow: hidden;
 }
 
-.grid-animale .animal h3::before {
+.grid-animal .animal h3::before {
     content: '';
     position: absolute;
     top: 0;
@@ -50,11 +49,11 @@ main {
     transition: left 0.5s;
 }
 
-.grid-animale .animal:hover h3::before {
+.grid-animal .animal:hover h3::before {
     left: 100%;
 }
 
-.grid-animale .animal h3 a {
+.grid-animal .animal h3 a {
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -63,44 +62,46 @@ main {
     transition: all 0.3s ease;
 }
 
-.grid-animale .animal h3 a:hover {
+.grid-animal .animal h3 a:hover {
     color: #f8f9fa;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Imagini îmbunătățite */
-.grid-animale .animal figure {
+.grid-animal .animal figure,
+.grid-animal .animal .mini-galerie {
     text-align: center;
     margin: 0;
-    padding: 1rem;
-    background: linear-gradient(to bottom, #fafafa, #f5f5f5);
+    padding: 0;
+    background: transparent;
+    position: relative;
 }
 
-.grid-animale .animal figure img {
-    border: 3px solid #e9ecef;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+.grid-animal .animal figure img,
+.grid-animal .animal .mini-galerie img {
+    border: none;
+    border-radius: 0;
+    transition: none;
     max-width: 100%;
     height: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
-.grid-animale .animal:hover figure img {
-    border-color: var(--culoare-mov, #8e44ad);
-    transform: scale(1.02);
+.grid-animal .animal:hover figure img,
+.grid-animal .animal:hover .mini-galerie img {
+    border-color: transparent;
+    transform: none;
 }
 
-/* Info sections cu design îmbunătățit */
-.grid-animale .animal .info-ani,
-.grid-animale .animal .info-ani-2 {
+.grid-animal .animal .info-ani,
+.grid-animal .animal .info-ani-2 {
     display: flex;
     background: linear-gradient(135deg, var(--cl-marcare), rgba(142, 68, 173, 0.05));
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     padding: 0.5rem 0;
 }
 
-.grid-animale .animal .info-ani p,
-.grid-animale .animal .info-ani-2 p {
+.grid-animal .animal .info-ani p,
+.grid-animal .animal .info-ani-2 p {
     text-align: center;
     font-weight: 600;
     margin: 0.5rem;
@@ -111,22 +112,21 @@ main {
     transition: all 0.3s ease;
 }
 
-.grid-animale .animal .info-ani p {
+.grid-animal .animal .info-ani p {
     width: 30%;
 }
 
-.grid-animale .animal .info-ani-2 p {
+.grid-animal .animal .info-ani-2 p {
     width: 33%;
 }
 
-.grid-animale .animal .info-ani p:hover,
-.grid-animale .animal .info-ani-2 p:hover {
+.grid-animal .animal .info-ani p:hover,
+.grid-animal .animal .info-ani-2 p:hover {
     background: rgba(255, 255, 255, 0.9);
     transform: translateY(-2px);
 }
 
-/* Stiluri pentru diferite tipuri de informații */
-.grid-animale .animal p.categorie {
+.grid-animal .animal p.categorie {
     text-align: center;
     font-weight: 700;
     padding: 0.75rem;
@@ -136,7 +136,7 @@ main {
     border-left: 4px solid var(--culoare-mov, #8e44ad);
 }
 
-.grid-animale .animal p.boli {
+.grid-animal .animal p.boli {
     text-align: center;
     font-weight: 700;
     color: #d9534f;
@@ -147,7 +147,7 @@ main {
     border-left: 4px solid #d9534f;
 }
 
-.grid-animale .animal p.sterilizat {
+.grid-animal .animal p.sterilizat {
     text-align: center;
     font-weight: 700;
     padding: 0.75rem;
@@ -157,7 +157,7 @@ main {
     border-left: 4px solid #4caf50;
 }
 
-.grid-animale .animal p.data-adaugare {
+.grid-animal .animal p.data-adaugare {
     text-align: center;
     font-size: 0.85rem;
     color: #666;
@@ -168,8 +168,8 @@ main {
     font-style: italic;
 }
 
-/* Info generale */
-.info-animale {
+
+.info-statistici {
     background: linear-gradient(135deg, var(--cl-marcare), rgba(142, 68, 173, 0.1));
     padding: 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -177,12 +177,59 @@ main {
     border: 1px solid rgba(142, 68, 173, 0.2);
 }
 
-/* Container pentru animal cu îmbunătățiri */
 .animal {
     position: relative;
 }
 
-/* Buton de selecție îmbunătățit */
+.buttons-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 15;
+}
+
+.btn-pastreaza,
+.btn-ascunde-temporar,
+.btn-ascunde-session {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    opacity: 0.8;
+    min-width: 80px;
+}
+
+.btn-pastreaza:hover,
+.btn-ascunde-temporar:hover,
+.btn-ascunde-session:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.btn-pastreaza.selectat {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.btn-ascunde-temporar.selectat {
+    background: rgba(255, 152, 0, 0.9);
+}
+
+.btn-ascunde-session.selectat {
+    background: rgba(244, 67, 54, 0.9);
+}
+
+.animal.pastreaza {
+    border: 3px solid #4caf50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
 .selecteaza-cos {
     display: inline-flex;
     align-items: center;
@@ -198,6 +245,11 @@ main {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+    z-index: 10;
+    text-align: center;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 600;
 }
 
 .selecteaza-cos:hover {
@@ -207,6 +259,12 @@ main {
     box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
 }
 
+.selecteaza-cos input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+}
+
 .selectat {
     color: #2e7d32;
     background: linear-gradient(135deg, #fff59d, #ffeb3b);
@@ -214,7 +272,108 @@ main {
     border: 2px solid #4caf50;
 }
 
-/* Îmbunătățiri pentru input-uri */
+
+.mini-galerie {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.mini-carousel {
+    position: relative;
+}
+
+.mini-carousel-container {
+    position: relative;
+    min-height: 200px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mini-carousel-img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.mini-carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.mini-prev,
+.mini-next {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-prev::before {
+    content: '❮';
+}
+
+.mini-next::before {
+    content: '❯';
+}
+
+.mini-prev:hover,
+.mini-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.mini-counter {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    pointer-events: auto;
+}
+
+.mini-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.mini-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mini-indicator.active {
+    background: var(--culoare-mov, #8e44ad);
+    transform: scale(1.2);
+}
+
+
 main label {
     display: block;
     margin: 1.5rem 0 0.5rem 0;
@@ -250,7 +409,7 @@ main select:focus {
     transform: translateY(-2px);
 }
 
-/* Range slider îmbunătățit */
+
 main input[type="range"] {
     width: 100%;
     max-width: 320px;
@@ -289,7 +448,7 @@ main input[type="range"]::-moz-range-thumb {
     transition: all 0.3s ease;
 }
 
-/* Fieldset îmbunătățit */
+
 main fieldset {
     border: 2px solid rgba(142, 68, 173, 0.3);
     border-radius: 16px;
@@ -330,7 +489,7 @@ main fieldset input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* Info statistici îmbunătățit */
+
 .info-statistici {
     background: linear-gradient(135deg, var(--cl-marcare, #f0f0f0), rgba(142, 68, 173, 0.05));
     padding: 1.5rem;
@@ -372,7 +531,7 @@ main fieldset input[type="checkbox"] {
     font-weight: 500;
 }
 
-/* Butoane îmbunătățite */
+
 main button {
     background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
     color: white;
@@ -415,8 +574,44 @@ main button:active {
     box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
 }
 
-/* Radio buttons container îmbunătățit */
-main div[name="pret-radio"] {
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.pagination-btn {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    color: #495057;
+    border: 2px solid #dee2e6;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 40px;
+}
+
+.pagination-btn:hover {
+    background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
+    color: white;
+    border-color: var(--culoare-mov, #8e44ad);
+    transform: translateY(-2px);
+}
+
+.pagination-btn.active {
+    background: linear-gradient(135deg, var(--culoare-mov, #8e44ad), #9b59b6);
+    color: white;
+    border-color: var(--culoare-mov, #8e44ad);
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+}
+
+
+main div:has(input[name="gr_rad"]) {
     border: 2px solid rgba(142, 68, 173, 0.2);
     border-radius: 12px;
     padding: 1rem;
@@ -425,12 +620,12 @@ main div[name="pret-radio"] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-main div[name="pret-radio"] p {
+main div:has(input[name="gr_rad"]) p {
     margin: 0.5rem 0;
     font-weight: 500;
 }
 
-main div[name="pret-radio"] label {
+main div:has(input[name="gr_rad"]) label {
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -440,18 +635,68 @@ main div[name="pret-radio"] label {
     cursor: pointer;
 }
 
-main div[name="pret-radio"] label:hover {
+main div:has(input[name="gr_rad"]) label:hover {
     background: rgba(142, 68, 173, 0.05);
 }
 
-main div[name="pret-radio"] input[type="radio"] {
+main div:has(input[name="gr_rad"]) input[type="radio"] {
     margin-right: 0.75rem;
     width: 18px;
     height: 18px;
     cursor: pointer;
 }
 
-/* Media queries îmbunătățite */
+
+main div:has(input[name="gr_rad_sterilizat"]) {
+    border: 2px solid rgba(142, 68, 173, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(142, 68, 173, 0.02));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+main div:has(input[name="gr_rad_sterilizat"]) p {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+main div:has(input[name="gr_rad_sterilizat"]) label {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+main div:has(input[name="gr_rad_sterilizat"]) label:hover {
+    background: rgba(142, 68, 173, 0.05);
+}
+
+main div:has(input[name="gr_rad_sterilizat"]) input[type="radio"] {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+#mesaj-filtrare {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 12px;
+    margin: 2rem 0;
+    color: #e65100;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-left: 4px solid #ff9800;
+    display: none;
+}
+
+
 @media (max-width: 768px) {
     main {
         --padd-main: 1.5rem;
@@ -466,19 +711,42 @@ main div[name="pret-radio"] input[type="radio"] {
     }
     
     .grid-animal {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         grid-gap: 1rem;
     }
     
-    .grid-animale .animal .info-ani,
-    .grid-animale .animal .info-ani-2 {
+    .grid-animal .animal .info-ani,
+    .grid-animal .animal .info-ani-2 {
         flex-direction: column;
     }
     
-    .grid-animale .animal .info-ani p,
-    .grid-animale .animal .info-ani-2 p {
+    .grid-animal .animal .info-ani p,
+    .grid-animal .animal .info-ani-2 p {
         width: 100%;
         margin: 0.25rem;
+    }
+    
+
+    .mini-prev, .mini-next {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .mini-counter {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+    
+    .mini-indicator {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .buttons-container button {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        min-width: 70px;
     }
 }
 
@@ -496,10 +764,41 @@ main div[name="pret-radio"] input[type="radio"] {
         height: 45px;
         bottom: 0.75rem;
         right: 0.75rem;
+        font-size: 0.7rem;
     }
     
     main button {
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
+    }
+
+    .mini-carousel-container {
+        min-height: 150px;
+    }
+    
+    .mini-carousel-img {
+        max-height: 180px;
+    }
+    
+    .mini-prev, .mini-next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .mini-counter {
+        font-size: 0.6rem;
+        padding: 2px 4px;
+    }
+    
+    .buttons-container {
+        top: 5px;
+        left: 5px;
+    }
+    
+    .buttons-container button {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+        min-width: 60px;
     }
 }

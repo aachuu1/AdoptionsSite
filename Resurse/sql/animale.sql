@@ -53,3 +53,6 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ana_stoichita;
 REVOKE ALL PRIVILEGES ON DATABASE proiect FROM ana_stoichita;
 REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM ana_stoichita;
 REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public FROM ana_stoichita;
+
+ALTER TABLE animale RENAME COLUMN imagine TO folder_imagini;
+UPDATE animale SET folder_imagini = REPLACE(imagine, '.png', '') WHERE imagine IS NOT NULL;
